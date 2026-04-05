@@ -9,3 +9,7 @@ Route::get('/dashboard-design', function () {
 Route::get('/bookmark-design', function () {
     return view('bookmark');
 });
+
+Route::get('/history-design', function () {
+    return view('history');
+});
