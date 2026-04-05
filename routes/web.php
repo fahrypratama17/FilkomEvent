@@ -21,3 +21,11 @@ Route::get('/profile-design', function () {
 Route::get('/detail-event-design', function () {
     return view('detail-event');
 });
+
+Route::get('/list-event-design', function () {
+    return view('list-event');
+});
+
+Route::get('/registration-event-design', function () {
+    return view('registration-event');
+});
