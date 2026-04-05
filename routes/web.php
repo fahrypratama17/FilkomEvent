@@ -29,3 +29,7 @@ Route::get('/list-event-design', function () {
 Route::get('/registration-event-design', function () {
     return view('registration-event');
 });
+
+Route::get('/payment-design', function () {
+    return view('payment');
+});
