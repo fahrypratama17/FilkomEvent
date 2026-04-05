@@ -197,7 +197,11 @@
 
                                 <div class="pt-2">
                                     @if ($item['action_type'] === 'download')
-                                        <button class="inline-flex h-[40px] min-w-[196px] items-center justify-center gap-3 rounded-[8px] bg-[#050A8F] px-5 text-[14px] font-semibold text-white">
+                                        <button
+                                            type="button"
+                                            onclick="openCertificateModal()"
+                                            class="inline-flex h-[40px] min-w-[196px] items-center justify-center gap-3 rounded-[8px] bg-[#050A8F] px-5 text-[14px] font-semibold text-white"
+                                        >
                                             <img src="{{ asset('assets/icons/download-white.svg') }}" alt="Download" class="h-4 w-4 object-contain">
                                             <span>{{ $item['action'] }}</span>
                                         </button>
@@ -233,5 +237,28 @@
             </section>
         </main>
     </div>
+    @include('components.certificate-processing-modal')
+
+    <script>
+        function openCertificateModal() {
+            const modal = document.getElementById('certificateProcessingModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificateProcessingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeCertificateModal();
+            }
+        });
+    </script>
 </body>
 </html>
