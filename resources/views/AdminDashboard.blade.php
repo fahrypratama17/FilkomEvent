@@ -46,7 +46,7 @@
 @endphp
 
 <section class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
-  <div class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
+  <div class="flex w-82.5 shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
     <div class="mb-14">
       <div class="mb-3 flex items-center gap-3">
         <h1 class="">Filkom Event</h1>
@@ -116,7 +116,7 @@
     </section>
 
     <div class="grid grid-cols-[308px_1fr] gap-12 pb-6">
-      <div class="rounded-[24px] bg-[#0790C7] px-7 py-7 text-white shadow-sm">
+      <div class="rounded-3xl bg-[#0790C7] px-7 py-7 text-white shadow-sm">
         <h2 class="mb-6 text-[28px] font-extrabold leading-tight">
           New Activities
         </h2>
@@ -134,10 +134,10 @@
         </div>
       </div>
 
-      <div class="rounded-[24px] bg-[#16B6D9] px-9 py-9 shadow-sm">
+      <div class="rounded-3xl bg-[#16B6D9] px-9 py-9 shadow-sm">
         <div class="mb-9 grid grid-cols-3 gap-9">
           @foreach ($stats as $item)
-            <div class="flex h-[170px] items-center justify-center rounded-[24px] bg-[#FF6A27] px-6 text-center text-white">
+            <div class="flex h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white">
               <div>
                 <div class="mb-4 text-[54px] font-extrabold leading-none">{{ $item['value'] }}</div>
                 <div class="text-[17px] leading-snug">{{ $item['label'] }}</div>
