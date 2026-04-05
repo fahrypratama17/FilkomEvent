@@ -13,3 +13,7 @@ Route::get('/bookmark-design', function () {
 Route::get('/history-design', function () {
     return view('history');
 });
+
+Route::get('/profile-design', function () {
+    return view('profile');
+});
