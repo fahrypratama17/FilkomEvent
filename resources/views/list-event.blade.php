@@ -83,12 +83,6 @@
         <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
             <div class="mb-14">
                 <div class="mb-3 flex items-center gap-3">
-                    <img
-                        src="{{ asset('assets/logo/logo-filkom.png') }}"
-                        alt="Logo Filkom Event"
-                        class="w-[140px] object-contain"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                    >
                     <div class="hidden leading-none">
                         <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
                         <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
@@ -102,7 +96,6 @@
                     @foreach ($menuItems as $item)
                         <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
                             <div class="flex h-10 w-10 items-center justify-center">
-                                <img src="{{ asset($item['icon']) }}" alt="{{ $item['label'] }}" class="h-8 w-8 object-contain">
                             </div>
                             <span>{{ $item['label'] }}</span>
                         </a>
@@ -116,7 +109,6 @@
                     @foreach ($settingItems as $item)
                         <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] text-white/90">
                             <div class="flex h-10 w-10 items-center justify-center">
-                                <img src="{{ asset($item['icon']) }}" alt="{{ $item['label'] }}" class="h-8 w-8 object-contain">
                             </div>
                             <span>{{ $item['label'] }}</span>
                         </a>
@@ -129,12 +121,6 @@
             <div class="mb-6 flex items-start justify-between gap-6">
                 <div class="flex items-center gap-5">
                     <div class="flex h-[92px] w-[92px] items-center justify-center overflow-hidden rounded-2xl bg-transparent">
-                        <img
-                            src="{{ asset('assets/mascot/mascot-student.png') }}"
-                            alt="Mascot"
-                            class="h-full w-full object-contain"
-                            onerror="this.style.display='none'; this.parentElement.innerHTML='🦊'; this.parentElement.classList.add('text-[54px]');"
-                        >
                     </div>
                     <h1 class="text-[54px] font-extrabold leading-none tracking-tight text-black">
                         Student <span class="text-[#FF742E]">Events</span>
@@ -142,16 +128,10 @@
                 </div>
 
                 <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-                    <img src="{{ asset('assets/icons/profile-top.svg') }}" alt="Profile" class="h-7 w-7 object-contain">
                 </button>
             </div>
 
             <div class="mb-12 relative w-full">
-                <img
-                    src="{{ asset('assets/icons/search.svg') }}"
-                    alt="Search"
-                    class="pointer-events-none absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 object-contain"
-                >
                 <input
                     type="text"
                     placeholder="Search here"
@@ -167,7 +147,6 @@
                             <select class="h-[42px] min-w-[254px] appearance-none rounded-[8px] border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none">
                                 <option>Workshop, Seminar, etc</option>
                             </select>
-                            <img src="{{ asset('assets/icons/chevron-down-orange.svg') }}" alt="Open" class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 object-contain">
                         </div>
                     </div>
 
@@ -177,7 +156,6 @@
                             <select class="h-[42px] min-w-[116px] appearance-none rounded-[8px] border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none">
                                 <option>All status</option>
                             </select>
-                            <img src="{{ asset('assets/icons/chevron-down-orange.svg') }}" alt="Open" class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 object-contain">
                         </div>
                     </div>
                 </div>
@@ -192,12 +170,6 @@
                     @foreach ($events as $event)
                         <article class="overflow-hidden rounded-[10px] border border-[#D8D8D8] bg-[#F7F7F7] shadow-sm">
                             <div class="flex h-[170px] items-center justify-center overflow-hidden bg-[#D9D9D9] text-center text-white/80">
-                                <img
-                                    src="{{ asset($event['poster']) }}"
-                                    alt="{{ $event['title'] }}"
-                                    class="h-full w-full object-cover"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                >
                                 <div class="hidden h-full w-full items-center justify-center text-[28px] font-medium tracking-wide">
                                     {{ $event['poster_label'] }}
                                 </div>
@@ -220,11 +192,9 @@
 
                                 <div class="mb-3 space-y-3 text-[12px] text-[#666666]">
                                     <div class="flex items-center gap-2">
-                                        <img src="{{ asset('assets/icons/calendar-orange.svg') }}" alt="Schedule" class="h-4 w-4 object-contain">
                                         <span>{{ $event['schedule'] }}</span>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <img src="{{ asset('assets/icons/building-orange.svg') }}" alt="Organizer" class="h-4 w-4 object-contain">
                                         <span>{{ $event['organizer'] }}</span>
                                     </div>
                                 </div>
@@ -237,7 +207,6 @@
                                         See Details
                                     </a>
                                     <button class="flex h-[38px] w-[38px] items-center justify-center rounded-[6px] bg-[#233E98] shadow-sm">
-                                        <img src="{{ asset('assets/icons/bookmark-white.svg') }}" alt="Bookmark" class="h-4 w-4 object-contain">
                                     </button>
                                 </div>
                             </div>

@@ -67,17 +67,17 @@
     @endphp
 
     <div class="min-h-screen">
-        <main class="mx-auto max-w-[1440px] px-[44px] pb-0 pt-0">
+        <main class="pb-0 pt-0">
             <div class="min-h-[1438px] rounded-[4px] border border-[#C9D0D7] bg-[#F5F5F5]">
                 <div class="px-[46px] pt-6">
                     <div class="mb-9 flex items-center justify-between">
                         <div class="flex items-center gap-3 text-[#233E98]">
-                            <img src="{{ asset('assets/icons/calendar-orange.svg') }}" alt="Detail Event" class="h-5 w-5 object-contain">
+
                             <span class="text-[18px] font-medium">Detail Event</span>
                         </div>
 
                         <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-                            <img src="{{ asset('assets/icons/profile-top.svg') }}" alt="Profile" class="h-7 w-7 object-contain">
+
                         </button>
                     </div>
 
@@ -87,7 +87,7 @@
                                 href="/dashboard-design"
                                 class="mb-6 inline-flex h-[42px] items-center gap-3 rounded-[10px] border border-[#D0D0D0] bg-white px-5 text-[16px] text-[#666666]"
                             >
-                                <img src="{{ asset('assets/icons/arrow-left-orange.svg') }}" alt="Back" class="h-4 w-4 object-contain">
+
                                 <span>Return to Dashboard</span>
                             </a>
 
@@ -105,14 +105,7 @@
                             </div>
 
                             <div class="mb-8 flex h-[404px] items-center justify-center overflow-hidden rounded-[8px] bg-[#5C5C5C]">
-                                <img
-                                    src="{{ asset($event['poster']) }}"
-                                    alt="{{ $event['poster_alt'] }}"
-                                    class="h-full w-full object-cover"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                >
                                 <div class="hidden flex-col items-center justify-center text-center text-white/90">
-                                    <img src="{{ asset('assets/icons/image-placeholder.svg') }}" alt="Poster" class="mb-3 h-10 w-10 object-contain opacity-95">
                                     <div class="text-[18px] font-medium">{{ $event['poster_alt'] }}</div>
                                     <div class="text-[14px] opacity-90">{{ $event['poster_size'] }}</div>
                                 </div>
@@ -122,7 +115,6 @@
                                 <h2 class="mb-5 text-[18px] font-medium text-[#233E98]">Basic Information</h2>
                                 <div class="grid grid-cols-2 gap-x-8 gap-y-4">
                                     <div class="flex items-start gap-3">
-                                        <img src="{{ asset('assets/icons/calendar-orange.svg') }}" alt="Date" class="mt-1 h-4 w-4 object-contain">
                                         <div>
                                             <div class="text-[16px] font-medium text-[#303030]">Date &amp; Time</div>
                                             <div class="text-[15px] text-[#6B6B6B]">{{ $event['date_time'] }}</div>
@@ -130,7 +122,6 @@
                                     </div>
 
                                     <div class="flex items-start gap-3">
-                                        <img src="{{ asset('assets/icons/location-orange.svg') }}" alt="Location" class="mt-1 h-4 w-4 object-contain">
                                         <div>
                                             <div class="text-[16px] font-medium text-[#303030]">Location</div>
                                             <div class="text-[15px] text-[#6B6B6B]">{{ $event['location'] }}</div>
@@ -138,7 +129,6 @@
                                     </div>
 
                                     <div class="flex items-start gap-3">
-                                        <img src="{{ asset('assets/icons/users-orange.svg') }}" alt="Quota" class="mt-1 h-4 w-4 object-contain">
                                         <div>
                                             <div class="text-[16px] font-medium text-[#303030]">Quota</div>
                                             <div class="text-[15px] text-[#6B6B6B]">{{ $event['quota'] }}</div>
@@ -146,7 +136,6 @@
                                     </div>
 
                                     <div class="flex items-start gap-3">
-                                        <img src="{{ asset('assets/icons/tag-orange.svg') }}" alt="Category" class="mt-1 h-4 w-4 object-contain">
                                         <div>
                                             <div class="text-[16px] font-medium text-[#303030]">Category</div>
                                             <div class="text-[15px] text-[#6B6B6B]">{{ $event['category'] }}</div>
@@ -178,12 +167,6 @@
                                     @foreach ($speakers as $speaker)
                                         <div class="flex items-center gap-4 rounded-[8px] border border-[#DBDBDB] bg-[#F8F8F8] px-4 py-4">
                                             <div class="flex h-[64px] w-[64px] shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#EEF2FF] text-[22px] font-bold text-[#233E98]">
-                                                <img
-                                                    src="{{ asset($speaker['avatar']) }}"
-                                                    alt="{{ $speaker['name'] }}"
-                                                    class="h-full w-full object-cover"
-                                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                                >
                                                 <div class="hidden h-full w-full items-center justify-center">{{ $speaker['initials'] }}</div>
                                             </div>
                                             <div>
@@ -202,7 +185,6 @@
                                     <div class="flex gap-3 px-0 py-0">
                                         <div class="flex w-[68px] items-start justify-center px-4 pt-5">
                                             <div class="flex h-[48px] w-[48px] items-center justify-center rounded-[8px] bg-[#EFEFEF]">
-                                                <img src="{{ asset('assets/icons/building-orange.svg') }}" alt="Organizer" class="h-5 w-5 object-contain">
                                             </div>
                                         </div>
                                         <div class="flex-1 py-4 pr-5">
@@ -213,15 +195,14 @@
 
                                             <div class="space-y-2 text-[15px] text-[#5F5F5F]">
                                                 <div class="flex items-center gap-3">
-                                                    <img src="{{ asset('assets/icons/mail-orange.svg') }}" alt="Email" class="h-4 w-4 object-contain">
                                                     <span>{{ $event['email'] }}</span>
                                                 </div>
                                                 <div class="flex items-center gap-3">
-                                                    <img src="{{ asset('assets/icons/phone-orange.svg') }}" alt="Phone" class="h-4 w-4 object-contain">
+
                                                     <span>{{ $event['phone'] }}</span>
                                                 </div>
                                                 <div class="flex items-center gap-3">
-                                                    <img src="{{ asset('assets/icons/instagram-outline.svg') }}" alt="Instagram" class="h-4 w-4 object-contain">
+
                                                     <span>{{ $event['instagram'] }}</span>
                                                 </div>
                                             </div>
@@ -248,7 +229,7 @@
                                 <div class="mb-5 text-center text-[14px] text-[#777777]">{{ $event['fee_note'] }}</div>
 
                                 <button class="mb-4 inline-flex h-[48px] w-full items-center justify-center gap-3 rounded-[8px] bg-[#233E98] px-5 text-[15px] font-medium text-white">
-                                    <img src="{{ asset('assets/icons/register-white.svg') }}" alt="Register" class="h-4 w-4 object-contain">
+
                                     <span>Register for Event Now</span>
                                 </button>
 
@@ -278,7 +259,7 @@
                                 href="#"
                                 class="inline-flex h-[48px] w-full items-center justify-center gap-3 rounded-[8px] border border-[#D0D0D0] bg-[#F8F8F8] px-5 text-[16px] text-[#666666]"
                             >
-                                <img src="{{ asset('assets/icons/arrow-left-orange.svg') }}" alt="Back" class="h-4 w-4 object-contain">
+
                                 <span>Return to Event List</span>
                             </a>
                         </aside>

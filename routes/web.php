@@ -37,3 +37,7 @@ Route::get('/registration-event-design', function () {
 Route::get('/payment-design', function () {
     return view('payment');
 });
+
+Route::get('/bookmark', function () {
+  return view('bookmark');
+});

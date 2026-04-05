@@ -26,17 +26,17 @@
     @endphp
 
     <div class="min-h-screen">
-        <main class="mx-auto max-w-[1440px] px-0 pb-0 pt-0">
+        <main class="mx-auto px-0 pb-0 pt-0">
             <div class="min-h-[1273px] rounded-[4px] border border-[#C9D0D7] bg-[#F5F5F5]">
                 <div class="px-[46px] pt-6">
                     <div class="mb-8 flex items-center justify-between">
                         <div class="flex items-center gap-3 text-[#233E98]">
-                            <img src="{{ asset('assets/icons/calendar-orange.svg') }}" alt="Event Payments" class="h-6 w-6 object-contain">
+
                             <span class="text-[18px] font-medium">Event Payments</span>
                         </div>
 
                         <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-                            <img src="{{ asset('assets/icons/profile-top.svg') }}" alt="Profile" class="h-7 w-7 object-contain">
+
                         </button>
                     </div>
 
@@ -44,7 +44,7 @@
                         href="/dashboard-design"
                         class="mb-4 inline-flex h-[42px] items-center gap-3 rounded-[10px] border border-[#D0D0D0] bg-[#F7F7F7] px-5 text-[16px] text-[#666666]"
                     >
-                        <img src="{{ asset('assets/icons/arrow-left-orange.svg') }}" alt="Back" class="h-4 w-4 object-contain">
+
                         <span>Return to Dashboard</span>
                     </a>
 
@@ -88,20 +88,20 @@
                                     <div class="rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center gap-3 text-[16px] text-[#333333]">
-                                                <img src="{{ asset('assets/icons/bank-orange.svg') }}" alt="Bank" class="h-4 w-4 object-contain">
+
                                                 <span>Bank Transfer</span>
                                             </div>
-                                            <img src="{{ asset('assets/icons/chevron-down-orange.svg') }}" alt="Expand" class="h-4 w-4 object-contain">
+
                                         </div>
                                     </div>
 
                                     <div class="rounded-[8px] border border-[#8F8F8F] bg-[#FBFBFB] px-4 py-4">
                                         <div class="mb-4 flex items-center justify-between">
                                             <div class="flex items-center gap-3 text-[16px] text-[#333333]">
-                                                <img src="{{ asset('assets/icons/card-orange.svg') }}" alt="Virtual Account" class="h-4 w-4 object-contain">
+
                                                 <span>Virtual Account</span>
                                             </div>
-                                            <img src="{{ asset('assets/icons/chevron-up-orange.svg') }}" alt="Collapse" class="h-4 w-4 object-contain">
+
                                         </div>
 
                                         <div class="rounded-[8px] border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
@@ -123,20 +123,20 @@
                                     <div class="rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center gap-3 text-[16px] text-[#333333]">
-                                                <img src="{{ asset('assets/icons/wallet-orange.svg') }}" alt="E-Wallet" class="h-4 w-4 object-contain">
+
                                                 <span>E-Wallet</span>
                                             </div>
-                                            <img src="{{ asset('assets/icons/chevron-down-orange.svg') }}" alt="Expand" class="h-4 w-4 object-contain">
+
                                         </div>
                                     </div>
 
                                     <div class="rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center gap-3 text-[16px] text-[#333333]">
-                                                <img src="{{ asset('assets/icons/qris-orange.svg') }}" alt="QRIS" class="h-4 w-4 object-contain">
+
                                                 <span>QRIS</span>
                                             </div>
-                                            <img src="{{ asset('assets/icons/chevron-down-orange.svg') }}" alt="Expand" class="h-4 w-4 object-contain">
+
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                                 <h2 class="mb-5 text-[18px] text-[#2D2D2D]">Status &amp; Confirmation</h2>
 
                                 <button class="mb-4 inline-flex h-[44px] w-full items-center justify-center gap-3 rounded-[8px] bg-[#233E98] px-4 text-[14px] font-medium text-white">
-                                    <img src="{{ asset('assets/icons/refresh-white.svg') }}" alt="Status" class="h-4 w-4 object-contain">
+
                                     <span>Status &amp; Confirmation</span>
                                 </button>
 
@@ -158,7 +158,7 @@
 
                                 <div class="rounded-[8px] bg-[#F2F2F2] px-4 py-4 text-[14px] text-[#666666]">
                                     <div class="mb-2 flex items-start gap-2">
-                                        <img src="{{ asset('assets/icons/info-orange.svg') }}" alt="Info" class="mt-0.5 h-4 w-4 object-contain">
+
                                         <div>
                                             <div class="font-medium text-[#555555]">Vital Records:</div>
                                             <div class="mt-1 leading-[1.45]">
@@ -173,7 +173,7 @@
                                 href="/detail-event-design"
                                 class="inline-flex h-[46px] w-full items-center justify-center gap-3 rounded-[8px] border border-[#D0D0D0] bg-[#F7F7F7] px-5 text-[16px] text-[#666666]"
                             >
-                                <img src="{{ asset('assets/icons/arrow-left-orange.svg') }}" alt="Back" class="h-4 w-4 object-contain">
+
                                 <span>Return to Detail Event</span>
                             </a>
                         </aside>

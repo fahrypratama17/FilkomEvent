@@ -67,16 +67,10 @@
     ];
     @endphp
 
-    <div class="mx-auto flex min-h-screen w-full max-w-[1440px] overflow-hidden bg-[#EAEAEA]">
+    <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
         <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
             <div class="mb-14">
                 <div class="mb-3">
-                    <img
-                        src="{{ asset('assets/logo/logo-filkom.png') }}"
-                        alt="Logo Filkom Event"
-                        class="w-[150px] object-contain"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                    >
                     <div class="hidden leading-none">
                         <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
                         <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
@@ -90,7 +84,7 @@
                     @foreach ($menuItems as $item)
                         <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
                             <div class="flex h-10 w-10 items-center justify-center">
-                                <img src="{{ asset($item['icon']) }}" alt="{{ $item['label'] }}" class="h-8 w-8 object-contain">
+
                             </div>
                             <span>{{ $item['label'] }}</span>
                         </a>
@@ -104,7 +98,7 @@
                     @foreach ($settingItems as $item)
                         <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] text-white/90">
                             <div class="flex h-10 w-10 items-center justify-center">
-                                <img src="{{ asset($item['icon']) }}" alt="{{ $item['label'] }}" class="h-8 w-8 object-contain">
+
                             </div>
                             <span>{{ $item['label'] }}</span>
                         </a>
@@ -116,11 +110,7 @@
         <main class="flex-1 overflow-y-auto px-[42px] py-8">
             <div class="mb-8 flex items-start justify-between gap-6">
                 <div class="relative w-full max-w-[520px]">
-                    <img
-                        src="{{ asset('assets/icons/search.svg') }}"
-                        alt="Search"
-                        class="pointer-events-none absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2 object-contain"
-                    >
+
                     <input
                         type="text"
                         placeholder="Search here"
@@ -129,18 +119,13 @@
                 </div>
 
                 <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-                    <img src="{{ asset('assets/icons/profile-top.svg') }}" alt="Profile" class="h-7 w-7 object-contain">
+
                 </button>
             </div>
 
             <div class="mb-6 flex items-center gap-5">
                 <div class="flex h-[92px] w-[92px] items-center justify-center overflow-hidden rounded-2xl bg-transparent">
-                    <img
-                        src="{{ asset('assets/mascot/mascot-student.png') }}"
-                        alt="Mascot"
-                        class="h-full w-full object-contain"
-                        onerror="this.style.display='none'; this.parentElement.innerHTML='🦊'; this.parentElement.classList.add('text-[54px]');"
-                    >
+
                 </div>
                 <h1 class="text-[54px] font-extrabold leading-none tracking-tight text-black">
                     My <span class="text-[#FF742E]">Bookmarks</span>
@@ -153,12 +138,7 @@
                         <article class="w-full rounded-[24px] bg-[#14B3D8] px-7 py-4 shadow-sm">
                             <div class="flex items-center gap-7">
                                 <div class="h-[170px] w-[111px] shrink-0 overflow-hidden rounded-[22px] bg-[#ECECEC]">
-                                    <img
-                                        src="{{ asset($card['image']) }}"
-                                        alt="{{ $card['title'] }}"
-                                        class="h-full w-full object-cover"
-                                        onerror="this.style.display='none';"
-                                    >
+
                                 </div>
 
                                 <div class="min-w-0 flex-1 pt-2">
@@ -170,12 +150,12 @@
 
                                     <div class="mb-4 space-y-3 text-[10px] text-[#EAF8FF]">
                                         <div class="flex items-center gap-3">
-                                            <img src="{{ asset('assets/icons/participants-dark.svg') }}" alt="Participants" class="h-4 w-4 object-contain">
+
                                             <span>{{ $card['participants'] }}</span>
                                         </div>
 
                                         <div class="flex items-center gap-3">
-                                            <img src="{{ asset('assets/icons/clock-dark.svg') }}" alt="Time" class="h-4 w-4 object-contain">
+
                                             <span>{{ $card['time'] }}</span>
                                         </div>
                                     </div>
@@ -186,7 +166,7 @@
                                         </button>
 
                                         <button class="flex h-[36px] w-[36px] items-center justify-center rounded-[10px] bg-white shadow-sm">
-                                            <img src="{{ asset('assets/icons/bookmark-blue.svg') }}" alt="Bookmark" class="h-5 w-5 object-contain">
+
                                         </button>
                                     </div>
                                 </div>
@@ -197,7 +177,7 @@
 
                 <div class="mt-8 flex items-center justify-center gap-4">
                     <button class="flex h-[34px] w-[34px] items-center justify-center rounded-[6px] border border-[#C9C9C9] bg-[#EAEAEA]">
-                        <img src="{{ asset('assets/icons/arrow-left.svg') }}" alt="Previous" class="h-4 w-4 object-contain">
+
                     </button>
 
                     <button class="flex h-[40px] w-[33px] items-center justify-center rounded-[6px] bg-[#233E98] font-semibold text-white">
@@ -207,7 +187,7 @@
                     <button class="text-[#444444]">3</button>
 
                     <button class="flex h-[34px] w-[34px] items-center justify-center rounded-[6px] border border-[#C9C9C9] bg-[#EAEAEA]">
-                        <img src="{{ asset('assets/icons/arrow-right.svg') }}" alt="Next" class="h-4 w-4 object-contain">
+
                     </button>
                 </div>
             </section>

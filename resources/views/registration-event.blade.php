@@ -28,17 +28,17 @@
     @endphp
 
     <div class="min-h-screen">
-        <main class="mx-auto max-w-[1440px] px-0 pb-0 pt-0">
+        <main class="mx-auto  px-0 pb-0 pt-0">
             <div class="min-h-[1084px] rounded-[4px] border border-[#C9D0D7] bg-[#F5F5F5]">
                 <div class="px-[46px] pt-6">
                     <div class="mb-8 flex items-center justify-between">
                         <div class="flex items-center gap-3 text-[#233E98]">
-                            <img src="{{ asset('assets/icons/calendar-orange.svg') }}" alt="Event Registration" class="h-6 w-6 object-contain">
+
                             <span class="text-[18px] font-medium">Event Registration</span>
                         </div>
 
                         <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-                            <img src="{{ asset('assets/icons/profile-top.svg') }}" alt="Profile" class="h-7 w-7 object-contain">
+
                         </button>
                     </div>
 
@@ -46,7 +46,7 @@
                         href="/dashboard-design"
                         class="mb-6 inline-flex h-[42px] items-center gap-3 rounded-[10px] border border-[#D0D0D0] bg-[#F7F7F7] px-5 text-[16px] text-[#666666]"
                     >
-                        <img src="{{ asset('assets/icons/arrow-left-orange.svg') }}" alt="Back" class="h-4 w-4 object-contain">
+
                         <span>Return to Dashboard</span>
                     </a>
 
@@ -55,14 +55,9 @@
                             <h2 class="mb-5 text-[18px] font-bold text-[#233E98]">Detail Event</h2>
 
                             <div class="mb-5 flex h-[265px] items-center justify-center overflow-hidden rounded-[8px] bg-[#5C5C5C]">
-                                <img
-                                    src="{{ asset($event['poster']) }}"
-                                    alt="{{ $event['poster_alt'] }}"
-                                    class="h-full w-full object-cover"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                >
+
                                 <div class="hidden flex-col items-center justify-center text-center text-white/90">
-                                    <img src="{{ asset('assets/icons/image-placeholder.svg') }}" alt="Poster" class="mb-3 h-10 w-10 object-contain opacity-95">
+
                                     <div class="text-[18px] font-medium">{{ $event['poster_alt'] }}</div>
                                     <div class="text-[14px] opacity-90">{{ $event['poster_size'] }}</div>
                                 </div>
@@ -72,15 +67,15 @@
 
                             <div class="mb-4 space-y-4 text-[14px] text-[#666666]">
                                 <div class="flex items-start gap-3">
-                                    <img src="{{ asset('assets/icons/calendar-orange.svg') }}" alt="Time" class="mt-1 h-4 w-4 object-contain">
+
                                     <div><span class="font-medium text-[#4B4B4B]">Time:</span> {{ $event['time'] }}</div>
                                 </div>
                                 <div class="flex items-start gap-3">
-                                    <img src="{{ asset('assets/icons/location-orange.svg') }}" alt="Place" class="mt-1 h-4 w-4 object-contain">
+
                                     <div><span class="font-medium text-[#4B4B4B]">Place:</span> {{ $event['place'] }}</div>
                                 </div>
                                 <div class="flex items-start gap-3">
-                                    <img src="{{ asset('assets/icons/users-orange.svg') }}" alt="Quota" class="mt-1 h-4 w-4 object-contain">
+
                                     <div><span class="font-medium text-[#4B4B4B]">Quota:</span> {{ $event['quota'] }}</div>
                                 </div>
                             </div>
@@ -153,7 +148,7 @@
                                             href="/detail-event-design"
                                             class="inline-flex h-[48px] flex-1 items-center justify-center gap-3 rounded-[8px] border border-[#D0D0D0] bg-[#F7F7F7] px-5 text-[16px] text-[#666666]"
                                         >
-                                            <img src="{{ asset('assets/icons/arrow-left-orange.svg') }}" alt="Back" class="h-4 w-4 object-contain">
+
                                             <span>Return to Detail Event</span>
                                         </a>
 
@@ -161,7 +156,7 @@
                                             type="submit"
                                             class="inline-flex h-[48px] flex-1 items-center justify-center gap-3 rounded-[8px] bg-[#233E98] px-5 text-[16px] font-medium text-white"
                                         >
-                                            <img src="{{ asset('assets/icons/register-orange.svg') }}" alt="Register" class="h-5 w-5 object-contain">
+
                                             <span>Fill in the Registration Form</span>
                                         </button>
                                     </div>
