@@ -17,3 +17,7 @@ Route::get('/history-design', function () {
 Route::get('/profile-design', function () {
     return view('profile');
 });
+
+Route::get('/detail-event-design', function () {
+    return view('detail-event');
+});
