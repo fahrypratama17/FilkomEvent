@@ -79,7 +79,7 @@
         ];
     @endphp
 
-    <div class="mx-auto flex min-h-screen w-full max-w-[1440px] overflow-hidden bg-[#EAEAEA]">
+    <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
         <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
             <div class="mb-14">
                 <div class="mb-3 flex items-center gap-3">

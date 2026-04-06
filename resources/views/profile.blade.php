@@ -35,12 +35,6 @@
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
         <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-10 py-8 text-white shadow-sm">
             <div class="mb-12">
-                <img
-                    src="{{ asset('assets/logo/logo-filkom.png') }}"
-                    alt="Logo Filkom Event"
-                    class="w-[140px] object-contain"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                >
                 <div class="hidden leading-none">
                     <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
                     <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
@@ -53,7 +47,7 @@
                     @foreach ($menuItems as $item)
                         <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
                             <div class="flex h-10 w-10 items-center justify-center">
-                                <img src="{{ asset($item['icon']) }}" alt="{{ $item['label'] }}" class="h-8 w-8 object-contain">
+
                             </div>
                             <span>{{ $item['label'] }}</span>
                         </a>
@@ -67,7 +61,6 @@
                     @foreach ($settingItems as $item)
                         <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
                             <div class="flex h-10 w-10 items-center justify-center">
-                                <img src="{{ asset($item['icon']) }}" alt="{{ $item['label'] }}" class="h-8 w-8 object-contain">
                             </div>
                             <span>{{ $item['label'] }}</span>
                         </a>
@@ -84,12 +77,6 @@
                     <div class="relative px-8 pb-10 pt-12">
                         <div class="absolute left-8 top-0 -translate-y-1/2">
                             <div class="relative h-[116px] w-[116px] rounded-full border-4 border-white bg-[#6FA9FF] shadow-[0_8px_18px_rgba(0,0,0,0.2)]">
-                                <img
-                                    src="{{ asset('assets/profile/avatar-profile.png') }}"
-                                    alt="{{ $user['name'] }}"
-                                    class="h-full w-full rounded-full object-cover"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                >
                                 <div class="hidden h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-[#D68267] via-[#A13243] to-[#6E7A7A] text-[34px] font-bold text-white">
                                     AR
                                 </div>
