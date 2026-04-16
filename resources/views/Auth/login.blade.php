@@ -30,11 +30,11 @@
       <form class="mx-auto w-[80%] flex flex-col justify-center gap-2">
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Email</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="Masukkan email">
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="email">
         </div>
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Password</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="Masukkan password">
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="password">
         </div>
         <a href=""><p class="text-white hover:underline text-end">Lupa Password</p></a>
         <button class="w-full bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Masuk</button>

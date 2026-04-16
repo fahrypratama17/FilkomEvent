@@ -10,6 +10,10 @@ Route::get('/register', function() {
     return view('Auth.register');
 });
 
+Route::get('/forgot-password', function() {
+    return view('Auth.forgotPassword');
+});
+
 Route::get('/dashboard-design', function () {
     return view('dashboard');
 });
