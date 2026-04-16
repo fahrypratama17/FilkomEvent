@@ -14,6 +14,10 @@ Route::get('/forgot-password', function() {
     return view('Auth.forgotPassword');
 });
 
+Route::get('/reset-password', function() {
+    return view('Auth.resetPassword');
+});
+
 Route::get('/dashboard-design', function () {
     return view('dashboard');
 });
