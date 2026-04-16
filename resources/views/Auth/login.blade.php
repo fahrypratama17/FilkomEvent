@@ -27,7 +27,7 @@
         <h1 class="text-4xl text-white font-bold">Selamat Datang Kembali</h1>
         <h2 class="text-xl text-white">Mohon masukkan detail akun anda</h2>
       </div>
-      <form class="mx-auto w-[80%] flex flex-col justify-center gap-4">
+      <form class="mx-auto w-[80%] flex flex-col justify-center gap-2">
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Email</label>
           <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="Masukkan email">

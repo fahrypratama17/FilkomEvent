@@ -22,7 +22,7 @@
 
 {{-- For the Form Section --}}
 <section>
-  <div class="glassmorphism flex flex-col justify-center items-center gap-11">
+  <div class="glassmorphism flex flex-col justify-center items-center gap-6">
     <div class="flex flex-col justify-center items-center">
       <h1 class="text-4xl text-white font-bold">Buat Akun Baru</h1>
       <h2 class="text-xl text-white">Isi data diri untuk eksplore lebih lanjut</h2>
@@ -50,7 +50,7 @@
         <label class="text-white text-lg" for="">Konfirmasi Password</label>
         <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="Konfirmasi password">
       </div>
-      <button class="w-full mt-2 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Masuk</button>
+      <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Masuk</button>
     </form>
     <div class="mx-auto w-[80%] flex flex-col gap-4">
       <div class="flex items-center gap-3">
