@@ -18,5 +18,14 @@
 }
 
 body {
-  font-family: "Space Groteks", serif;
+  font-family: "Space Groteks", sans-serif;
+
+  .hero-bg {
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary-dark) 0%,
+      var(--color-secondary-dark) 10%,
+      var(--color-tertiary) 100%
+    );
+  }
 }
