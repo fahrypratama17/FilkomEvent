@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/login', function() {
   return view('Auth.login');
@@ -9,6 +10,8 @@ Route::get('/login', function() {
 Route::get('/register', function() {
     return view('Auth.register');
 });
+
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/forgot-password', function() {
     return view('Auth.forgotPassword');

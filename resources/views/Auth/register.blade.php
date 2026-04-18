@@ -27,28 +27,28 @@
       <h1 class="text-4xl text-white font-bold">Buat Akun Baru</h1>
       <h2 class="text-xl text-white">Isi data diri untuk eksplore lebih lanjut</h2>
     </div>
-    <form class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+    <form action="{{ route('regis') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
       <div class="grid grid-cols-2 gap-4">
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">NIM</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="nim">
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="nim" type="text" placeholder="nim">
         </div>
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Nama Lengkap</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="nama">
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="nama" type="text" placeholder="nama">
         </div>
       </div>
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Email (Hanya gunakan @student.ub.id)</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="email">
+        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="text" placeholder="email">
       </div>
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Password</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="password">
+        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password" type="password" placeholder="password">
       </div>
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Konfirmasi Password</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="konfirmasi password">
+        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password_confirmation" type="password" placeholder="konfirmasi password">
       </div>
       <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Masuk</button>
     </form>
