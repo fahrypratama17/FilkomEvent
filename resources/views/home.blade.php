@@ -108,5 +108,60 @@
       </div>
     </div>
   </section>
+
+  <section class="mt-40 grid grid-cols-2">
+    <div class="flex items-center justify-center">
+      <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko">
+    </div>
+    <div class="flex flex-col justify-center w-[70%] gap-12">
+      <h1 class="text-6xl font-bold text-primary-dark">Tentang Kami</h1>
+      <p class="text-2xl"><span class="font-bold">FILKOM Event </span>adalah pusat informasi digital terpusat yang dirancang sebagai platform utama untuk seluruh acara dan kegiatan yang diselenggarakan oleh BEM FILKOM Universitas Brawijaya.</p>
+      <button class="flex items-center justify-center gap-2 bg-orange-550 px-4 p-2 rounded-[50px] w-[45%] cursor-pointer hover:scale-105 duration-300 text-white">Telusuri Lebih Lanjut <span class="p-1" data-lucide="MoveUpRight"></span></button>
+    </div>
+  </section>
+
+  <section class="mt-40 w-full hubungi-section py-20 rounded-t-[85px] flex flex-col gap-12">
+    <h1 class="mx-auto text-6xl font-bold text-primary-dark w-[90%]">Punya Pertanyaan ?</h1>
+    <div class="mx-auto grid grid-cols-2 w-[90%] gap-6">
+      <form action="" class="flex flex-col gap-6">
+        <div class="flex flex-col justify-center gap-2">
+          <label class="text-white text-lg" for="">Nama</label>
+          <input class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="nama">
+        </div>
+        <div class="flex flex-col justify-center gap-2">
+          <label class="text-white text-lg" for="">Email</label>
+          <input class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="email">
+        </div>
+        <div class="flex flex-col justify-center gap-2">
+          <label class="text-white text-lg" for="">NIM</label>
+          <input class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="password">
+        </div>
+        <button class="w-full bg-orange-550 p-2 rounded-[40px] mt-6 cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">WhatsApp</button>
+      </form>
+      <form action="" class="flex flex-col gap-6">
+        <div class="flex flex-col justify-center gap-2">
+          <label class="text-white text-lg" for="">Pesan</label>
+          <textarea class="bg-white p-2 px-4 h-60 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent resize-none" type="text" placeholder="pesan disini..." ></textarea>
+        </div>
+        <button class="w-full bg-orange-550 p-2 rounded-[40px] mt-6 cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Email</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="px-8 h-20 w-full flex items-center justify-between bg-primary-dark">
+    <img class="w-20 h-20" src="{{ asset('icon/FilkomEventLogo.svg') }}" alt="">
+    <div class="flex justify-end gap-12 text-2xl text-white w-[40%]">
+      <div class="bg-orange-550 p-3 rounded-full cursor-pointer hover:scale-105 duration-300">
+        <img class="w-6 h-6" src="{{ asset('icon/instagram.svg') }}" alt="">
+      </div>
+      <div class="bg-orange-550 p-3 rounded-full cursor-pointer hover:scale-105 duration-300">
+        <img class="w-6 h-6" src="{{ asset('icon/linkedin.svg') }}" alt="">
+      </div>
+      <div class="bg-orange-550 p-3 rounded-full cursor-pointer hover:scale-105 duration-300">
+        <img class="w-6 h-6" src="{{ asset('icon/twitter.svg') }}" alt="">
+      </div>
+    </div>
+    <p class="text-white">©Copyright 2026 SGE FILKOM UB. All rights reserved.</p>
+  </footer>
 </body>
 </html>

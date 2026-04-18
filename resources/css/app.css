@@ -29,4 +29,13 @@ body {
       var(--color-tertiary) 100%
     );
   }
+
+  .hubungi-section {
+    background: linear-gradient(
+      to bottom,
+      var(--color-tertiary) 0%,
+      var(--color-secondary-dark) 80%,
+      var(--color-primary-lighter) 100%
+    );
+  }
 }
