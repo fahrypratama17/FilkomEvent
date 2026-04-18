@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 
 @source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
 @source "../../storage/framework/views/*.php";
@@ -18,5 +18,24 @@
 }
 
 body {
-  font-family: "Space Groteks", serif;
+  font-family: "Space Groteks", sans-serif;
+  scroll-behavior: smooth;
+
+  .hero-bg {
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary-dark) 0%,
+      var(--color-secondary-dark) 10%,
+      var(--color-tertiary) 100%
+    );
+  }
+
+  .hubungi-section {
+    background: linear-gradient(
+      to bottom,
+      var(--color-tertiary) 0%,
+      var(--color-secondary-dark) 80%,
+      var(--color-primary-lighter) 100%
+    );
+  }
 }

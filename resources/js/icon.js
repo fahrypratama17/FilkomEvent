@@ -1,12 +1,10 @@
-import { createIcons, icons } from 'lucide';
-createIcons({ icons });
-
-import { createIcons, Menu, ArrowRight, Globe,  } from 'lucide';
+import { createIcons, MoveUpRight, BookOpen, Users, Award } from "lucide";
 
 createIcons({
   icons: {
-    Menu,
-    ArrowRight,
-    Globe
-  }
+    MoveUpRight,
+    BookOpen,
+    Users,
+    Award,
+  },
 });

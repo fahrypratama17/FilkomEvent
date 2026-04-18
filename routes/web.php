@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+// Routing For Auth Page
 Route::get('/login', function() {
   return view('Auth.login');
 });
@@ -18,6 +20,7 @@ Route::get('/reset-password', function() {
     return view('Auth.resetPassword');
 });
 
+//
 Route::get('/dashboard-design', function () {
     return view('dashboard');
 });
