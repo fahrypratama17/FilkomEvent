@@ -15,6 +15,8 @@ Route::get('/register', function() {
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
 Route::get('/forgot-password', function() {
     return view('Auth.forgotPassword');
 });
