@@ -13,7 +13,7 @@ Route::get('/register', function() {
     return view('Auth.register');
 });
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/forgot-password', function() {
     return view('Auth.forgotPassword');

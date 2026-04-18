@@ -27,7 +27,8 @@
       <h1 class="text-4xl text-white font-bold">Buat Akun Baru</h1>
       <h2 class="text-xl text-white">Isi data diri untuk eksplore lebih lanjut</h2>
     </div>
-    <form action="{{ route('regis') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+    <form action="{{ route('register') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+      @csrf
       <div class="grid grid-cols-2 gap-4">
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">NIM</label>
@@ -35,11 +36,11 @@
         </div>
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Nama Lengkap</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="nama" type="text" placeholder="nama">
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="name" type="text" placeholder="nama">
         </div>
       </div>
       <div class="flex flex-col justify-center gap-2">
-        <label class="text-white text-lg" for="">Email (Hanya gunakan @student.ub.id)</label>
+        <label class="text-white text-lg" for="">Email (Hanya gunakan @student.ub.ac.id)</label>
         <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="text" placeholder="email">
       </div>
       <div class="flex flex-col justify-center gap-2">
@@ -50,12 +51,12 @@
         <label class="text-white text-lg" for="">Konfirmasi Password</label>
         <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password_confirmation" type="password" placeholder="konfirmasi password">
       </div>
-      <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Masuk</button>
+      <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Daftar</button>
     </form>
     <div class="mx-auto w-[80%] flex flex-col gap-4">
       <div class="flex items-center gap-3">
         <div class="w-full h-0.5 bg-white"></div>
-        <p class="w-full text-white">Atau Masuk Dengan</p>
+        <p class="w-[120%] text-white">Atau Daftar Dengan</p>
         <div class="w-full h-0.5 bg-white"></div>
       </div>
       <div class="flex items-center w-full">
