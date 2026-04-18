@@ -2,6 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/login', function() {
+  return view('Auth.login');
+});
+
+Route::get('/register', function() {
+    return view('Auth.register');
+});
+
+Route::get('/forgot-password', function() {
+    return view('Auth.forgotPassword');
+});
+
+Route::get('/reset-password', function() {
+    return view('Auth.resetPassword');
+});
+
 Route::get('/dashboard-design', function () {
     return view('dashboard');
 });

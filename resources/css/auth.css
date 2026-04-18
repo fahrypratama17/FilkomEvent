@@ -18,5 +18,25 @@
 }
 
 body {
+  background: linear-gradient(
+    to bottom right,
+    var(--color-primary-dark),
+    var(--color-primary-lighter),
+    var(--color-secondary-dark),
+    var(--color-secondary-lighter),
+    var(--color-tertiary)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Space Groteks", serif;
+
+  .glassmorphism {
+    width: 40vw;
+    height: 90vh;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 32px;
+    padding: 40px;
+    position: relative;
+  }
 }
