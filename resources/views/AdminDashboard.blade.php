@@ -42,7 +42,7 @@
   $reqAction = [
     ['title' => "Workshop UI/UX Design", 'desc' => "Completed 2 days ago - Upload Certificate"],
     ['title' => "Web Development Training", 'desc' => "Finished today - Upload Certificate"],
-  ]
+  ];
 @endphp
 
 <section class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">

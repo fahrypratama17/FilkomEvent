@@ -11,7 +11,7 @@
     @php
         $menuItems = [
             ['icon' => 'assets/icons/home.svg', 'label' => 'Dashboard', 'href' => '/dashboard-design', 'active' => false],
-            ['icon' => 'assets/icons/bookmark.svg', 'label' => 'Bookmark', 'href' => '/bookmark-design', 'active' => true],
+            ['icon' => 'assets/icons/bookmark.svg', 'label' => 'Bookmark', 'href' => '/bookmark', 'active' => true],
             ['icon' => 'assets/icons/history.svg', 'label' => 'History', 'href' => '#', 'active' => false],
             ['icon' => 'assets/icons/list-event.svg', 'label' => 'List Event', 'href' => '#', 'active' => false],
         ];
