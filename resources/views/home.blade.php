@@ -17,8 +17,12 @@
       <p>About Us</p>
     </div>
     <div class="flex gap-4 cursor-pointer text-xl text-white">
-      <button class="bg-white text-secondary-dark px-8 py-2 w-40 rounded-[50px] border-3 border-orange-550 cursor-pointer">Login</button>
-      <button class="text-white w-40 py-2 rounded-[50px] bg-orange-550 cursor-pointer">Sign Up</button>
+      @auth
+        <a href="{{ route('dashboard') }}" class="bg-white text-secondary-dark px-8 py-2 w-40 rounded-[50px] border-3 border-orange-550 cursor-pointer text-center">Dashboard</a>
+      @else
+        <a href="{{ route('login') }}" class="bg-white text-secondary-dark px-8 py-2 w-40 rounded-[50px] border-3 border-orange-550 cursor-pointer text-center">Login</a>
+        <a href="{{ route('register') }}" class="text-white w-40 py-2 rounded-[50px] bg-orange-550 cursor-pointer text-center">Sign Up</a>
+      @endauth
     </div>
   </nav>
 
@@ -27,7 +31,7 @@
       <div class="mx-auto flex flex-col gap-6">
         <h1 class="text-4xl font-bold">Buka kunci semangatmu melalui kompetisi dan jadilah mahasiswa yang luar biasa!</h1>
         <p class="text-xl">Kami berkomitmen mendukung perjalananmu menuju kemenangan dalam kompetisi IT bergengsi dengan bimbingan dan sumber daya terbaik. Daftar sekarang, maksimalkan potensimu, dan tunjukkan kemampuanmu!</p>
-        <button class="flex items-center justify-center gap-2 bg-orange-550 px-4 p-2 rounded-[50px] w-[35%] cursor-pointer hover:scale-105 duration-300 text-white">Telusuri Lebih Lanjut <span class="p-1" data-lucide="MoveUpRight"></span></button>
+        <a href="{{ route('events.index') }}" class="flex items-center justify-center gap-2 bg-orange-550 px-4 p-2 rounded-[50px] w-[35%] cursor-pointer hover:scale-105 duration-300 text-white">Telusuri Lebih Lanjut <span class="p-1" data-lucide="MoveUpRight"></span></a>
       </div>
       <div class="flex flex-col gap-12">
         <img src="{{ asset('icon/Person_1.svg') }}" alt="Person 1">
@@ -116,7 +120,7 @@
     <div class="flex flex-col justify-center w-[70%] gap-12">
       <h1 class="text-6xl font-bold text-primary-dark">Tentang Kami</h1>
       <p class="text-2xl"><span class="font-bold">FILKOM Event </span>adalah pusat informasi digital terpusat yang dirancang sebagai platform utama untuk seluruh acara dan kegiatan yang diselenggarakan oleh BEM FILKOM Universitas Brawijaya.</p>
-      <button class="flex items-center justify-center gap-2 bg-orange-550 px-4 p-2 rounded-[50px] w-[45%] cursor-pointer hover:scale-105 duration-300 text-white">Telusuri Lebih Lanjut <span class="p-1" data-lucide="MoveUpRight"></span></button>
+      <a href="{{ route('events.index') }}" class="flex items-center justify-center gap-2 bg-orange-550 px-4 p-2 rounded-[50px] w-[45%] cursor-pointer hover:scale-105 duration-300 text-white">Telusuri Lebih Lanjut <span class="p-1" data-lucide="MoveUpRight"></span></a>
     </div>
   </section>
 
