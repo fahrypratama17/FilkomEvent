@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 
 // Routing For Auth Page
@@ -11,6 +12,10 @@ Route::get('/login', function() {
 Route::get('/register', function() {
     return view('Auth.register');
 });
+
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/forgot-password', function() {
     return view('Auth.forgotPassword');
