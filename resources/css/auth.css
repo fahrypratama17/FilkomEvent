@@ -7,6 +7,8 @@
 @source "../**/*.js";
 
 @theme {
+  --font-grotesk: "Space Grotesk";
+
   /* Color - Theme */
   --color-primary-dark: #03045e;
   --color-primary-lighter: #023e8a;
@@ -18,24 +20,25 @@
 }
 
 body {
-  font-family: "Space Groteks", sans-serif;
-  scroll-behavior: smooth;
+  background: linear-gradient(
+    to bottom right,
+    var(--color-primary-dark),
+    var(--color-primary-lighter),
+    var(--color-secondary-dark),
+    var(--color-secondary-lighter),
+    var(--color-tertiary)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*font-family: "Space Grotesk", sans-serif;*/
 
-  .hero-bg {
-    background: linear-gradient(
-      to bottom,
-      var(--color-primary-dark) 0%,
-      var(--color-secondary-dark) 10%,
-      var(--color-tertiary) 100%
-    );
-  }
-
-  .hubungi-section {
-    background: linear-gradient(
-      to bottom,
-      var(--color-tertiary) 0%,
-      var(--color-secondary-dark) 80%,
-      var(--color-primary-lighter) 100%
-    );
+  .glassmorphism {
+    width: 40vw;
+    height: 90vh;
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 32px;
+    padding: 40px;
+    position: relative;
   }
 }
