@@ -31,7 +31,7 @@ Route::get('/dashboard-design', function () {
 });
 
 Route::get('/', function () {
-    return view('home');
+    return view('Home.home');
 });
 
 Route::get('/admin/dashboard', function () {
