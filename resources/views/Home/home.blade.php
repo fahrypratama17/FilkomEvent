@@ -105,7 +105,7 @@
     <div class="w-full h-70 bg-tertiary rounded-[50px]">
       <div class="mx-auto w-[60%] grid grid-cols-[1.5fr_0.8fr]">
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">
-          <h2 class="text-white font-bold text-2xl w-[60%]">Information Simplified</h2>
+          <h2 class="text-white font-bold text-2xl">Information Simplified</h2>
           <p class="text-white text-[14px]">"Being a busy student, I used to miss out on important faculty events. With this centralized hub, I can track every BEM FILKOM activity in one place. The UI is clean, intuitive, and exactly what we needed to stay connected with our faculty's ecosystem."</p>
           <p class="text-white text-[14px] font-bold">~ Salsabila, Information Systems '23</p>
         </div>

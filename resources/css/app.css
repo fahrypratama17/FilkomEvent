@@ -23,6 +23,7 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
+  letter-spacing: 0.5px;
 
   .hero-bg {
     background: linear-gradient(
