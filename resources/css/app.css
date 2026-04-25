@@ -17,9 +17,12 @@
   --color-blue-950: #1f388b;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Space Grotesk", sans-serif;
-  scroll-behavior: smooth;
 
   .hero-bg {
     background: linear-gradient(
