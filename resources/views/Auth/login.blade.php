@@ -41,7 +41,7 @@
         </div>
         <div class="flex items-center justify-between">
           <label class="flex items-center gap-2 text-white text-sm">
-            <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded">
+            <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded" {{ old('remember') ? 'checked' : '' }}>
             <span>Ingat saya</span>
           </label>
           <a href="{{ route('password.forgot') }}"><p class="text-white hover:underline text-end">Lupa Password</p></a>
