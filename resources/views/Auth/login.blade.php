@@ -52,7 +52,7 @@
           <img class="w-10 h-10 mx-auto hover:scale-105 cursor-pointer" src="{{ asset('icon/Google_icon.svg') }}" alt="google">
         </div>
       </div>
-      <p class="text-white">Belum punya akun? <a class="hover:underline" href="">Daftar Disini</a></p>
+      <p class="text-white">Belum punya akun? <a class="hover:underline cursor-pointer" onclick="location.href='/register'">Daftar Disini</a></p>
     </div>
   </section>
 
