@@ -9,63 +9,64 @@
   <title>FilkomEvent - Register</title>
 </head>
 <body class="relative min-h-screen">
-{{--  For All Icon  --}}
-<img class="absolute top-0 left-0" src="{{ asset('icon/FilkomEventLogo.svg') }}" alt="">
-<img class="absolute bottom-0 right-0" src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="">
-<div class="absolute bg-gray-300/40 rounded-full w-25 h-25 bottom-20 left-10"></div>
-<div class="absolute bg-gray-300/40 rounded-full w-50 h-50 bottom-40 left-40"></div>
-<div class="absolute bg-gray-300/40 rounded-full w-15 h-15 top-70 left-80"></div>
-<div class="absolute bg-gray-300/40 rounded-full w-60 h-60 top-35 left-5"></div>
-<div class="absolute bg-gray-300/40 rounded-full w-20 h-20 top-15 left-75"></div>
-<div class="absolute bg-gray-300/40 rounded-full w-60 h-60 top-5 right-30"></div>
-<div class="absolute bg-gray-300/40 rounded-full w-20 h-20 top-60 right-80"></div>
+  {{--  For Toast  --}}
+  <x-toast />
+  {{--  For All Icon  --}}
+  <img class="absolute top-0 left-0" src="{{ asset('icon/FilkomEventLogo.svg') }}" alt="">
+  <img class="absolute bottom-0 right-0" src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="">
+  <div class="absolute bg-gray-300/40 rounded-full w-25 h-25 bottom-20 left-10"></div>
+  <div class="absolute bg-gray-300/40 rounded-full w-50 h-50 bottom-40 left-40"></div>
+  <div class="absolute bg-gray-300/40 rounded-full w-15 h-15 top-70 left-80"></div>
+  <div class="absolute bg-gray-300/40 rounded-full w-60 h-60 top-35 left-5"></div>
+  <div class="absolute bg-gray-300/40 rounded-full w-20 h-20 top-15 left-75"></div>
+  <div class="absolute bg-gray-300/40 rounded-full w-60 h-60 top-5 right-30"></div>
+  <div class="absolute bg-gray-300/40 rounded-full w-20 h-20 top-60 right-80"></div>
 
-{{-- For the Form Section --}}
-<section>
-  <div class="glassmorphism flex flex-col justify-center items-center gap-6">
-    <div class="flex flex-col justify-center items-center">
-      <h1 class="text-4xl text-white font-bold">Buat Akun Baru</h1>
-      <h2 class="text-xl text-white">Isi data diri untuk eksplore lebih lanjut</h2>
-    </div>
-    <form action="{{ route('register') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
-      @csrf
-      <div class="grid grid-cols-2 gap-4">
-        <div class="flex flex-col justify-center gap-2">
-          <label class="text-white text-lg" for="">NIM</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="nim" type="text" placeholder="nim">
+  {{-- For the Form Section --}}
+  <section>
+    <div class="glassmorphism flex flex-col justify-center items-center gap-6">
+      <div class="flex flex-col justify-center items-center">
+        <h1 class="text-4xl text-white font-bold">Buat Akun Baru</h1>
+        <h2 class="text-xl text-white">Isi data diri untuk eksplore lebih lanjut</h2>
+      </div>
+      <form action="{{ route('register') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+        @csrf
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col justify-center gap-2">
+            <label class="text-white text-lg" for="">NIM</label>
+            <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="nim" type="text" placeholder="nim">
+          </div>
+          <div class="flex flex-col justify-center gap-2">
+            <label class="text-white text-lg" for="name">Nama Lengkap</label>
+            <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="name" type="text" placeholder="nama">
+          </div>
         </div>
         <div class="flex flex-col justify-center gap-2">
-          <label class="text-white text-lg" for="">Nama Lengkap</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="name" type="text" placeholder="nama">
+          <label class="text-white text-lg" for="email">Email (Hanya gunakan @student.ub.ac.id)</label>
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="text" placeholder="email">
+        </div>
+        <div class="flex flex-col justify-center gap-2">
+          <label class="text-white text-lg" for="password">Password</label>
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password" type="password" placeholder="password">
+        </div>
+        <div class="flex flex-col justify-center gap-2">
+          <label class="text-white text-lg" for="password_confirmation">Konfirmasi Password</label>
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password_confirmation" type="password" placeholder="konfirmasi password">
+        </div>
+        <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Daftar</button>
+      </form>
+      <div class="mx-auto w-[80%] flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-full h-0.5 bg-white"></div>
+          <p class="w-[120%] text-white">Atau Daftar Dengan</p>
+          <div class="w-full h-0.5 bg-white"></div>
+        </div>
+        <div class="flex items-center w-full">
+          <img class="w-10 h-10 mx-auto hover:scale-105 cursor-pointer" src="{{ asset('icon/Google_icon.svg') }}" alt="google">
         </div>
       </div>
-      <div class="flex flex-col justify-center gap-2">
-        <label class="text-white text-lg" for="">Email (Hanya gunakan @student.ub.ac.id)</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="text" placeholder="email">
-      </div>
-      <div class="flex flex-col justify-center gap-2">
-        <label class="text-white text-lg" for="">Password</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password" type="password" placeholder="password">
-      </div>
-      <div class="flex flex-col justify-center gap-2">
-        <label class="text-white text-lg" for="">Konfirmasi Password</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password_confirmation" type="password" placeholder="konfirmasi password">
-      </div>
-      <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Daftar</button>
-    </form>
-    <div class="mx-auto w-[80%] flex flex-col gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-full h-0.5 bg-white"></div>
-        <p class="w-[120%] text-white">Atau Daftar Dengan</p>
-        <div class="w-full h-0.5 bg-white"></div>
-      </div>
-      <div class="flex items-center w-full">
-        <img class="w-10 h-10 mx-auto hover:scale-105 cursor-pointer" src="{{ asset('icon/Google_icon.svg') }}" alt="google">
-      </div>
+      <p class="text-white">Sudah punya akun? <a class="hover:underline" href="{{ route('login') }}">Masuk Disini</a></p>
     </div>
-    <p class="text-white">Sudah punya akun? <a class="hover:underline" href="">Masuk Disini</a></p>
-  </div>
-</section>
-
+  </section>
 </body>
 </html>
