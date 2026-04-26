@@ -9,6 +9,8 @@
   <title>FilkomEvent - Login</title>
 </head>
 <body class="relative min-h-screen">
+  {{--  For Toast  --}}
+  <x-toast />
   {{--  For All Icon  --}}
   <img class="absolute top-0 left-0" src="{{ asset('icon/FilkomEventLogo.svg') }}" alt="">
   <img class="absolute bottom-0 right-0" src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="">
