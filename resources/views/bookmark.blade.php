@@ -18,7 +18,6 @@
 
         $settingItems = [
             ['icon' => 'assets/icons/profile.svg', 'label' => 'Profile', 'href' => '#'],
-            ['icon' => 'assets/icons/logout.svg', 'label' => 'Logout', 'href' => '#'],
         ];
 
         $bookmarks = [
@@ -103,6 +102,15 @@
                             <span>{{ $item['label'] }}</span>
                         </a>
                     @endforeach
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
+                            <div class="flex h-10 w-10 items-center justify-center">
+
+                            </div>
+                            <span>Logout</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </aside>

@@ -18,7 +18,6 @@
 
         $settingItems = [
             ['icon' => 'assets/icons/profile.svg', 'label' => 'Profile', 'href' => '/profile-design', 'active' => true],
-            ['icon' => 'assets/icons/logout.svg', 'label' => 'Logout', 'href' => '#', 'active' => false],
         ];
 
         $user = [
@@ -65,6 +64,14 @@
                             <span>{{ $item['label'] }}</span>
                         </a>
                     @endforeach
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
+                            <div class="flex h-10 w-10 items-center justify-center">
+                            </div>
+                            <span>Logout</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </aside>
@@ -135,10 +142,13 @@
                                     <span>Change password</span>
                                 </button>
 
-                                <button class="inline-flex h-[46px] min-w-[114px] items-center justify-center gap-2 rounded-[10px] border-2 border-[#FF6A27] bg-white px-5 text-[15px] font-semibold text-[#FF3A2F]">
-                                    <span>🚪</span>
-                                    <span>Logout</span>
-                                </button>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="inline-flex h-[46px] min-w-[114px] items-center justify-center gap-2 rounded-[10px] border-2 border-[#FF6A27] bg-white px-5 text-[15px] font-semibold text-[#FF3A2F]">
+                                        <span>🚪</span>
+                                        <span>Logout</span>
+                                    </button>
+                                </form>
                             </div>
                         </div>
 
