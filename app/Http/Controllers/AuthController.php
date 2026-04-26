@@ -54,13 +54,18 @@ class AuthController extends Controller
       'password.min' => 'Password minimal 8 karakter',
     ]);
 
-    if (Auth::attempt($credentials, $remember)) {
+    if (Auth::attempt([
+      'email' => $request->email,
+      'password' => $request->password
+    ])) {
       $request->session()->regenerate();
 
-      return redirect('/dashboard')->with('success', 'Selamat Datang ');
+      return redirect('/dashboard')->with('success', 'Login berhasil');
     }
 
-    return back()->withErrors(['login' => 'Email atau password salah'])->onlyInput('email');
+    return back()
+      ->withErrors(['login' => 'Email atau password salah'])
+      ->onlyInput('email');
   }
 
   public function logout(Request $request)

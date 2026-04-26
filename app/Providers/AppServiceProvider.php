@@ -19,12 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-      Gate::define('owns-user', function (User $authenticatedUser, User $targetUser): bool {
-        return (int) $authenticatedUser->user_id === (int) $targetUser->user_id;
-      });
 
-      Gate::define('access-admin', function (User $authenticatedUser): bool {
-        return strtolower((string) $authenticatedUser->role) === 'admin';
-      });
     }
 }
