@@ -27,7 +27,7 @@
         <h1 class="text-4xl text-white font-bold">Selamat Datang Kembali</h1>
         <h2 class="text-xl text-white">Mohon masukkan detail akun anda</h2>
       </div>
-      <form action="{{ route('login') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+      <form action="{{ route('login.process') }}" method="post" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
         @csrf
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Email</label>
@@ -43,7 +43,7 @@
       <div class="mx-auto w-[80%] flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <div class="w-full h-0.5 bg-white"></div>
-          <p class="w-full text-white">Atau Masuk Dengan</p>
+          <p class="w-150 text-center text-white">Atau Masuk Dengan</p>
           <div class="w-full h-0.5 bg-white"></div>
         </div>
         <div class="flex items-center w-full">

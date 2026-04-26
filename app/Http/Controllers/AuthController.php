@@ -5,45 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
   public function register(Request $request)
   {
     $request->validate([
-      'nim' => 'required',
+      'nim' => 'required|unique:users,nim',
       'name' => 'required',
-      'email' => 'required|email|ends_with:@student.ub.ac.id',
+      'email' => 'required|email|ends_with:@student.ub.ac.id|unique:users,email',
       'password' => 'required|min:8|confirmed'
     ]);
 
-    $users = [];
-    if (Storage::exists('users.json')) {
-      $users = json_decode(Storage::get('users.json'), true);
-    }
-
-    foreach ($users as $user) {
-      if ($user['email'] === $request->email) {
-        return back()->withErrors(['email' => 'Email sudah digunakan']);
-      }
-    }
-
-    $users[] = [
-      'nim' => $request->nim,
-      'name' => $request->name,
-      'email' => $request->email,
-      'password' => Hash::make($request->password),
-    ];
-
-    Storage::put('users.json', json_encode($users, JSON_PRETTY_PRINT));
-
-//    User::create([
-//      'nim' =>  $request->nim,
-//      'name' =>  $request->name,
-//      'email' =>  $request->email,
-//      'password' => Hash::make($request->password),
-//    ]);
+    $user = User::create([
+      'nim' =>  $request->nim,
+      'name' =>  $request->name,
+      'email' =>  $request->email,
+      'password' => $request->password,
+    ]);
 
     return redirect('login')->with('success', 'Akun Berhasil Dibuat');
   }
@@ -55,15 +34,11 @@ class AuthController extends Controller
       'password' => 'required'
     ]);
 
-    $users = json_decode(Storage::get('users.json'), true);
+    $user = User::where('email', $request->email)->first();
 
-    foreach ($users as $user) {
-      if ($user['email'] === $request->email &&
-        Hash::check($request->password, $user['password'])) {
-
-        session(['user' => $user]);
-        return redirect('/dashboard-design');
-      }
+    if ($user && Hash::check($request->password, $user->password)) {
+      session(['user' => $user]);
+      return redirect('/dashboard');
     }
 
     return back()->withErrors(['login' => 'Email atau password salah']);

@@ -5,17 +5,11 @@ use App\Http\Controllers\AuthController;
 
 
 // Routing For Auth Page
-Route::get('/login', function() {
-  return view('Auth.login');
-});
+Route::get('/login', fn() => view('Auth.login'))->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 
-Route::get('/register', function() {
-    return view('Auth.register');
-});
-
+Route::get('/register', fn() => view('Auth.register'))->name('register.view');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
-
-Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/forgot-password', function() {
     return view('Auth.forgotPassword');
@@ -25,10 +19,8 @@ Route::get('/reset-password', function() {
     return view('Auth.resetPassword');
 });
 
-//
-Route::get('/dashboard-design', function () {
-    return view('dashboard');
-});
+// Routing to User Page
+Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
 
 Route::get('/', function () {
     return view('Home.home');
