@@ -1,4 +1,4 @@
-function showToast(message, type = "error", duration = 4000) {
+function showToast(title, message, type = "error", duration = 4000) {
   const container = document.getElementById("toast-container");
   if (!container) return;
 
@@ -9,6 +9,7 @@ function showToast(message, type = "error", duration = 4000) {
   toast.className = `${bgColor}  relative overflow-hidden text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full opacity-0`;
   toast.innerHTML = `
     <div class="overflow-hidden">
+      <div class="pr-4 text-xl">${title}</div>
       <div class="pr-4">${message}</div>
       <div class="absolute bottom-0 left-0 h-1 bg-white/50 progress-bar"></div>
     </div>
@@ -37,10 +38,12 @@ function showToast(message, type = "error", duration = 4000) {
 
 window.addEventListener("DOMContentLoaded", () => {
   if (window.toastError) {
-    window.toastError.forEach((err) => showToast(err, "error", 5000));
+    window.toastError.forEach((err) =>
+      showToast("Terjadi Kesalahan", err, "error", 5000),
+    );
   }
 
   if (window.toastSuccess) {
-    showToast(window.toastSuccess, "success", 3000);
+    showToast("Berhasil", window.toastSuccess, "success", 3000);
   }
 });
