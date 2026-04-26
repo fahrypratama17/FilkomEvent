@@ -1,4 +1,4 @@
-{{-- resources/views/registration-event.blade.php --}}
+{{-- resources/views/registrationEvent.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
