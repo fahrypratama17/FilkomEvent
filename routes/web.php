@@ -38,5 +38,5 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(function() {
 
 // Routing For Admin Page
 Route::middleware(['auth', 'role:admin'])->group(function() {
-  Route::get('/admin/dashbord', fn() => view('Admin.AdminDashboard'));
+  Route::get('/admin/dashboard', fn() => view('Admin.AdminDashboard'));
 });
