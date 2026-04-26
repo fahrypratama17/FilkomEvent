@@ -9,20 +9,27 @@
   <title>Filkom Event</title>
 </head>
 <body>
-  <nav class="px-8 h-20 w-full fixed top-0 flex items-center justify-between bg-primary-dark">
+  <nav class="z-100 px-8 h-20 w-full fixed top-0 flex items-center justify-between bg-primary-dark">
     <img class="w-20 h-20" src="{{ asset('icon/FilkomEventLogo.svg') }}" alt="">
-    <div class="flex gap-20 cursor-pointer text-2xl text-white">
-      <p>Home</p>
-      <p>Testimonials</p>
-      <p>About Us</p>
+    <div class="flex gap-20 cursor-pointer text-xl text-white">
+      <p class="hover:underline duration-300" onclick="location.href='#home'">Beranda</p>
+      <p class="hover:underline duration-300" onclick="location.href='#home'">Alasan</p>
+      <p class="hover:underline duration-300" onclick="location.href='#testimonials'">Testimoni</p>
+      <p class="hover:underline duration-300" onclick="location.href='#home'">Tentang Kami</p>
     </div>
     <div class="flex gap-4 cursor-pointer text-xl text-white">
-      <button class="bg-white text-secondary-dark px-8 py-2 w-40 rounded-[50px] border-3 border-orange-550 cursor-pointer">Login</button>
-      <button class="text-white w-40 py-2 rounded-[50px] bg-orange-550 cursor-pointer">Sign Up</button>
+      <button onclick="location.href='/login'" class="group relative overflow-hidden bg-white text-secondary-dark font-bold px-8 py-2 w-40 rounded-[50px] border-4 border-orange-550 cursor-pointer">
+        <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Masuk</span>
+        <span class="absolute inset-0 rounded-[50px] origin-left scale-x-0 bg-orange-550 transition-transform duration-300 group-hover:scale-x-100"></span>
+      </button>
+      <button onclick="location.href='/register'" class="group relative overflow-hidden text-white font-bold px-8 py-2 w-40 rounded-[50px] bg-orange-550 cursor-pointer">
+        <span class="relative z-10 transition-colors duration-300 group-hover:text-secondary-dark">Daftar</span>
+        <span class="absolute inset-0 rounded-[50px] origin-left scale-x-0 bg-white transition-transform duration-300 group-hover:scale-x-100"></span>
+      </button>
     </div>
   </nav>
 
-  <section class="w-full h-[120vh] hero-bg flex justify-center items-center rounded-b-[85px]">
+  <section id="home" class="w-full h-[120vh] hero-bg flex justify-center items-center rounded-b-[85px]">
     <div class="mx-auto w-[80%] grid grid-cols-[1.5fr_1fr] items-center">
       <div class="mx-auto flex flex-col gap-6">
         <h1 class="text-4xl font-bold">Buka kunci semangatmu melalui kompetisi dan jadilah mahasiswa yang luar biasa!</h1>
@@ -67,8 +74,8 @@
     </div>
   </section>
 
-  <section class="mt-40 flex flex-col gap-48">
-    <h1 class="text-primary-dark text-6xl text-center font-bold">Testimonials</h1>
+  <section id="testimonials" class="mt-40 flex flex-col gap-48">
+    <h1 class="text-primary-dark text-6xl text-center font-bold">Testimoni</h1>
     <div class="w-full h-70 bg-tertiary rounded-[50px] -z-50">
       <div class="mx-auto w-[60%] grid grid-cols-[1.5fr_0.8fr]">
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">
@@ -98,7 +105,7 @@
     <div class="w-full h-70 bg-tertiary rounded-[50px]">
       <div class="mx-auto w-[60%] grid grid-cols-[1.5fr_0.8fr]">
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">
-          <h2 class="text-white font-bold text-2xl w-[60%]">Information Simplified</h2>
+          <h2 class="text-white font-bold text-2xl">Information Simplified</h2>
           <p class="text-white text-[14px]">"Being a busy student, I used to miss out on important faculty events. With this centralized hub, I can track every BEM FILKOM activity in one place. The UI is clean, intuitive, and exactly what we needed to stay connected with our faculty's ecosystem."</p>
           <p class="text-white text-[14px] font-bold">~ Salsabila, Information Systems '23</p>
         </div>
