@@ -135,7 +135,7 @@
                                     <span>Change password</span>
                                 </button>
 
-                                <button class="inline-flex h-[46px] min-w-[114px] items-center justify-center gap-2 rounded-[10px] border-2 border-[#FF6A27] bg-white px-5 text-[15px] font-semibold text-[#FF3A2F]">
+                                <button class="inline-flex h-[46px] min-w-[114px] items-center justify-center gap-2 rounded-[10px] border-2 border-[#FF6A27] bg-white px-5 text-[15px] font-semibold text-[#FF3A2F] cursor-pointer">
                                     <span>🚪</span>
                                     <span>Logout</span>
                                 </button>

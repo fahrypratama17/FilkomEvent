@@ -29,7 +29,7 @@ class AuthController extends Controller
       'password.confirmed' => 'Konfirmasi password tidak sama',
     ]);
 
-    $user = User::create([
+    User::create([
       'nim' =>  $request->nim,
       'name' =>  $request->name,
       'email' =>  $request->email,
