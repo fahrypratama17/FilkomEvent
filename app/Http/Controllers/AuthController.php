@@ -8,53 +8,73 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-  public function register(Request $request)
-  {
-    $request->validate([
-      'nim' => 'required|unique:users,nim',
-      'name' => 'required',
-      'email' => 'required|email|ends_with:@student.ub.ac.id|unique:users,email',
-      'password' => 'required|min:8|confirmed'
-    ]);
+    public function register(Request $request)
+    {
+        $request->validate([
+            'nim' => 'required|unique:users,nim',
+            'name' => 'required',
+            'email' => 'required|email|ends_with:@student.ub.ac.id|unique:users,email',
+            'password' => 'required|min:8|confirmed'
+        ], [
+            'nim.required' => 'NIM wajib diisi',
+            'nim.unique' => 'NIM sudah terdaftar',
 
-    $user = User::create([
-      'nim' =>  $request->nim,
-      'name' =>  $request->name,
-      'email' =>  $request->email,
-      'password' => $request->password,
-    ]);
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.ends_with' => 'Gunakan email UB (@student.ub.ac.id)',
+            'email.unique' => 'Email sudah digunakan',
 
-    return redirect('login')->with('success', 'Akun Berhasil Dibuat');
-  }
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password minimal 8 karakter',
+            'password.confirmed' => 'Konfirmasi password tidak sama',
+        ]);
 
-  public function login(Request $request)
-  {
-    $request->validate([
-      'email' => 'required|email',
-      'password' => 'required'
-    ]);
+        User::create([
+            'nim' =>  $request->nim,
+            'name' =>  $request->name,
+            'email' =>  $request->email,
+            'password' => $request->password,
+        ]);
 
-    $credentials = $request->only('email', 'password');
-    $remember = $request->boolean('remember');
-
-    if (Auth::attempt($credentials, $remember)) {
-      $request->session()->regenerate();
-
-      return redirect()->intended('/dashboard')->with('success', 'Selamat Datang');
+        return redirect('login')->with('success', 'Akun Berhasil Dibuat');
     }
 
-    return back()
-      ->withErrors(['login' => 'Email atau password salah'])
-      ->onlyInput('email', 'remember');
-  }
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.ends_with' => 'Gunakan email UB (@student.ub.ac.id)',
+            'email.unique' => 'Email sudah digunakan',
 
-  public function logout(Request $request)
-  {
-    Auth::logout();
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password minimal 8 karakter',
+        ]);
 
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+            $request->session()->regenerate();
 
-    return redirect('/login')->with('success', 'Anda berhasil logout');
-  }
+            return redirect('/dashboard')->with('success', 'Login berhasil');
+        }
+
+        return back()
+            ->withErrors(['login' => 'Email atau password salah'])
+            ->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('success', 'Anda berhasil logout');
+    }
 }

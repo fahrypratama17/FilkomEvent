@@ -1,4 +1,4 @@
-{{-- resources/views/list-event.blade.php --}}
+{{-- resources/views/listEvent.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>

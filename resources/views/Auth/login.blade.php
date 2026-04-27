@@ -33,19 +33,13 @@
         @csrf
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Email</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="email" value="{{ old('email') }}" placeholder="email">
+          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="text" placeholder="email">
         </div>
         <div class="flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="">Password</label>
           <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password" type="password" placeholder="password">
         </div>
-        <div class="flex items-center justify-between">
-          <label class="flex items-center gap-2 text-white text-sm">
-            <input type="checkbox" name="remember" value="1" class="h-4 w-4 rounded" {{ old('remember') ? 'checked' : '' }}>
-            <span>Ingat saya</span>
-          </label>
-          <a href="{{ route('password.forgot') }}"><p class="text-white hover:underline text-end">Lupa Password</p></a>
-        </div>
+        <a href=""><p class="text-white hover:underline text-end">Lupa Password</p></a>
         <button class="w-full bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Masuk</button>
       </form>
       <div class="mx-auto w-[80%] flex flex-col gap-4">
@@ -58,7 +52,7 @@
           <img class="w-10 h-10 mx-auto hover:scale-105 cursor-pointer" src="{{ asset('icon/Google_icon.svg') }}" alt="google">
         </div>
       </div>
-      <p class="text-white">Belum punya akun? <a class="hover:underline" href="{{ route('register.view') }}">Daftar Disini</a></p>
+      <p class="text-white">Belum punya akun? <a class="hover:underline cursor-pointer" onclick="location.href='/register'">Daftar Disini</a></p>
     </div>
   </section>
 

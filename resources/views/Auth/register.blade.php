@@ -65,7 +65,7 @@
           <img class="w-10 h-10 mx-auto hover:scale-105 cursor-pointer" src="{{ asset('icon/Google_icon.svg') }}" alt="google">
         </div>
       </div>
-      <p class="text-white">Sudah punya akun? <a class="hover:underline" href="{{ route('login') }}">Masuk Disini</a></p>
+      <p class="text-white">Sudah punya akun? <a class="hover:underline cursor-pointer" onclick="location.href='/login'">Masuk Disini</a></p>
     </div>
   </section>
 </body>
