@@ -18,7 +18,6 @@
 
   $settingItems = [
       ['icon' => 'assets/icons/profile.svg', 'label' => 'Profile'],
-      ['icon' => 'assets/icons/logout.svg', 'label' => 'Logout'],
   ];
 
   $adminCard = [
@@ -77,6 +76,12 @@
           <span>{{ $item['label'] }}</span>
         </div>
       @endforeach
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
+          <span>Logout</span>
+        </button>
+      </form>
     </div>
   </div>
   </div>

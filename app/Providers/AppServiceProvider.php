@@ -7,20 +7,20 @@ use Illuminate\Support\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
+  /**
+   * Register any application services.
+   */
+  public function register(): void
+  {
+    //
+  }
 
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        date_default_timezone_set('Asia/Jakarta');
-        Carbon::setLocale('id');
-    }
+  /**
+   * Bootstrap any application services.
+   */
+  public function boot(): void
+  {
+    date_default_timezone_set('Asia/Jakarta');
+    Carbon::setLocale('id');
+  }
 }
