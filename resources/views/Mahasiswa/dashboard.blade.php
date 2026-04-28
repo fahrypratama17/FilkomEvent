@@ -6,7 +6,7 @@
     <title>Filkom Event Dashboard</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-[#EAEAEA] text-slate-900">
+<body>
     @php
         $eventCards = [
             [
@@ -139,7 +139,7 @@
           </section>
 
           <section class="grid grid-cols-[308px_1fr] gap-12 pb-6">
-              <div class="rounded-[24px] bg-[#0790C7] px-7 py-7 text-white shadow-sm">
+              <div class="rounded-3xl bg-[#0790C7] px-7 py-7 text-white shadow-sm">
                   <h2 class="mb-6 text-[28px] font-extrabold leading-tight">
                       Popular Categories
                       <br>
@@ -164,7 +164,7 @@
               <div class="rounded-[24px] bg-[#16B6D9] px-9 py-9 shadow-sm">
                   <div class="mb-9 grid grid-cols-3 gap-9">
                       @foreach ($stats as $item)
-                          <div class="flex h-[170px] items-center justify-center rounded-[24px] bg-[#FF6A27] px-6 text-center text-white">
+                          <div class="flex h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white">
                               <div>
                                   <div class="mb-4 text-[54px] font-extrabold leading-none">{{ $item['value'] }}</div>
                                   <div class="text-[17px] leading-snug">{{ $item['label'] }}</div>

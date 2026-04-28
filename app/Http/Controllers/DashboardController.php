@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class DashboardController extends Controller {
   private function getMenu() {
     $role = auth()->user()->role;
@@ -52,7 +50,7 @@ class DashboardController extends Controller {
 
   private function getSetting() {
     return [
-      ['label' => 'Profile'],
+      ['label' => 'Profile', 'route' => 'profile'],
     ];
   }
 }

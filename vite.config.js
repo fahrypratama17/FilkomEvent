@@ -11,6 +11,10 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
+    host: "0.0.0.0",
+    hmr: {
+      host: "filkomevent.test",
+    },
     watch: {
       ignored: ["**/storage/framework/views/**"],
     },

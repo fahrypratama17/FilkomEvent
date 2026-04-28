@@ -1,11 +1,6 @@
-<aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
-  <div class="mb-14">
-    <div class="mb-3 flex items-center gap-3">
-      <div class="hidden leading-none">
-        <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
-        <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
-      </div>
-    </div>
+<aside class="flex w-80 shrink-0 flex-col rounded-r-[50px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
+  <div class="bg-primary-dark my-12 py-2 rounded-2xl">
+    <h1 class="text-2xl font-extrabold text-center">FILKOM<span class="text-orange-550">EVENT</span></h1>
   </div>
 
   <div>
@@ -24,23 +19,22 @@
     </nav>
   </div>
 
-  <div class="mt-auto pt-16">
+  <div class="pt-16">
     <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">SETTING</h2>
     <div class="space-y-8">
       @foreach ($settingItems as $item)
-        <div class="flex items-center gap-8 text-[24px] text-white/90">
-          <div class="flex h-10 w-10 items-center justify-center">
+        @php
+          $isActive = request()->routeIs($item['route']);
+          $routeName = str_replace('.*', '.index', $item['route']);
+        @endphp
 
-          </div>
-          <span>{{ $item['label'] }}</span>
-        </div>
+        <a href="{{ route($routeName) }}" class="flex items-center gap-4 text-[20px] transition {{ $isActive ? 'font-bold text-white' : 'text-white/70 hover:text-white' }}">
+          {{ $item['label'] }}
+        </a>
       @endforeach
       <form action="{{ route('logout') }}" method="POST">
         @csrf
-        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
-          <div class="flex h-10 w-10 items-center justify-center">
-
-          </div>
+        <button type="submit" class="flex w-full items-center gap-8 text-[20px] text-white/70 hover:text-white cursor-pointer">
           <span>Logout</span>
         </button>
       </form>
