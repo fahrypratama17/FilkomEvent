@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/register', fn() => view('Auth.register'))->name('register.view');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -18,8 +20,8 @@ Route::get('/reset-password', fn() => view('Auth.resetPassword'));
 Route::get('/', fn() => view('Home.home'));
 
 // Routing For User Page
-Route::middleware(['auth', 'role:Mahasiswa'])->group(function() {
-  Route::get('/dashboard', fn() => view('Mahasiswa.dashboard'));
+Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
+  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
   Route::get('/profile', fn() => view('Mahasiswa.profile'));
 
@@ -27,13 +29,13 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(function() {
 
   Route::get('/registration-event', fn() => view('Mahasiswa.registrationEvent'));
 
-  Route::get('/list-event', fn() => view('Mahasiswa.listEvent'));
+  Route::get('/list-event', [DashboardController::class, 'events'])->name('events.index');
 
   Route::get('/payment', fn() => view('Mahasiswa.payment'));
 
-  Route::get('/bookmark', fn() => view('Mahasiswa.bookmark'));
+  Route::get('/bookmark', [DashboardController::class, 'bookmark'])->name('bookmark');
 
-  Route::get('/history', fn() => view('Mahasiswa.history'));
+  Route::get('/history', [DashboardController::class, 'history'])->name('history');
 });
 
 // Routing For Admin Page
