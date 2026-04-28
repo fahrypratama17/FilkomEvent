@@ -53,4 +53,11 @@ class DashboardController extends Controller {
       ['label' => 'Profile', 'route' => 'profile'],
     ];
   }
+
+  public function profile() {
+    return view('Mahasiswa.profile', [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
 }

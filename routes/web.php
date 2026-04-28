@@ -23,7 +23,7 @@ Route::get('/', fn() => view('Home.home'));
 Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-  Route::get('/profile', [DashboardController::class, 'index'])->name('profile');
+  Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 
   Route::get('/detail-event', fn() => view('Mahasiswa.detailEvent'));
 

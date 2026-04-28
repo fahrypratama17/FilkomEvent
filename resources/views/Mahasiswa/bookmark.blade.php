@@ -1,4 +1,3 @@
-{{-- resources/views/bookmark.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +8,6 @@
 </head>
 <body class="min-h-screen bg-[#EAEAEA] text-slate-900">
     @php
-        $menuItems = [
-            ['icon' => 'assets/icons/home.svg', 'label' => 'Dashboard', 'href' => '/dashboard-design', 'active' => false],
-            ['icon' => 'assets/icons/bookmark.svg', 'label' => 'Bookmark', 'href' => '/bookmark-design', 'active' => true],
-            ['icon' => 'assets/icons/history.svg', 'label' => 'History', 'href' => '#', 'active' => false],
-            ['icon' => 'assets/icons/list-event.svg', 'label' => 'List Event', 'href' => '#', 'active' => false],
-        ];
-
-        $settingItems = [
-            ['icon' => 'assets/icons/profile.svg', 'label' => 'Profile', 'href' => '#'],
-        ];
-
         $bookmarks = [
         [
             'title' => 'App Design',
@@ -67,53 +55,11 @@
     @endphp
 
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
-        <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
-            <div class="mb-14">
-                <div class="mb-3">
-                    <div class="hidden leading-none">
-                        <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
-                        <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
-                    </div>
-                </div>
-            </div>
 
-            <div>
-                <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">MAIN MENU</h2>
-                <nav class="space-y-8">
-                    @foreach ($menuItems as $item)
-                        <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
-                            <div class="flex h-10 w-10 items-center justify-center">
-
-                            </div>
-                            <span>{{ $item['label'] }}</span>
-                        </a>
-                    @endforeach
-                </nav>
-            </div>
-
-            <div class="mt-auto pt-16">
-                <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">SETTING</h2>
-                <div class="space-y-8">
-                    @foreach ($settingItems as $item)
-                        <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] text-white/90">
-                            <div class="flex h-10 w-10 items-center justify-center">
-
-                            </div>
-                            <span>{{ $item['label'] }}</span>
-                        </a>
-                    @endforeach
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
-                            <div class="flex h-10 w-10 items-center justify-center">
-
-                            </div>
-                            <span>Logout</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </aside>
+      @include('components.navbarMahasiswa', [
+        'menuItems' => $menuItems,
+        'settingItems' => $settingItems
+      ])
 
         <main class="flex-1 overflow-y-auto px-[42px] py-8">
             <div class="mb-8 flex items-start justify-between gap-6">
