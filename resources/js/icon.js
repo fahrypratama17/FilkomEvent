@@ -1,4 +1,16 @@
-import { createIcons, MoveUpRight, BookOpen, Users, Award } from "lucide";
+import {
+  createIcons,
+  MoveUpRight,
+  BookOpen,
+  Users,
+  Award,
+  House,
+  BookMarked,
+  History,
+  List,
+  UserRound,
+  LogOut,
+} from "lucide";
 
 createIcons({
   icons: {
@@ -6,5 +18,11 @@ createIcons({
     BookOpen,
     Users,
     Award,
+    House,
+    BookMarked,
+    History,
+    List,
+    UserRound,
+    LogOut,
   },
 });

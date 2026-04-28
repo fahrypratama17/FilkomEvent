@@ -13,7 +13,8 @@
         @endphp
 
         <a href="{{ route($routeName) }}" class="flex items-center gap-4 text-[20px] transition {{ $isActive ? 'font-bold text-white' : 'text-white/70 hover:text-white' }}">
-            {{ $item['label'] }}
+          <i data-lucide="{{ $item['icon'] }}"></i>
+          <p>{{ $item['label'] }}</p>
         </a>
       @endforeach
     </nav>
@@ -29,12 +30,14 @@
         @endphp
 
         <a href="{{ route($routeName) }}" class="flex items-center gap-4 text-[20px] transition {{ $isActive ? 'font-bold text-white' : 'text-white/70 hover:text-white' }}">
-          {{ $item['label'] }}
+          <i data-lucide="{{ $item['icon'] }}"></i>
+          <p>{{ $item['label'] }}</p>
         </a>
       @endforeach
       <form action="{{ route('logout') }}" method="POST">
         @csrf
-        <button type="submit" class="flex w-full items-center gap-8 text-[20px] text-white/70 hover:text-white cursor-pointer">
+        <button type="submit" class="flex w-full items-center gap-4 text-[20px] text-white/70 hover:text-white cursor-pointer">
+          <i data-lucide="LogOut"></i>
           <span>Logout</span>
         </button>
       </form>
