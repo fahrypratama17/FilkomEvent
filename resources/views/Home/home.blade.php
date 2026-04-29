@@ -143,33 +143,33 @@
   <section class="mt-40 w-full hubungi-section py-20 rounded-t-[85px] flex flex-col gap-12">
     <h1 class="mx-auto text-6xl font-extrabold text-white w-[90%]">Punya Pertanyaan ?</h1>
 
-    <form action="" class="mx-auto w-[90%] flex flex-col gap-6">
+    <form action="{{ route('kirim-email') }}" method="POST" class="mx-auto w-[90%] flex flex-col gap-6">
+      @csrf
       <div class="grid grid-cols-2 gap-6">
         <div class="flex flex-col w-full gap-6">
           <div class="flex flex-col justify-center gap-2">
-            <label class="text-white text-lg" for="">Nama</label>
-            <input class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="nama">
+            <label class="text-white text-lg">Nama</label>
+            <input name="nama" class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="nama">
           </div>
           <div class="flex flex-col justify-center gap-2">
             <label class="text-white text-lg" for="">Email</label>
-            <input class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="email">
+            <input name="email" class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="email" placeholder="email">
           </div>
           <div class="flex flex-col justify-center gap-2">
             <label class="text-white text-lg" for="">NIM</label>
-            <input class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="245150207111046">
+            <input name="nim" class="bg-white p-2 px-4 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="245150207111046">
           </div>
-          <button class="w-full flex items-center justify-center gap-4 bg-orange-550 p-2 rounded-[40px] mt-6 cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">WhatsApp<img class="w-6 h-6" src="{{ asset('icon/whatsapp.svg') }}" alt=""></button>
+          <button type="button" onclick="kirimWhatsApp()" class="w-full flex items-center justify-center gap-4 bg-orange-550 p-2 rounded-[40px] mt-6 cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">WhatsApp<img class="w-6 h-6" src="{{ asset('icon/whatsapp.svg') }}" alt=""></button>
         </div>
         <div class="flex flex-col w-full gap-6">
           <div class="flex flex-col justify-center gap-2">
             <label class="text-white text-lg" for="">Pesan</label>
-            <textarea class="bg-white p-2 px-4 h-60 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent resize-none" type="text" placeholder="pesan disini..." ></textarea>
+            <textarea name="pesan" class="bg-white p-2 px-4 h-60 rounded-[10px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent resize-none" type="text" placeholder="pesan disini..." ></textarea>
           </div>
-          <button class="w-full flex gap-4 justify-center items-center bg-secondary-lighter p-2 rounded-[40px] mt-6 cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Kirim via Email<i data-lucide="Mail"></i></button>
+          <button type="submit" class="w-full flex gap-4 justify-center items-center bg-secondary-lighter p-2 rounded-[40px] mt-6 cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Kirim via Email<i data-lucide="Mail"></i></button>
         </div>
       </div>
     </form>
-
   </section>
 
   <footer class="px-8 h-20 w-full flex items-center justify-between bg-primary-dark">

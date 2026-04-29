@@ -18,6 +18,7 @@ Route::get('/reset-password', fn() => view('Auth.resetPassword'));
 
 // Routing For Landing Page
 Route::get('/', fn() => view('Home.home'));
+Route::post('/kirim-email', [AuthController::class, 'kirimEmail'])->name('kirim-email');
 
 // Routing For User Page
 Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
