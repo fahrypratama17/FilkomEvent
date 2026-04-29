@@ -10,6 +10,7 @@ import {
   List,
   UserRound,
   LogOut,
+  Mail,
 } from "lucide";
 
 createIcons({
@@ -24,5 +25,6 @@ createIcons({
     List,
     UserRound,
     LogOut,
+    Mail,
   },
 });
