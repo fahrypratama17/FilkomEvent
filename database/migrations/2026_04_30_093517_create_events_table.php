@@ -15,6 +15,7 @@ return new class extends Migration
       $table->id('event_id');
       $table->string('title', 150);
       $table->text('description');
+      $table->text('short_description');
       $table->timestamp('event_start');
       $table->timestamp('event_end');
       $table->string('location', 150);
