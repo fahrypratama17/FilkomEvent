@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 use App\Models\Event;
 
 class DashboardController extends Controller {
@@ -24,10 +25,28 @@ class DashboardController extends Controller {
   public function index() {
     $events = Event::with('category')->latest()->take(3)->get();
 
+    $iconMap = [
+      'UI/UX Design' => 'Palette',
+      'Web Development' => 'Code',
+      'Data Science' => 'Database',
+      'Frontend Development' => 'LayoutDashboard',
+      'Backend Development' => 'Server',
+    ];
+
+    $categories = Category::withCount('events')
+      ->orderByDesc('events_count')
+      ->take(4)
+      ->get()
+      ->map(function ($cat) use ($iconMap) {
+        $cat->icon = $iconMap[$cat->category_name] ?? 'Tag';
+        return $cat;
+      });
+
     return view('Mahasiswa.dashboard', [
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
       'events' => $events,
+      'categories' => $categories,
     ]);
   }
 

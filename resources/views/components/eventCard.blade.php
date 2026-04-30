@@ -13,7 +13,7 @@
     <p class="flex items-center gap-1"><i data-lucide="Clock" class="w-4 h-4 text-orange-550"></i><span>{{ \Carbon\Carbon::parse($event->event_start)->format('H:i') }} -</span><span>{{ \Carbon\Carbon::parse($event->event_end)->format('H:i') }} WIB</span></p>
   </div>
   <div class="flex gap-4 mt-auto">
-    <button class="w-full bg-orange-550 px-4 py-2 rounded-2xl cursor-pointer hover:scale-105 text-white duration-300">Daftar Sekarang</button>
+    <button class="w-full bg-orange-550 px-4 py-2 rounded-2xl cursor-pointer hover:scale-105 text-white duration-300">Detail Event</button>
     <button class="bg-white p-2 rounded-2xl cursor-pointer hover:scale-105 duration-300"><i data-lucide="Bookmark"></i></button>
   </div>
 </article>

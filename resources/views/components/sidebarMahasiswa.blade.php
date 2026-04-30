@@ -1,4 +1,4 @@
-<aside class="flex w-80 shrink-0 flex-col rounded-r-[62px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
+<aside class="flex w-80 shrink-0 flex-col rounded-r-[62px] bg-[#223E96] px-12 py-8 text-white shadow-sm z-100">
   <div class="bg-primary-dark my-12 py-2 rounded-2xl">
     <h1 class="text-2xl font-extrabold text-center">FILKOM<span class="text-orange-550">EVENT</span></h1>
   </div>

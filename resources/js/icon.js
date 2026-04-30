@@ -17,6 +17,11 @@ import {
   UsersRound,
   Bookmark,
   ChevronRight,
+  Palette,
+  Code,
+  Database,
+  LayoutDashboard,
+  Server,
 } from "lucide";
 
 createIcons({
@@ -38,5 +43,10 @@ createIcons({
     UsersRound,
     Bookmark,
     ChevronRight,
+    Palette,
+    Code,
+    Database,
+    LayoutDashboard,
+    Server,
   },
 });

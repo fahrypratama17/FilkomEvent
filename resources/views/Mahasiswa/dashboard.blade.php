@@ -10,13 +10,6 @@
 </head>
 <body>
 @php
-  $categories = [
-      ['name' => 'UI/UX Design', 'count' => '20 Events'],
-      ['name' => 'UI/UX Design', 'count' => '20 Events'],
-      ['name' => 'UI/UX Design', 'count' => '20 Events'],
-      ['name' => 'UI/UX Design', 'count' => '20 Events'],
-  ];
-
   $stats = [
       ['value' => '14', 'label' => 'Events attended'],
       ['value' => '08', 'label' => 'Certificates obtained'],
@@ -24,14 +17,17 @@
   ];
 @endphp
 
-  <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
+  <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
+    <div class="absolute w-full h-full opacity-4"
+         style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
+    </div>
 
     @include('components.sidebarMahasiswa', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
 
-    <main class="flex-1 overflow-y-auto px-12 py-8">
+    <main class="relative flex-1 overflow-y-auto px-12 py-8">
       <header class="mb-8 flex items-start justify-between gap-6">
         <div class="relative w-full max-w-165">
           <i data-lucide="Search" class="absolute bottom-4 left-4 text-gray-400"></i>
@@ -70,23 +66,23 @@
         @endforeach
       </section>
 
-      <section class="grid grid-cols-[308px_1fr] gap-12 pb-6">
-        <div class="rounded-3xl bg-[#0790C7] px-7 py-7 text-white shadow-sm">
+      <section class="grid grid-cols-[0.5fr_1fr] gap-12 pb-6">
+        <div class="rounded-3xl bg-linear-to-br from-secondary-lighter to-primary-dark px-7 py-7 text-white shadow-[0_25px_60px_rgba(0,0,0,0.4)] border border-white/80">
           <h2 class="mb-6 text-[28px] font-extrabold leading-tight">
-            Popular Categories
-            <br>
-            Events
+            Kategori Acara Populer
           </h2>
 
-          <div class="space-y-7">
-            @foreach ($categories as $item)
-              <div class="flex items-center justify-between rounded-[20px] bg-[#ECECEC] px-6 py-5">
-                <div>
-                  <div class="text-[18px] font-bold text-[#FF6A27]">{{ $item['name'] }}</div>
-                  <div class="text-[11px] text-[#314A9A]">{{ $item['count'] }}</div>
-                </div>
-                <div>
-
+          <div class="space-y-7 ">
+            @foreach ($categories as $category)
+              <div class="flex items-center justify-between rounded-[20px] bg-[#ECECEC] px-6 py-5 border-2 border-white/20">
+                <div class="flex items-center gap-6">
+                  <div>
+                    <i class="text-orange-550 w-8 h-8" data-lucide="{{ $category->icon }}"></i>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-orange-550">{{ $category->category_name }}</p>
+                    <p class="text-[14px] text-primary-dark/60">{{ $category->events_count }} Events</p>
+                  </div>
                 </div>
               </div>
             @endforeach
@@ -104,6 +100,7 @@
               </div>
             @endforeach
           </div>
+
 
           <div class="h-52.5 overflow-hidden rounded-[28px] bg-[#FF6A27]">
 
