@@ -10,36 +10,6 @@
 </head>
 <body>
 @php
-  $eventCards = [
-      [
-          'date' => '01 Nov, 2026',
-          'title' => 'App Design',
-          'description' => 'Learn App Design from our expert trainer',
-          'tag' => 'UI Corner',
-          'participants' => '80 participant',
-          'time' => '13:00 - 17:00 WIB',
-          'image' => 'assets/events/event-1.png',
-      ],
-      [
-          'date' => '01 Nov, 2026',
-          'title' => 'App Design',
-          'description' => 'Learn App Design from our expert trainer',
-          'tag' => 'UI Corner',
-          'participants' => '80 participant',
-          'time' => '13:00 - 17:00 WIB',
-          'image' => 'assets/events/event-2.png',
-      ],
-      [
-          'date' => '01 Nov, 2026',
-          'title' => 'App Design',
-          'description' => 'Learn App Design from our expert trainer',
-          'tag' => 'UI Corner',
-          'participants' => '80 participant',
-          'time' => '13:00 - 17:00 WIB',
-          'image' => 'assets/events/event-3.png',
-      ],
-  ];
-
   $categories = [
       ['name' => 'UI/UX Design', 'count' => '20 Events'],
       ['name' => 'UI/UX Design', 'count' => '20 Events'],
@@ -92,7 +62,7 @@
       </div>
 
       <section class="mb-12 grid grid-cols-3 gap-12">
-        @foreach ($eventCards as $card)
+        @foreach ($events as $card)
           <article class="rounded-3xl bg-[#0781C4] px-7 py-7 text-white shadow-sm">
             <div class="mb-8 flex items-start justify-between gap-6">
               <div class="min-w-0">
@@ -127,8 +97,8 @@
               </div>
             </div>
 
-            <div class="flex items-center gap-4">
-              <button class="h-10.5 flex-1 rounded-xl bg-[#FF6A27] text-[14px] font-semibold text-white">
+            <div class="flex items-center gap-4 mt-auto">
+              <button class="h-10.5 flex-1 rounded-xl bg-[#FF6A27] text-[14px] font-semibold text-white hover:scale-105 duration-200 cursor-pointer">
                 Register Now
               </button>
               <button class="flex h-10.5 w-10.5 items-center justify-center rounded-xl bg-white shadow-sm">

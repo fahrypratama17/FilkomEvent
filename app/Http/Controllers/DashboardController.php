@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Event;
 
 class DashboardController extends Controller {
   private function getMenu() {
@@ -21,9 +22,12 @@ class DashboardController extends Controller {
   }
 
   public function index() {
+    $events = Event::latest()->take(3)->get();
+
     return view('Mahasiswa.dashboard', [
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
+      'events' => $events,
     ]);
   }
 

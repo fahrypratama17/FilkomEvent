@@ -33,6 +33,7 @@ class EventSeeder extends Seeder
           'contact_email' => 'bem@ub.ac.id',
           'contact_phone' => '628123456789',
           'created_at' => now(),
+          'updated_at' => now(),
         ],
         [
           'title' => 'Workshop UI/UX',
@@ -53,6 +54,7 @@ class EventSeeder extends Seeder
           'contact_email' => 'hima@ub.ac.id',
           'contact_phone' => '628987654321',
           'created_at' => now(),
+          'updated_at' => now(),
         ],
         [
           'title' => 'Workshop UI/UX',
