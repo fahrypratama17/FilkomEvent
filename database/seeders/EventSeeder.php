@@ -28,7 +28,7 @@ class EventSeeder extends Seeder
           'is_paid' => false,
           'category_id' => 1,
           'created_by' => 1,
-          'image_url' => 'assets/events/Hology.jpeg',
+          'image_url' => 'assets/events/Hology.png',
           'organizer' => 'BEM FILKOM',
           'contact_email' => 'bem@ub.ac.id',
           'contact_phone' => '628123456789',

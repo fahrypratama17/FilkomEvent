@@ -13,6 +13,8 @@ import {
   Mail,
   Search,
   MoveRight,
+  Clock,
+  UsersRound,
 } from "lucide";
 
 createIcons({
@@ -30,5 +32,7 @@ createIcons({
     Mail,
     Search,
     MoveRight,
+    Clock,
+    UsersRound,
   },
 });

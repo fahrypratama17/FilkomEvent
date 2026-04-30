@@ -70,30 +70,39 @@
                   <div class="flex h-7 w-7 items-center justify-center rounded-full bg-[#FF742E] p-1">
 
                   </div>
-                  <span>{{ $card['date'] }}</span>
+                  <span>
+                    {{ \Carbon\Carbon::parse($card->event_start)->format('d M, Y') }}
+                  </span>
                 </div>
                 <h3 class="mb-2 text-[18px] font-bold">{{ $card['title'] }}</h3>
                 <p class="max-w-35 text-[11px] leading-[1.45] text-white/90">
                   {{ $card['description'] }}
                 </p>
                 <span class="mt-3 inline-flex rounded-md bg-[#FF742E] px-4 py-1 text-[10px] font-medium text-white">
-                  {{ $card['tag'] }}
+                  {{ 'Category #' . $card->category_id }}
                 </span>
               </div>
 
-              <div class="h-42.5 w-28 overflow-hidden rounded-[26px] bg-[#ECECEC]">
-
+              <div class="h-50 w-40 rounded-xl bg-[#ECECEC]">
+                <img
+                  src="{{ asset($card->image_url) }}"
+                  alt="{{ $card->title }}"
+                  class="h-full w-full object-cover rounded-xl"
+                />
               </div>
             </div>
 
             <div class="mb-8 space-y-4 text-[12px] text-white/90">
               <div class="flex items-center gap-3">
-
-                <span>{{ $card['participants'] }}</span>
+                <i data-lucide="UsersRound" class="w-4 h-4"></i>
+                <span>{{ $card['quota'] }}</span>
+                <p>participant</p>
               </div>
               <div class="flex items-center gap-3">
-
-                <span>{{ $card['time'] }}</span>
+                <i data-lucide="Clock" class="w-4 h-4"></i>
+                {{ \Carbon\Carbon::parse($card->event_start)->format('H:i') }} -
+                {{ \Carbon\Carbon::parse($card->event_end)->format('H:i') }}
+                <p>WIB</p>
               </div>
             </div>
 
