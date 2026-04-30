@@ -12,6 +12,7 @@ import {
   LogOut,
   Mail,
   Search,
+  MoveRight,
 } from "lucide";
 
 createIcons({
@@ -28,5 +29,6 @@ createIcons({
     LogOut,
     Mail,
     Search,
+    MoveRight,
   },
 });

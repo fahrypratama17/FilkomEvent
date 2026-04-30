@@ -62,7 +62,7 @@
     ])
 
     <main class="flex-1 overflow-y-auto px-12 py-8">
-      <div class="mb-8 flex items-start justify-between gap-6">
+      <header class="mb-8 flex items-start justify-between gap-6">
         <div class="relative w-full max-w-165">
           <i data-lucide="Search" class="absolute bottom-4 left-4 text-gray-400"></i>
           <input
@@ -72,21 +72,22 @@
           >
         </div>
 
-        <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-
+        <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
+          <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
         </button>
-      </div>
+      </header>
 
       <div class="mb-8 flex items-center gap-5">
         <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
         <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
-          Selamat Datang, <span class="text-[#FF742E]">{{ Auth::user()->name }}</span>
+          Selamat Datang, <span class="text-[#FF742E]">{{ Auth::user()->name ?? "Mahasiswa" }}</span>
         </h1>
       </div>
 
       <div class="mb-12 flex items-center justify-end">
-        <button class="text-[18px] font-medium text-[#314A9A] underline underline-offset-4 hover:scale-105 duration-200 cursor-pointer">
+        <button onclick="location.href='/list-event'" class="flex items-center gap-2 text-[18px] font-medium text-[#314A9A] underline underline-offset-4 hover:scale-105 duration-200 cursor-pointer">
           Tampilkan Semua
+          <i data-lucide="MoveRight" class="w-4"></i>
         </button>
       </div>
 
