@@ -11,6 +11,7 @@ import {
   UserRound,
   LogOut,
   Mail,
+  Search,
 } from "lucide";
 
 createIcons({
@@ -26,5 +27,6 @@ createIcons({
     UserRound,
     LogOut,
     Mail,
+    Search,
   },
 });

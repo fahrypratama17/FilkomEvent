@@ -4,7 +4,7 @@
   </div>
 
   <div>
-    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">MAIN MENU</h2>
+    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide text-white/85">MAIN MENU</h2>
     <nav class="space-y-8">
       @foreach ($menuItems as $item)
         @php
@@ -21,7 +21,7 @@
   </div>
 
   <div class="pt-16">
-    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">SETTING</h2>
+    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide text-white/85">SETTING</h2>
     <div class="space-y-8">
       @foreach ($settingItems as $item)
         @php
