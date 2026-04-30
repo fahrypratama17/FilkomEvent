@@ -15,6 +15,8 @@ import {
   MoveRight,
   Clock,
   UsersRound,
+  Bookmark,
+  ChevronRight,
 } from "lucide";
 
 createIcons({
@@ -34,5 +36,7 @@ createIcons({
     MoveRight,
     Clock,
     UsersRound,
+    Bookmark,
+    ChevronRight,
   },
 });

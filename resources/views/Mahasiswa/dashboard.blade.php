@@ -26,7 +26,7 @@
 
   <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
 
-    @include('components.navbarMahasiswa', [
+    @include('components.sidebarMahasiswa', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
@@ -47,74 +47,26 @@
         </button>
       </header>
 
-      <div class="mb-8 flex items-center gap-5">
+      <div class="mb-12 flex items-center gap-5">
         <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
-        <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
-          Selamat Datang, <span class="text-[#FF742E]">{{ Auth::user()->name ?? "Mahasiswa" }}</span>
-        </h1>
+        <div class="relative overflow-hidden shimmer bg-linear-to-r from-secondary-lighter via-white/40 to-white/80 p-4 rounded-4xl backdrop-blur-3xl">
+          <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
+            Selamat Datang, <span class="text-[#FF742E]">{{ Auth::user()->name ?? "Mahasiswa" }}</span>
+          </h1>
+        </div>
       </div>
 
-      <div class="mb-12 flex items-center justify-end">
-        <button onclick="location.href='/list-event'" class="flex items-center gap-2 text-[18px] font-medium text-[#314A9A] underline underline-offset-4 hover:scale-105 duration-200 cursor-pointer">
+      <div class="mb-8 flex items-center justify-between">
+        <p class="font-bold">FILKOM EVENT</p>
+        <button onclick="location.href='/list-event'" class="flex items-center gap-2 text-[18px] font-medium  hover:scale-105 duration-200 cursor-pointer">
           Tampilkan Semua
-          <i data-lucide="MoveRight" class="w-4"></i>
+          <i data-lucide="ChevronRight" class="w-6"></i>
         </button>
       </div>
 
       <section class="mb-12 grid grid-cols-3 gap-12">
         @foreach ($events as $card)
-          <article class="rounded-3xl bg-[#0781C4] px-7 py-7 text-white shadow-sm">
-            <div class="mb-8 flex items-start justify-between gap-6">
-              <div class="min-w-0">
-                <div class="mb-10 flex items-center gap-3 text-[12px] text-white/90">
-                  <div class="flex h-7 w-7 items-center justify-center rounded-full bg-[#FF742E] p-1">
-
-                  </div>
-                  <span>
-                    {{ \Carbon\Carbon::parse($card->event_start)->format('d M, Y') }}
-                  </span>
-                </div>
-                <h3 class="mb-2 text-[18px] font-bold">{{ $card['title'] }}</h3>
-                <p class="max-w-35 text-[11px] leading-[1.45] text-white/90">
-                  {{ $card['description'] }}
-                </p>
-                <span class="mt-3 inline-flex rounded-md bg-[#FF742E] px-4 py-1 text-[10px] font-medium text-white">
-                  {{ 'Category #' . $card->category_id }}
-                </span>
-              </div>
-
-              <div class="h-50 w-40 rounded-xl bg-[#ECECEC]">
-                <img
-                  src="{{ asset($card->image_url) }}"
-                  alt="{{ $card->title }}"
-                  class="h-full w-full object-cover rounded-xl"
-                />
-              </div>
-            </div>
-
-            <div class="mb-8 space-y-4 text-[12px] text-white/90">
-              <div class="flex items-center gap-3">
-                <i data-lucide="UsersRound" class="w-4 h-4"></i>
-                <span>{{ $card['quota'] }}</span>
-                <p>participant</p>
-              </div>
-              <div class="flex items-center gap-3">
-                <i data-lucide="Clock" class="w-4 h-4"></i>
-                {{ \Carbon\Carbon::parse($card->event_start)->format('H:i') }} -
-                {{ \Carbon\Carbon::parse($card->event_end)->format('H:i') }}
-                <p>WIB</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 mt-auto">
-              <button class="h-10.5 flex-1 rounded-xl bg-[#FF6A27] text-[14px] font-semibold text-white hover:scale-105 duration-200 cursor-pointer">
-                Register Now
-              </button>
-              <button class="flex h-10.5 w-10.5 items-center justify-center rounded-xl bg-white shadow-sm">
-
-              </button>
-            </div>
-          </article>
+          <x-eventCard :event="$card" />
         @endforeach
       </section>
 
