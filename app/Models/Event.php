@@ -37,4 +37,8 @@ class Event extends Model
     'is_paid' => 'boolean',
     'price' => 'decimal:2',
   ];
+
+  public function category() {
+    return $this->belongsTo(Category::class, 'category_id', 'category_id');
+  }
 }

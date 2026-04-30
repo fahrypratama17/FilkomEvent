@@ -22,7 +22,7 @@ class DashboardController extends Controller {
   }
 
   public function index() {
-    $events = Event::latest()->take(3)->get();
+    $events = Event::with('category')->latest()->take(3)->get();
 
     return view('Mahasiswa.dashboard', [
       'menuItems' => $this->getMenu(),
