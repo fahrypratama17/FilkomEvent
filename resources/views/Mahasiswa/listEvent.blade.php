@@ -68,7 +68,7 @@
 
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
 
-      @include('components.navbarMahasiswa', [
+      @include('components.sidebarMahasiswa', [
         'menuItems' => $menuItems,
         'settingItems' => $settingItems
       ])
