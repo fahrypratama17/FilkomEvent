@@ -45,7 +45,7 @@
       </div>
 
       <div class="mb-8 flex items-center justify-between">
-        <p class="font-bold">FILKOM EVENT</p>
+        <p class="font-bold">Event Mendatang</p>
         <button onclick="location.href='/list-event'" class="flex items-center gap-2 text-[18px] font-medium  hover:scale-105 duration-200 cursor-pointer">
           Tampilkan Semua
           <i data-lucide="ChevronRight" class="w-6"></i>
