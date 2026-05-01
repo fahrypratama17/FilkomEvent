@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Service\DashboardService;
 use App\Models\Category;
 use App\Models\Event;
 
@@ -22,7 +23,7 @@ class DashboardController extends Controller {
     ];
   }
 
-  public function index() {
+  public function index(DashboardService $dashboardService) {
     $events = Event::with('category')->latest()->take(3)->get();
 
     $iconMap = [
@@ -32,6 +33,8 @@ class DashboardController extends Controller {
       'Frontend Development' => 'LayoutDashboard',
       'Backend Development' => 'Server',
     ];
+
+    $categoryStats = $dashboardService->getCategoryStats(auth()->id());
 
     $categories = Category::withCount('events')
       ->orderByDesc('events_count')
@@ -47,6 +50,7 @@ class DashboardController extends Controller {
       'settingItems' => $this->getSetting(),
       'events' => $events,
       'categories' => $categories,
+      'categoryStats' => $categoryStats,
     ]);
   }
 

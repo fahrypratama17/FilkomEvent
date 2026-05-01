@@ -11,9 +11,9 @@
 <body>
 @php
   $stats = [
-      ['value' => '14', 'label' => 'Events attended'],
-      ['value' => '08', 'label' => 'Certificates obtained'],
-      ['value' => '04', 'label' => 'Upcoming events'],
+      ['value' => '14', 'label' => 'Acara yang Diikuti', 'icon' => 'UserRound'],
+      ['value' => '08', 'label' => 'Sertifikat yang Diperoleh', 'icon' => 'Award'],
+      ['value' => '04', 'label' => 'Acara Mendatang', 'icon' => 'Calendar'],
   ];
 @endphp
 
@@ -74,7 +74,7 @@
 
           <div class="space-y-7 ">
             @foreach ($categories as $category)
-              <div class="flex items-center justify-between rounded-[20px] bg-[#ECECEC] px-6 py-5 border-2 border-white/20">
+              <div class="flex items-center justify-between rounded-[20px] bg-[#ECECEC] px-6 py-5 border-2 border-white/20 hover:scale-105 duration-300">
                 <div class="flex items-center gap-6">
                   <div>
                     <i class="text-orange-550 w-8 h-8" data-lucide="{{ $category->icon }}"></i>
@@ -89,25 +89,113 @@
           </div>
         </div>
 
-        <div class="rounded-3xl bg-[#16B6D9] px-9 py-9 shadow-sm">
+        <div class="flex flex-col gap-4 rounded-3xl bg-[#16B6D9] px-9 py-9 h-full border-2 border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.4)]">
           <div class="mb-9 grid grid-cols-3 gap-9">
             @foreach ($stats as $item)
-              <div class="flex h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white">
-                <div>
-                  <div class="mb-4 text-[54px] font-extrabold leading-none">{{ $item['value'] }}</div>
-                  <div class="text-[17px] leading-snug">{{ $item['label'] }}</div>
+              <div class="relative flex flex-col h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)]">
+                <div class="absolute top-4 right-4 opacity-40">
+                  <i data-lucide="{{ $item['icon'] }}" class="w-6 h-6"></i>
                 </div>
+                <div class="mb-4 text-[54px] font-extrabold leading-none">{{ $item['value'] }}</div>
+                <div class="text-lg text-white/80">{{ $item['label'] }}</div>
               </div>
             @endforeach
           </div>
 
+          <div class="rounded-[28px] bg-[#FF6A27] h-full">
+            <div class="flex flex-col items-center justify-center h-full gap-6">
 
-          <div class="h-52.5 overflow-hidden rounded-[28px] bg-[#FF6A27]">
+              <div class="relative w-44 h-44">
+                <div id="donutChart" class="absolute inset-0 rounded-full"></div>
 
+                <div class="absolute inset-8 bg-[#FF6A27] rounded-full flex flex-col items-center justify-center text-white">
+                  <p class="text-xs opacity-80">Total</p>
+                  <p class="text-xl font-bold" id="totalEvents">0</p>
+                </div>
+              </div>
+
+              <div id="chartLegend" class="flex flex-wrap justify-center gap-4 text-white text-xs"></div>
+
+              <div id="tooltip"
+                   class="fixed hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50">
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
     </main>
   </div>
+
+<script>
+  const categoryData = @json($categoryStats);
+
+  const chart = document.getElementById('donutChart');
+  const legend = document.getElementById('chartLegend');
+  const totalText = document.getElementById('totalEvents');
+  const tooltip = document.getElementById('tooltip');
+
+  const colors = [
+    '#1E90FF',
+    '#FFD700',
+    '#FF4D4D',
+    '#00C49F',
+    '#A78BFA'
+  ];
+
+  const total = categoryData.reduce((sum, item) => sum + parseInt(item.total), 0);
+  totalText.innerText = total;
+
+  if (total === 0) {
+    chart.style.background = '#ddd';
+    legend.innerHTML = '<p class="text-white/70">Belum ada data</p>';
+  } else {
+    let currentPercent = 0;
+    let gradientParts = [];
+
+    categoryData.forEach((item, index) => {
+      const percent = (item.total / total) * 100;
+      const start = currentPercent;
+      const end = currentPercent + percent;
+      const color = colors[index % colors.length];
+
+      gradientParts.push(`${color} ${start}% ${end}%`);
+
+      // Legend element
+      const div = document.createElement('div');
+      div.className = "flex items-center gap-2 cursor-pointer";
+      div.innerHTML = `
+        <span class="w-3 h-3 rounded-full" style="background:${color}"></span>
+        ${item.category_name}
+      `;
+
+      // 🔥 Tooltip events
+      div.addEventListener('mousemove', (e) => {
+        tooltip.classList.remove('hidden');
+        tooltip.innerHTML = `
+          <strong>${item.category_name}</strong><br>
+          ${item.total} events<br>
+          ${percent.toFixed(1)}%
+        `;
+        tooltip.style.top = (e.clientY + 12) + 'px';
+        tooltip.style.left = (e.clientX + 12) + 'px';
+      });
+
+      div.addEventListener('mouseleave', () => {
+        tooltip.classList.add('hidden');
+      });
+
+      legend.appendChild(div);
+
+      currentPercent = end;
+    });
+
+    // Animasi chart
+    chart.style.transition = 'background 1s ease';
+    setTimeout(() => {
+      chart.style.background = `conic-gradient(${gradientParts.join(',')})`;
+    }, 200);
+  }
+</script>
 </body>
 </html>

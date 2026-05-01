@@ -22,6 +22,7 @@ import {
   Database,
   LayoutDashboard,
   Server,
+  Calendar,
 } from "lucide";
 
 createIcons({
@@ -48,5 +49,6 @@ createIcons({
     Database,
     LayoutDashboard,
     Server,
+    Calendar,
   },
 });
