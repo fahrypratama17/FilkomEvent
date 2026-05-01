@@ -4,3 +4,4 @@ import "./toast.js";
 import "./counter.js";
 import "./whatsapp.js";
 import "./chart.js";
+import "./togglePassword.js";

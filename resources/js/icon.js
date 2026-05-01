@@ -23,6 +23,8 @@ import {
   LayoutDashboard,
   Server,
   Calendar,
+  Eye,
+  EyeOff,
 } from "lucide";
 
 createIcons({
@@ -50,5 +52,7 @@ createIcons({
     LayoutDashboard,
     Server,
     Calendar,
+    Eye,
+    EyeOff,
   },
 });
