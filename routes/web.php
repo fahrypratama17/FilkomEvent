@@ -41,4 +41,6 @@ Route::middleware('auth')->group(function (): void {
 
 Route::middleware(['auth', 'admin'])->group(function (): void {
     Route::get('/admin/dashboard', fn() => view('AdminDashboard'))->name('admin.dashboard');
+    
 });
+Route::get('/EventsManagement', fn() => view('EventsManagement'))->name('events.management');
