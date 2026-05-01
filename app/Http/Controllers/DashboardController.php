@@ -90,13 +90,6 @@ class DashboardController extends Controller {
     ]);
   }
 
-  public function events() {
-    return view('Mahasiswa.listEvent', [
-      'menuItems' => $this->getMenu(),
-      'settingItems' => $this->getSetting(),
-    ]);
-  }
-
   private function getSetting() {
     return [
       ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound'],

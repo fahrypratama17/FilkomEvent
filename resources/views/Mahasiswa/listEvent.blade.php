@@ -6,66 +6,7 @@
     <title>Filkom Event - List Event</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-[#EAEAEA] text-slate-900">
-    @php
-        $events = [
-            [
-                'title' => 'Tech Innovation Summit 2025',
-                'poster_label' => 'WORKSHOP',
-                'poster' => 'assets/events/list-event-1.png',
-                'schedule' => 'March 15, 2025 • 09:00 WIB',
-                'organizer' => 'Computer Science Department',
-                'status_primary' => 'Upcoming',
-                'status_secondary' => 'Open',
-            ],
-            [
-                'title' => 'Digital Marketing Workshop',
-                'poster_label' => 'WORKSHOP',
-                'poster' => 'assets/events/list-event-2.png',
-                'schedule' => 'March 15, 2025 • 09:00 WIB',
-                'organizer' => 'Computer Science Department',
-                'status_primary' => 'Ongoing',
-                'status_secondary' => 'Full',
-            ],
-            [
-                'title' => 'Tech Innovation Summit 2025',
-                'poster_label' => 'WORKSHOP',
-                'poster' => 'assets/events/list-event-3.png',
-                'schedule' => 'March 15, 2025 • 09:00 WIB',
-                'organizer' => 'Computer Science Department',
-                'status_primary' => 'Completed',
-                'status_secondary' => 'Closed',
-            ],
-            [
-                'title' => 'Tech Innovation Summit 2025',
-                'poster_label' => 'WORKSHOP',
-                'poster' => 'assets/events/list-event-4.png',
-                'schedule' => 'March 15, 2025 • 09:00 WIB',
-                'organizer' => 'Computer Science Department',
-                'status_primary' => 'Upcoming',
-                'status_secondary' => 'Open',
-            ],
-            [
-                'title' => 'Tech Innovation Summit 2025',
-                'poster_label' => 'WORKSHOP',
-                'poster' => 'assets/events/list-event-5.png',
-                'schedule' => 'March 15, 2025 • 09:00 WIB',
-                'organizer' => 'Computer Science Department',
-                'status_primary' => 'Upcoming',
-                'status_secondary' => 'Open',
-            ],
-            [
-                'title' => 'Tech Innovation Summit 2025',
-                'poster_label' => 'WORKSHOP',
-                'poster' => 'assets/events/list-event-6.png',
-                'schedule' => 'March 15, 2025 • 09:00 WIB',
-                'organizer' => 'Computer Science Department',
-                'status_primary' => 'Upcoming',
-                'status_secondary' => 'Open',
-            ],
-        ];
-    @endphp
-
+<body>
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
 
       @include('components.sidebarMahasiswa', [
@@ -123,51 +64,63 @@
 
             <section class="pb-6">
                 <div class="grid grid-cols-3 gap-x-4 gap-y-8">
-                    @foreach ($events as $event)
-                        <article class="overflow-hidden rounded-[10px] border border-[#D8D8D8] bg-[#F7F7F7] shadow-sm">
-                            <div class="flex h-[170px] items-center justify-center overflow-hidden bg-[#D9D9D9] text-center text-white/80">
-                                <div class="hidden h-full w-full items-center justify-center text-[28px] font-medium tracking-wide">
-                                    {{ $event['poster_label'] }}
-                                </div>
-                            </div>
+                  @foreach ($events as $event)
+                    <article class="w-full h-full flex flex-col gap-4 bg-white/70 backdrop-blur-lg p-4 border-2 border-white rounded-3xl shadow-xl hover:scale-103 hover:shadow-2xl transition-all duration-200">
 
-                            <div class="px-4 py-4">
-                                <div class="mb-2 flex items-start justify-between gap-3">
-                                    <h2 class="max-w-[210px] text-[16px] font-medium leading-[1.45] text-[#2D2D2D]">
-                                        {{ $event['title'] }}
-                                    </h2>
-                                    <div class="space-y-1">
-                                        <div class="rounded-full bg-[#4E74FF] px-4 py-[4px] text-center text-[12px] font-medium text-white">
-                                            {{ $event['status_primary'] }}
-                                        </div>
-                                        <div class="rounded-full bg-[#FF6A27] px-4 py-[4px] text-center text-[12px] font-medium text-white">
-                                            {{ $event['status_secondary'] }}
-                                        </div>
-                                    </div>
-                                </div>
+                      <div class="relative">
+                        <img src="{{ asset($event->image_url ?? 'images/default.jpg') }}"
+                             alt="{{ $event->title }}"
+                             class="w-full h-70 object-cover rounded-2xl">
 
-                                <div class="mb-3 space-y-3 text-[12px] text-[#666666]">
-                                    <div class="flex items-center gap-2">
-                                        <span>{{ $event['schedule'] }}</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span>{{ $event['organizer'] }}</span>
-                                    </div>
-                                </div>
+                        <p class="absolute top-2 left-2 bg-orange-550 p-2 text-[12px] rounded-2xl font-bold">
+                          {{ $event->category->category_name ?? 'No Category' }}
+                        </p>
+                      </div>
 
-                                <div class="flex items-center gap-4">
-                                    <a
-                                        href="/detail-event-design"
-                                        class="flex h-[38px] flex-1 items-center justify-center rounded-[6px] bg-[#233E98] text-[14px] font-medium text-white"
-                                    >
-                                        See Details
-                                    </a>
-                                    <button class="flex h-[38px] w-[38px] items-center justify-center rounded-[6px] bg-[#233E98] shadow-sm">
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    @endforeach
+                      <div class="flex flex-col gap-2 px-2">
+                        <p class="text-black/60">
+                          {{ \Carbon\Carbon::parse($event->event_start)->format('d M, Y') }}
+                        </p>
+
+                        <h3 class="text-[18px] font-bold">
+                          {{ $event->title }}
+                        </h3>
+
+                        <p class="text-[14px] font-light line-clamp-2 text-black/60">
+                          {{ $event->short_description ?? '-' }}
+                        </p>
+                      </div>
+
+                      <div class="flex items-center justify-between px-2 text-[14px] mb-8">
+                        <p class="flex items-center gap-1">
+                          <i data-lucide="UsersRound" class="w-4 h-4 text-orange-550"></i>
+                          {{ $event->quota }} participants
+                        </p>
+
+                        <p class="flex items-center gap-1">
+                          <i data-lucide="Clock" class="w-4 h-4 text-orange-550"></i>
+                          <span>{{ \Carbon\Carbon::parse($event->event_start)->format('H:i') }}</span>
+                          -
+                          <span>{{ \Carbon\Carbon::parse($event->event_end)->format('H:i') }} WIB</span>
+                        </p>
+                      </div>
+
+                      <div class="flex gap-4 mt-auto">
+                        <a href="/events/{{ $event->event_id }}"
+                           class="w-full text-center bg-orange-550 px-4 py-2 rounded-2xl cursor-pointer hover:scale-105 text-white duration-300">
+                          Detail Event
+                        </a>
+
+                        <button class="bg-white p-2 rounded-2xl cursor-pointer hover:scale-105 duration-300">
+                          <i data-lucide="Bookmark"></i>
+                        </button>
+                      </div>
+
+                    </article>
+                  @endforeach
+                </div>
+                <div class="mt-10">
+                  {{ $events->links() }}
                 </div>
             </section>
         </main>

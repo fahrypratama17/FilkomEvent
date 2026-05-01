@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -30,7 +31,8 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 
   Route::get('/registration-event', fn() => view('Mahasiswa.registrationEvent'));
 
-  Route::get('/list-event', [DashboardController::class, 'events'])->name('events.index');
+  Route::get('/events', [EventController::class, 'index'])->name('events.index');
+  Route::get('/evets/{id}', [EventController::class, 'show']);
 
   Route::get('/payment', fn() => view('Mahasiswa.payment'));
 
