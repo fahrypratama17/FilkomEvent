@@ -106,7 +106,7 @@
                       </div>
 
                       <div class="flex gap-4 mt-auto">
-                        <a href="/events/{{ $event->event_id }}"
+                        <a href='{{ route('events.show', $event->event_id) }}'
                            class="w-full text-center bg-orange-550 px-4 py-2 rounded-2xl cursor-pointer hover:scale-105 text-white duration-300">
                           Detail Event
                         </a>

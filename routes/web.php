@@ -32,7 +32,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/registration-event', fn() => view('Mahasiswa.registrationEvent'));
 
   Route::get('/events', [EventController::class, 'index'])->name('events.index');
-  Route::get('/evets/{id}', [EventController::class, 'show']);
+  Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
 
   Route::get('/payment', fn() => view('Mahasiswa.payment'));
 
