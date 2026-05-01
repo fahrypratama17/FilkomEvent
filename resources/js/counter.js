@@ -12,7 +12,7 @@ counters.forEach((counter) => {
       const progress = Math.min((timestamp - timeStart) / duration, 1);
 
       const currentNumber = Math.floor(progress * (target - start) + start);
-      counter.innerText = currentNumber + "+";
+      counter.innerText = currentNumber;
 
       if (progress < 1) {
         window.requestAnimationFrame(step);

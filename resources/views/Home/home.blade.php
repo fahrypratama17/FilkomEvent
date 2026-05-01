@@ -39,9 +39,27 @@
       <div class="flex flex-col gap-12">
         <img src="{{ asset('icon/Person_1.svg') }}" alt="Person 1">
         <div class="flex gap-8">
-          <div class="flex flex-col items-center justify-center text-center w-full py-12 bg-orange-550 text-white text-xl rounded-[20px] shadow-[6px_6px_0px_rgba(0,0,0,0.2)] font-extrabold"><p class="counter" data-target="125">0+</p><p>Events</p></div>
-          <div class="flex flex-col items-center justify-center text-center w-full py-12 bg-orange-550 text-white font-extrabold text-xl rounded-[20px] shadow-[6px_6px_0px_rgba(0,0,0,0.2)]"><p class="counter" data-target="300">0+</p><p>Students</p></div>
-          <div class="flex flex-col items-center justify-center text-center w-full py-12 bg-orange-550 text-white font-extrabold text-xl rounded-[20px] shadow-[6px_6px_0px_rgba(0,0,0,0.2)]"><p class="counter" data-target="15">0+</p><p>Category Events</p></div>
+          <div class="flex flex-col items-center justify-center text-center w-full py-12 bg-orange-550 text-white text-xl rounded-[20px] shadow-[6px_6px_0px_rgba(0,0,0,0.2)] font-extrabold">
+            <div class="flex">
+              <p class="counter" data-target="125">0+</p>
+              <p>+</p>
+            </div>
+            <p>Events</p>
+          </div>
+          <div class="flex flex-col items-center justify-center text-center w-full py-12 bg-orange-550 text-white font-extrabold text-xl rounded-[20px] shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+            <div class="flex">
+              <p class="counter" data-target="300">0+</p>
+              <p>+</p>
+            </div>
+            <p>Students</p>
+          </div>
+          <div class="flex flex-col items-center justify-center text-center w-full py-12 bg-orange-550 text-white font-extrabold text-xl rounded-[20px] shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+            <div class="flex">
+              <p class="counter" data-target="15">0+</p>
+              <p>+</p>
+            </div>
+            <p>Category Events</p>
+          </div>
         </div>
       </div>
     </div>
@@ -77,9 +95,7 @@
   <section id="testimonials" class="mt-40 flex flex-col gap-48">
     <h1 class="text-primary-dark text-6xl text-center font-bold">Testimoni</h1>
     <div class="relative w-full h-70 bg-tertiary rounded-[50px] shadow-2xl shadow-blue-900/20">
-      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20"
-           style="background-image: radial-gradient(#001d3d 2px, transparent 2px); background-size: 20px 20px;">
-      </div>
+      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20 dot"></div>
 
       <div class="mx-auto w-[60%] grid grid-cols-[1.5fr_0.8fr]">
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">
@@ -94,9 +110,7 @@
     </div>
 
     <div class="relative w-full h-70 bg-tertiary rounded-[50px] shadow-2xl shadow-blue-900/20">
-      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20"
-           style="background-image: radial-gradient(#001d3d 2px, transparent 2px); background-size: 20px 20px;">
-      </div>
+      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20 dot"></div>
 
       <div class="mx-auto w-[60%] grid grid-cols-[0.8fr_1.5fr]">
         <div class="flex items-end justify-center h-100 w-full bg-orange-550 -translate-y-30 rounded-tr-[50px] rounded-bl-[50px] shadow-lg">
@@ -111,9 +125,7 @@
     </div>
 
     <div class="relative w-full h-70 bg-tertiary rounded-[50px] shadow-2xl shadow-blue-900/20">
-      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20"
-           style="background-image: radial-gradient(#001d3d 2px, transparent 2px); background-size: 20px 20px;">
-      </div>
+      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20 dot"></div>
 
       <div class="mx-auto w-[60%] grid grid-cols-[1.5fr_0.8fr]">
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">

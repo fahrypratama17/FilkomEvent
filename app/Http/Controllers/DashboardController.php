@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Service\DashboardService;
 use App\Models\Category;
+use App\Models\Registration;
 use App\Models\Event;
 
 class DashboardController extends Controller {
@@ -36,6 +37,26 @@ class DashboardController extends Controller {
 
     $categoryStats = $dashboardService->getCategoryStats(auth()->id());
 
+    $stats = [
+      [
+        'value' => Registration::where('user_id', auth()->id())->count(),
+        'label' => 'Acara yang Diikuti',
+        'icon' => 'UserRound'
+      ],
+      [
+        'value' => Registration::where('user_id', auth()->id())
+          ->where('registration_status', 'Selesai')
+          ->count(),
+        'label' => 'Sertifikat yang Diperoleh',
+        'icon' => 'Award'
+      ],
+      [
+        'value' => Event::where('event_start', '>', now())->count(),
+        'label' => 'Acara Mendatang',
+        'icon' => 'Calendar'
+      ],
+    ];
+
     $categories = Category::withCount('events')
       ->orderByDesc('events_count')
       ->take(4)
@@ -51,6 +72,7 @@ class DashboardController extends Controller {
       'events' => $events,
       'categories' => $categories,
       'categoryStats' => $categoryStats,
+      'stats' => $stats,
     ]);
   }
 

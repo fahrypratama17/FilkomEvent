@@ -9,14 +9,6 @@
   <title>Filkom Event - Dashboard</title>
 </head>
 <body>
-@php
-  $stats = [
-      ['value' => '14', 'label' => 'Acara yang Diikuti', 'icon' => 'UserRound'],
-      ['value' => '08', 'label' => 'Sertifikat yang Diperoleh', 'icon' => 'Award'],
-      ['value' => '04', 'label' => 'Acara Mendatang', 'icon' => 'Calendar'],
-  ];
-@endphp
-
   <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
     <div class="absolute w-full h-full opacity-4"
          style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
@@ -67,7 +59,7 @@
       </section>
 
       <section class="grid grid-cols-[0.5fr_1fr] gap-12 pb-6">
-        <div class="rounded-3xl bg-linear-to-br from-secondary-lighter to-primary-dark px-7 py-7 text-white shadow-[0_25px_60px_rgba(0,0,0,0.4)] border border-white/80">
+        <div class="rounded-3xl bg-linear-to-br from-secondary-lighter to-primary-dark px-7 py-7 text-white shadow-[0_25px_60px_rgba(0,0,0,0.4)] border border-white/80 overflow-hidden">
           <h2 class="mb-6 text-[28px] font-extrabold leading-tight">
             Kategori Acara Populer
           </h2>
@@ -89,38 +81,33 @@
           </div>
         </div>
 
-        <div class="flex flex-col gap-4 rounded-3xl bg-[#16B6D9] px-9 py-9 h-full border-2 border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.4)]">
+        <div class="flex flex-col gap-4 rounded-3xl bg-linear-to-br from-primary-dark via-primary-lighter to-secondary-lighter px-9 py-9 h-full border-2 border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.4)] overflow-hidden">
           <div class="mb-9 grid grid-cols-3 gap-9">
             @foreach ($stats as $item)
-              <div class="relative flex flex-col h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)]">
-                <div class="absolute top-4 right-4 opacity-40">
-                  <i data-lucide="{{ $item['icon'] }}" class="w-6 h-6"></i>
+              <div class="relative flex flex-col h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)] hover:scale-105 hover:shadow-none duration-300">
+                <div class="absolute top-4 right-4 opacity-40 hover:opacity-100">
+                  <i data-lucide="{{ $item['icon'] }}" class="w-8 h-8"></i>
                 </div>
-                <div class="mb-4 text-[54px] font-extrabold leading-none">{{ $item['value'] }}</div>
+                <div class="mb-4 text-[54px] font-extrabold leading-none counter" data-target={{ $item['value'] }}>0</div>
                 <div class="text-lg text-white/80">{{ $item['label'] }}</div>
               </div>
             @endforeach
           </div>
 
-          <div class="rounded-[28px] bg-[#FF6A27] h-full">
+          <div class="rounded-[28px] bg-white/40 backdrop-blur-2xl border border-white h-full">
             <div id="chartRoot" data-stats='@json($categoryStats)'></div>
             <div class="flex flex-col items-center justify-center h-full gap-6">
-
               <div class="relative w-44 h-44">
                 <div id="donutChart" class="absolute inset-0 rounded-full"></div>
-
-                <div class="absolute inset-8 bg-[#FF6A27] rounded-full flex flex-col items-center justify-center text-white">
-                  <p class="text-xs opacity-80">Total</p>
+                <div class="absolute inset-8 bg-white rounded-full flex flex-col items-center justify-center text-black">
+                  <p class="text-xl opacity-80">Total</p>
                   <p class="text-xl font-bold" id="totalEvents">0</p>
                 </div>
               </div>
-
               <div id="chartLegend" class="flex flex-wrap justify-center gap-4 text-white text-xs"></div>
 
-              <div id="tooltip"
-                   class="fixed hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50">
+              <div id="tooltip" class="fixed hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50">
               </div>
-
             </div>
           </div>
         </div>

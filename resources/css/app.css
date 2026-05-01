@@ -66,3 +66,8 @@ body {
   background-size: 200% 100%;
   animation: shimmer 5s linear infinite;
 }
+
+.dot {
+  background-image: radial-gradient(#001d3d 2px, transparent 2px);
+  background-size: 20px 20px;
+}
