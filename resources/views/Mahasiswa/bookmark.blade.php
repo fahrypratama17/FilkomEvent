@@ -6,54 +6,7 @@
     <title>Filkom Event - Bookmark</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-[#EAEAEA] text-slate-900">
-    @php
-        $bookmarks = [
-        [
-            'title' => 'App Design',
-            'description' => 'Learn App Design from our expert trainer',
-            'participants' => '50 participant',
-            'time' => '13:00 - 17:00 WIB',
-            'image' => 'assets/events/event-1.png',
-        ],
-        [
-            'title' => 'App Design',
-            'description' => 'Learn App Design from our expert trainer',
-            'participants' => '50 participant',
-            'time' => '13:00 - 17:00 WIB',
-            'image' => 'assets/events/event-2.png',
-        ],
-        [
-            'title' => 'App Design',
-            'description' => 'Learn App Design from our expert trainer',
-            'participants' => '50 participant',
-            'time' => '13:00 - 17:00 WIB',
-            'image' => 'assets/events/event-3.png',
-        ],
-        [
-            'title' => 'App Design',
-            'description' => 'Learn App Design from our expert trainer',
-            'participants' => '50 participant',
-            'time' => '13:00 - 17:00 WIB',
-            'image' => 'assets/events/event-4.png',
-        ],
-        [
-            'title' => 'App Design',
-            'description' => 'Learn App Design from our expert trainer',
-            'participants' => '50 participant',
-            'time' => '13:00 - 17:00 WIB',
-            'image' => 'assets/events/event-5.png',
-        ],
-        [
-            'title' => 'App Design',
-            'description' => 'Learn App Design from our expert trainer',
-            'participants' => '50 participant',
-            'time' => '13:00 - 17:00 WIB',
-            'image' => 'assets/events/event-6.png',
-        ],
-    ];
-    @endphp
-
+<body>
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
 
       @include('components.sidebarMahasiswa', [
@@ -88,44 +41,57 @@
 
             <section class="pb-6">
                 <div class="mx-auto grid max-w-[1040px] grid-cols-2 gap-x-[56px] gap-y-[56px]">
-                    @foreach ($bookmarks as $card)
-                        <article class="w-full rounded-[24px] bg-[#14B3D8] px-7 py-4 shadow-sm">
-                            <div class="flex items-center gap-7">
-                                <div class="h-[170px] w-[111px] shrink-0 overflow-hidden rounded-[22px] bg-[#ECECEC]">
+                    @foreach ($bookmarks as $bookmark)
+                    <article class="w-full rounded-[24px] bg-[#14B3D8] px-7 py-4 shadow-sm">
+                      <div class="flex items-center gap-7">
 
-                                </div>
+                        <!-- IMAGE -->
+                        <img src="{{ asset($bookmark->image_url) }}"
+                             class="h-[170px] w-[111px] object-cover rounded-[22px]">
 
-                                <div class="min-w-0 flex-1 pt-2">
-                                    <h2 class="mb-3 text-[16px] font-bold text-[#032A83]">{{ $card['title'] }}</h2>
+                        <div class="flex-1">
 
-                                    <p class="mb-4 max-w-[170px] text-[10px] leading-[1.35] text-[#EAF8FF]">
-                                        {{ $card['description'] }}
-                                    </p>
+                          <!-- TITLE -->
+                          <h2 class="mb-3 text-[16px] font-bold text-[#032A83]">
+                            {{ $bookmark->title }}
+                          </h2>
 
-                                    <div class="mb-4 space-y-3 text-[10px] text-[#EAF8FF]">
-                                        <div class="flex items-center gap-3">
+                          <!-- DESC -->
+                          <p class="mb-4 text-[10px] text-[#EAF8FF]">
+                            {{ $bookmark->short_description }}
+                          </p>
 
-                                            <span>{{ $card['participants'] }}</span>
-                                        </div>
-
-                                        <div class="flex items-center gap-3">
-
-                                            <span>{{ $card['time'] }}</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center gap-4">
-                                        <button class="h-[36px] flex-1 rounded-[12px] bg-[#FF6A27] px-5 text-[14px] font-semibold text-white">
-                                            See Details
-                                        </button>
-
-                                        <button class="flex h-[36px] w-[36px] items-center justify-center rounded-[10px] bg-white shadow-sm">
-
-                                        </button>
-                                    </div>
-                                </div>
+                          <!-- INFO -->
+                          <div class="mb-4 text-[10px] text-white">
+                            <div>{{ $bookmark->quota }} participants</div>
+                            <div>
+                              {{ \Carbon\Carbon::parse($bookmark->event_start)->format('H:i') }}
+                              -
+                              {{ \Carbon\Carbon::parse($bookmark->event_end)->format('H:i') }} WIB
                             </div>
-                        </article>
+                          </div>
+
+                          <!-- BUTTON -->
+                          <div class="flex gap-4">
+
+                            <a href="{{ route('bookmark.toggle', $bookmark->event_id) }}"
+                               class="flex-1 bg-orange-500 text-white text-center py-2 rounded-xl">
+                              See Details
+                            </a>
+
+                            <!-- UNBOOKMARK -->
+                            <form action="{{ route('bookmark.toggle', $bookmark->event_id) }}" method="POST">
+                              @csrf
+                              <button class="bg-white p-2 rounded-xl">
+                                ❌
+                              </button>
+                            </form>
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </article>
                     @endforeach
                 </div>
 

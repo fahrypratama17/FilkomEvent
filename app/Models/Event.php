@@ -41,4 +41,15 @@ class Event extends Model
   public function category() {
     return $this->belongsTo(Category::class, 'category_id', 'category_id');
   }
+
+  public function bookmarkedBy() {
+    return $this->belongsToMany(
+      User::class,
+      'bookmarks',
+      'event_id',
+      'user_id',
+      'event_id',
+      'user_id'
+    );
+  }
 }

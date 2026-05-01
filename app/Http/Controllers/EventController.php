@@ -3,52 +3,65 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Illuminate\Foundation\Console\EventListCommand;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    private function getMenu() {
-      $role = auth()->user()->role;
+  private function getMenu() {
+    $role = auth()->user()->role;
 
-      if ($role === 'admin') {
-        return [
-          ['label' => 'Dashboard', 'route' => 'Admin.AdminDashboard', 'icon' => 'UserRound']
-        ];
-      }
-
+    if ($role === 'admin') {
       return [
-        ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
-        ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
-        ['label' => 'History', 'route' => 'history', 'icon' => 'History'],
-        ['label' => 'List Event', 'route' => 'events.index', 'icon' => 'List'],
+        ['label' => 'Dashboard', 'route' => 'Admin.AdminDashboard', 'icon' => 'UserRound']
       ];
     }
 
-    private function getSetting() {
-      return [
-        ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound']
-      ];
+    return [
+      ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
+      ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
+      ['label' => 'History', 'route' => 'history', 'icon' => 'History'],
+      ['label' => 'List Event', 'route' => 'events.index', 'icon' => 'List'],
+    ];
+  }
+
+  private function getSetting() {
+    return [
+      ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound']
+    ];
+  }
+
+  public function index() {
+    $events = Event::with('category')
+      ->latest()
+      ->paginate(6);
+
+    return view('Mahasiswa.listEvent', [
+      'events' => $events,
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
+
+  public function show($id) {
+    $event = Event::with('category')->findOrFail($id);
+
+    return view ('Mahasiswa.detailEvent', [
+      'event' => $event,
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
+
+  public function toggleBookmark($id) {
+    $user = auth()->user();
+
+    if ($user->bookmarks()->where('events.event_id', $id)->exists()) {
+      $user->bookmarks()->detach($id);
+    } else {
+      $user->bookmarks()->attach($id);
     }
 
-    public function index() {
-      $events = Event::with('category')
-        ->latest()
-        ->paginate(6);
-
-      return view('Mahasiswa.listEvent', [
-        'events' => $events,
-        'menuItems' => $this->getMenu(),
-        'settingItems' => $this->getSetting(),
-      ]);
-    }
-
-    public function show($id) {
-      $event = Event::with('category')->findOrFail($id);
-
-      return view ('Mahasiswa.detailEvent', [
-        'event' => $event,
-        'menuItems' => $this->getMenu(),
-        'settingItems' => $this->getSetting(),
-      ]);
-    }
+    return back();
+  }
 }

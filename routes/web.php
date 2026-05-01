@@ -37,6 +37,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/payment', fn() => view('Mahasiswa.payment'));
 
   Route::get('/bookmark', [DashboardController::class, 'bookmark'])->name('bookmark');
+  Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
 
   Route::get('/history', [DashboardController::class, 'history'])->name('history');
 });

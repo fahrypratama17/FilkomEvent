@@ -111,9 +111,12 @@
                           Detail Event
                         </a>
 
-                        <button class="bg-white p-2 rounded-2xl cursor-pointer hover:scale-105 duration-300">
-                          <i data-lucide="Bookmark"></i>
-                        </button>
+                        <form action="{{ route('bookmark.toggle', $event->event_id) }}" method="POST">
+                          @csrf
+                          <button class="bg-white p-2 rounded-2xl cursor-pointer hover:scale-105 duration-300">
+                            <i data-lucide="Bookmark"></i>
+                          </button>
+                        </form>
                       </div>
 
                     </article>

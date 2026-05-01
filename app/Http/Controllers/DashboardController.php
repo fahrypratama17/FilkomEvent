@@ -77,7 +77,14 @@ class DashboardController extends Controller {
   }
 
   public function bookmark() {
+    $bookmarks = auth()->user()
+      ->bookmarks()
+      ->with('category')
+      ->latest()
+      ->get();
+
     return view('Mahasiswa.bookmark', [
+      'bookmarks' => $bookmarks,
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
     ]);
