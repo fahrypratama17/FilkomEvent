@@ -44,3 +44,4 @@ Route::middleware(['auth', 'admin'])->group(function (): void {
     
 });
 Route::get('/EventsManagement', fn() => view('EventsManagement'))->name('events.management');
+Route::get('/TambahEvent', fn() => view('TambahEvent'))->name('tambah.event');
