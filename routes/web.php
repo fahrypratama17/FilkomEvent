@@ -13,13 +13,17 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', fn() => view('Auth.register'))->name('register.view');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/forgot-password', fn() => view('Auth.forgotPassword'));
+Route::get('/forgot-password', fn() => view('Auth.forgotPassword'))->name('forgotPassword');
 
-Route::get('/reset-password', fn() => view('Auth.resetPassword'));
+Route::get('/reset-password/{token}', fn($token) => view('Auth.resetPassword', compact('token')))->name('resetPassword');
+
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgotPassword.process');
+
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('resetPassword.process');
 
 // Routing For Landing Page
 Route::get('/', fn() => view('Home.home'));
-Route::post('/kirim-email', [AuthController::class, 'kirimEmail'])->name('kirim-email');
+Route::post('/kirim-email', [AuthController::class, 'sendEmail'])->name('kirim-email');
 
 // Routing For User Page
 Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {

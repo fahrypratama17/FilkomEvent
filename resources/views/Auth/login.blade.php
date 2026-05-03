@@ -43,7 +43,7 @@
             <i id="eye-close-password" data-lucide="eyeOff" class="absolute inset-0 transition-all duration-300 ease-in-out opacity-0 scale-75"></i>
           </button>
         </div>
-        <a href=""><p class="text-white hover:underline text-end">Lupa Password</p></a>
+        <a href="{{ route("forgotPassword") }}"><p class="text-white hover:underline text-end">Lupa Password</p></a>
         <button class="w-full bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Masuk</button>
       </form>
       <div class="mx-auto w-[80%] flex flex-col gap-4">
