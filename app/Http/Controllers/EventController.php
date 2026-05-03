@@ -32,9 +32,9 @@ class EventController extends Controller
   }
 
   public function index() {
-    $events = Event::with('category')
-      ->latest()
-      ->paginate(6);
+    $events = Event::with(['category', 'bookmarkedBy' => function ($query) {
+      $query->where('user_id', auth()->id());
+    }])->latest()->paginate(6);
 
     return view('Mahasiswa.listEvent', [
       'events' => $events,
@@ -62,6 +62,8 @@ class EventController extends Controller
       $user->bookmarks()->attach($id);
     }
 
-    return back();
+    return response()->json([
+      'status' => 'ok'
+    ]);
   }
 }

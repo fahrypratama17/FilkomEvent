@@ -16,14 +16,14 @@
 
         <main class="flex-1 overflow-y-auto px-[42px] py-8">
             <div class="mb-8 flex items-start justify-between gap-6">
-                <div class="relative w-full max-w-[520px]">
-
-                    <input
-                        type="text"
-                        placeholder="Search here"
-                        class="h-[55px] w-full rounded-[12px] border-0 bg-[#03479B] pl-14 pr-5 text-[16px] text-white placeholder:text-white/85 focus:outline-none"
-                    >
-                </div>
+              <div class="relative w-full max-w-165">
+                <i data-lucide="Search" class="absolute bottom-4 left-4 text-gray-400"></i>
+                <input
+                  type="text"
+                  placeholder="Cari Event..."
+                  class="h-14 w-full rounded-2xl bg-white border pl-14 pr-5 focus:outline-none text-gray-400 placeholder:text-gray-400 active:ring-1 active:ring-primary-lighter focus:ring-1 focus:ring-primary-lighter transition-all duration-300"
+                >
+              </div>
 
                 <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
 

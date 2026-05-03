@@ -5,3 +5,4 @@ import "./counter.js";
 import "./whatsapp.js";
 import "./chart.js";
 import "./togglePassword.js";
+import "./toggleBookmark.js"

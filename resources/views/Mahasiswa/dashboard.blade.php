@@ -5,6 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <title>Filkom Event - Dashboard</title>
 </head>
@@ -21,13 +22,13 @@
 
     <main class="relative flex-1 overflow-y-auto px-12 py-8">
       <header class="mb-8 flex items-start justify-between gap-6">
-        <div class="relative w-full max-w-165">
-          <i data-lucide="Search" class="absolute bottom-4 left-4 text-gray-400"></i>
-          <input
-            type="text"
-            placeholder="Cari Event..."
-            class="h-14 w-full rounded-2xl bg-white border pl-14 pr-5 focus:outline-none text-gray-400 placeholder:text-gray-400 active:ring-1 active:ring-primary-lighter focus:ring-1 focus:ring-primary-lighter transition-all duration-300"
-          >
+        <div class="mb-12 flex items-center gap-5">
+          <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
+          <div class="relative overflow-hidden shimmer bg-linear-to-r from-secondary-lighter via-white/40 to-white/80 p-4 rounded-4xl backdrop-blur-3xl">
+            <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
+              Selamat Datang, <span class="text-[#FF742E]">{{ Auth::user()->name ?? "Mahasiswa" }}</span>
+            </h1>
+          </div>
         </div>
 
         <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
@@ -35,14 +36,7 @@
         </button>
       </header>
 
-      <div class="mb-12 flex items-center gap-5">
-        <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
-        <div class="relative overflow-hidden shimmer bg-linear-to-r from-secondary-lighter via-white/40 to-white/80 p-4 rounded-4xl backdrop-blur-3xl">
-          <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
-            Selamat Datang, <span class="text-[#FF742E]">{{ Auth::user()->name ?? "Mahasiswa" }}</span>
-          </h1>
-        </div>
-      </div>
+
 
       <div class="mb-8 flex items-center justify-between">
         <p class="font-bold">Event Mendatang</p>
