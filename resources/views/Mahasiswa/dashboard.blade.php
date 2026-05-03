@@ -36,11 +36,9 @@
         </button>
       </header>
 
-
-
       <div class="mb-8 flex items-center justify-between">
         <p class="font-bold">Event Mendatang</p>
-        <button onclick="location.href='/list-event'" class="flex items-center gap-2 text-[18px] font-medium  hover:scale-105 duration-200 cursor-pointer">
+        <button onclick="location.href='/events'" class="flex items-center gap-2 text-[18px] font-medium  hover:scale-105 duration-200 cursor-pointer">
           Tampilkan Semua
           <i data-lucide="ChevronRight" class="w-6"></i>
         </button>
@@ -79,7 +77,7 @@
           <div class="mb-9 grid grid-cols-3 gap-9">
             @foreach ($stats as $item)
               <div class="relative flex flex-col h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)] hover:scale-105 hover:shadow-none duration-300">
-                <div class="absolute top-4 right-4 opacity-40 hover:opacity-100">
+                <div class="absolute top-4 right-4 opacity-40 duration-200 hover:opacity-100">
                   <i data-lucide="{{ $item['icon'] }}" class="w-8 h-8"></i>
                 </div>
                 <div class="mb-4 text-[54px] font-extrabold leading-none counter" data-target={{ $item['value'] }}>0</div>
