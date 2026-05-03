@@ -1,3 +1,5 @@
+import { createIcons, icons } from "lucide";
+
 function debounce(func, delay = 500) {
   let timeout;
   return function (...args) {
@@ -22,6 +24,8 @@ if (searchInput) {
 
           const newContent = doc.querySelector("#eventList");
           document.querySelector("#eventList").innerHTML = newContent.innerHTML;
+
+          createIcons({ icons });
         });
     }),
   );
