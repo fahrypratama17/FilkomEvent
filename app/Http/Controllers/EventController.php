@@ -32,9 +32,15 @@ class EventController extends Controller
   }
 
   public function index() {
-    $events = Event::with(['category', 'bookmarkedBy' => function ($query) {
-      $query->where('bookmarks.user_id', auth()->id());
-    }])->latest()->paginate(6);
+    $query = Event::with(['category', 'bookmarkedBy' => function ($q) {
+      $q->where('bookmarks.user_id', auth()->id());
+    }])->latest();
+
+    if (request('search')) {
+      $query->where('title', 'like', '%' . request('search') . '%');
+    }
+
+    $events = $query->paginate(6);
 
     return view('Mahasiswa.list-event', [
       'events' => $events,
