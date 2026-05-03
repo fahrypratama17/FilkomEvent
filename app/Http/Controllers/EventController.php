@@ -36,7 +36,7 @@ class EventController extends Controller
       $query->where('bookmarks.user_id', auth()->id());
     }])->latest()->paginate(6);
 
-    return view('Mahasiswa.listEvent', [
+    return view('Mahasiswa.list-event', [
       'events' => $events,
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
@@ -46,7 +46,7 @@ class EventController extends Controller
   public function show($id) {
     $event = Event::with('category')->findOrFail($id);
 
-    return view ('Mahasiswa.detailEvent', [
+    return view ('Mahasiswa.detail-event', [
       'event' => $event,
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),

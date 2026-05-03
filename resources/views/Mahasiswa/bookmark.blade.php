@@ -9,7 +9,7 @@
 <body>
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
 
-      @include('components.sidebarMahasiswa', [
+      @include('components.sidebar-mahasiswa', [
         'menuItems' => $menuItems,
         'settingItems' => $settingItems
       ])

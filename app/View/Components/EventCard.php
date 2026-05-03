@@ -23,6 +23,6 @@ class EventCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.eventCard');
+        return view('components.event-card');
     }
 }

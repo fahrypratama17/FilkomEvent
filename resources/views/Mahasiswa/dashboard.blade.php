@@ -15,7 +15,7 @@
          style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
     </div>
 
-    @include('components.sidebarMahasiswa', [
+    @include('components.sidebar-mahasiswa', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
@@ -46,7 +46,7 @@
 
       <section class="mb-12 grid grid-cols-3 gap-12">
         @foreach ($events as $card)
-          <x-eventCard :event="$card" />
+          <x-event-card :event="$card" />
         @endforeach
       </section>
 
