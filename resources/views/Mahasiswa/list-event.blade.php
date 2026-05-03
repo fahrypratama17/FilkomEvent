@@ -11,30 +11,37 @@
 </head>
 <body>
   <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
+    <div class="absolute w-full h-full opacity-4"
+         style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
+    </div>
+
     @include('components.sidebarMahasiswa', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
 
-    <main class="flex-1 overflow-y-auto px-[44px] py-8">
-      <div class="mb-6 flex items-start justify-between gap-6">
+    <main class="flex-1 overflow-y-auto px-11 py-8">
+      <header class="mb-8 flex items-start justify-between gap-6">
         <div class="flex items-center gap-5">
-          <div class="flex h-[92px] w-[92px] items-center justify-center overflow-hidden rounded-2xl bg-transparent">
+          <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
+          <div class="relative overflow-hidden shimmer bg-linear-to-r from-secondary-lighter via-white/40 to-white/80 p-4 rounded-4xl backdrop-blur-3xl">
+            <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
+              Portal Event <span class="text-[#FF742E]">Terkini</span>
+            </h1>
           </div>
-          <h1 class="text-[54px] font-extrabold leading-none tracking-tight text-black">
-            Student <span class="text-[#FF742E]">Events</span>
-          </h1>
         </div>
 
-        <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
+        <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
+          <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
         </button>
-      </div>
+      </header>
 
-      <div class="mb-12 relative w-full">
+      <div class="relative w-full mb-12">
+        <i data-lucide="Search" class="absolute bottom-4 left-4 text-gray-400"></i>
         <input
           type="text"
-          placeholder="Search here"
-          class="h-[54px] w-full rounded-[12px] border-0 bg-[#03479B] pl-14 pr-5 text-[16px] text-white placeholder:text-white/85 focus:outline-none"
+          placeholder="Cari Event..."
+          class="h-14 w-full rounded-2xl bg-white border pl-14 pr-5 focus:outline-none text-gray-400 placeholder:text-gray-400 active:ring-1 active:ring-primary-lighter focus:ring-1 focus:ring-primary-lighter transition-all duration-300"
         >
       </div>
 
