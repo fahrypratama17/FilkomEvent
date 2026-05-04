@@ -1,29 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('searchInput');
-  const categoryFilter = document.getElementById('categoryFilter');
-  const eventList = document.getElementById('eventList');
+import { createIcons, icons } from "lucide";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const eventList = document.getElementById("eventList");
 
   let timeout = null;
 
   function fetchEvents() {
-    const search = searchInput ? searchInput.value : '';
-    const category = categoryFilter ? categoryFilter.value : '';
+    const search = searchInput ? searchInput.value : "";
+    const category = categoryFilter ? categoryFilter.value : "";
 
     const params = new URLSearchParams({
       search: search,
-      category: category
+      category: category,
     });
 
     eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
 
     fetch(`?${params.toString()}`, {
       headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
+        "X-Requested-With": "XMLHttpRequest",
+      },
     })
-      .then(response => response.text())
-      .then(data => {
+      .then((response) => response.text())
+      .then((data) => {
         eventList.innerHTML = data;
+        createIcons({ icons });
       })
       .catch(() => {
         eventList.innerHTML = `<p class="text-center col-span-3 text-red-500">Gagal memuat data</p>`;
@@ -31,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (searchInput) {
-    searchInput.addEventListener('keyup', () => {
+    searchInput.addEventListener("keyup", () => {
       clearTimeout(timeout);
       timeout = setTimeout(fetchEvents, 400);
     });
   }
 
   if (categoryFilter) {
-    categoryFilter.addEventListener('change', fetchEvents);
+    categoryFilter.addEventListener("change", fetchEvents);
   }
 });
