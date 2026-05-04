@@ -20,7 +20,7 @@
       'settingItems' => $settingItems
     ])
 
-    <main class="relative flex-1 overflow-y-auto px-12 py-8">
+    <main class="flex-1 overflow-y-auto px-12 py-8">
       <header class="mb-8 flex items-start justify-between gap-6">
         <div class="mb-12 flex items-center gap-5">
           <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">

@@ -11,21 +11,24 @@
 </head>
 <body>
   <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
+    <div class="absolute w-full h-full opacity-4"
+         style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
+    </div>
 
     @include('components.sidebar-mahasiswa', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
 
-    <main class="flex-1 overflow-y-auto px-[42px] py-8">
+    <main class="flex-1 overflow-y-auto px-12 py-8">
       <header class="mb-8 flex items-start justify-between gap-6">
-        <div class="mb-6 flex items-center gap-5">
-          <div class="flex h-[92px] w-[92px] items-center justify-center overflow-hidden rounded-2xl bg-transparent">
-
+        <div class="flex items-center gap-5">
+          <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
+          <div class="relative overflow-hidden shimmer bg-linear-to-r from-secondary-lighter via-white/40 to-white/80 p-4 rounded-4xl backdrop-blur-3xl">
+            <h1 class="text-[32px] font-extrabold leading-none tracking-tight text-black">
+              Event <span class="text-[#FF742E]">Tersimpan</span>
+            </h1>
           </div>
-          <h1 class="text-[54px] font-extrabold leading-none tracking-tight text-black">
-            My <span class="text-[#FF742E]">Bookmarks</span>
-          </h1>
         </div>
 
         <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
