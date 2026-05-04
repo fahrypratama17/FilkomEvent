@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use Illuminate\Foundation\Console\EventListCommand;
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -31,7 +30,7 @@ class EventController extends Controller
     ];
   }
 
-  public function index() {
+  public function index(Request $request) {
     $query = Event::with(['category', 'bookmarkedBy' => function ($q) {
       $q->where('bookmarks.user_id', auth()->id());
     }])->latest();
@@ -41,6 +40,10 @@ class EventController extends Controller
     }
 
     $events = $query->paginate(6);
+
+    if ($request->ajax()) {
+      return view('partials.event-list', compact('events'))->render();
+    }
 
     return view('Mahasiswa.list-event', [
       'events' => $events,

@@ -16,15 +16,20 @@ if (searchInput) {
     debounce(function () {
       const query = this.value;
 
-      fetch(`/events?search=${query}`)
+      const isBookmarkPage = window.location.pathname.includes("bookmark");
+
+      const url = isBookmarkPage
+        ? `/bookmark?search=${query}`
+        : `/events?search=${query}`;
+
+      fetch(url, {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      })
         .then((res) => res.text())
         .then((html) => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-
-          const newContent = doc.querySelector("#eventList");
-          document.querySelector("#eventList").innerHTML = newContent.innerHTML;
-
+          document.querySelector("#eventList").innerHTML = html;
           createIcons({ icons });
         });
     }),
