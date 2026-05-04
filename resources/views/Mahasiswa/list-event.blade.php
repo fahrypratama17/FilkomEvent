@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
+        <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
           <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
         </button>
       </header>
@@ -43,8 +43,13 @@
           <div>
             <label class="mb-2 block text-[14px] text-[#4F4F4F]">Category:</label>
             <div class="relative">
-              <select class="h-[42px] min-w-[254px] appearance-none rounded-[8px] border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none">
-                <option>Workshop, Seminar, etc</option>
+              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 appearance-none rounded-lg border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none">
+                <option value="">All Categories</option>
+                @foreach ($categories as $category)
+                  <option value="{{ $category->category_id }}">
+                    {{ $category->category_name }}
+                  </option>
+                @endforeach
               </select>
             </div>
           </div>

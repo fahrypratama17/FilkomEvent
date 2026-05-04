@@ -20,7 +20,7 @@
       'settingItems' => $settingItems
     ])
 
-    <main class="flex-1 overflow-y-auto px-12 py-8">
+    <main class="relative flex-1 overflow-y-auto px-12 py-8">
       <header class="mb-8 flex items-start justify-between gap-6">
         <div class="mb-12 flex items-center gap-5">
           <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <button class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
+        <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
           <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
         </button>
       </header>

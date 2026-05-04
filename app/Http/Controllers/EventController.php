@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -39,14 +40,21 @@ class EventController extends Controller
       $query->where('title', 'like', '%' . request('search') . '%');
     }
 
+    if ($request->category) {
+      $query->where('category_id', $request->category);
+    }
+
     $events = $query->paginate(6);
 
     if ($request->ajax()) {
       return view('partials.event-list', compact('events'))->render();
     }
 
+    $categories = Category::all();
+
     return view('Mahasiswa.list-event', [
       'events' => $events,
+      'categories' => $categories,
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
     ]);

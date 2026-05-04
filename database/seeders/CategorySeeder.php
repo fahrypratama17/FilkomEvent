@@ -13,11 +13,10 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
       DB::table('categories')->insert([
-        ['category_name' => 'UI/UX Design'],
-        ['category_name' => 'Web Development'],
-        ['category_name' => 'Data Science'],
-        ['category_name' => 'Frontend Development'],
-        ['category_name' => 'Backend Development'],
+        ['category_name' => 'Workshop'],
+        ['category_name' => 'Lomba'],
+        ['category_name' => 'Webinar'],
+        ['category_name' => 'Seminar'],
       ]);
     }
 }
