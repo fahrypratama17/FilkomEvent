@@ -39,12 +39,12 @@
       <x-search-bar />
 
       <section class="mb-9 flex items-end justify-between gap-6">
-        <div class="flex items-end gap-8">
+        <div class="flex items-end justify-between gap-8">
           <div>
-            <label class="mb-2 block text-[14px] text-[#4F4F4F]">Category:</label>
+            <label class="mb-2 block text-[14px] text-[#4F4F4F]">Kategori:</label>
             <div class="relative">
-              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 appearance-none rounded-lg border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none">
-                <option value="">All Categories</option>
+              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none">
+                <option value="">Semua Kategori</option>
                 @foreach ($categories as $category)
                   <option value="{{ $category->category_id }}">
                     {{ $category->category_name }}
@@ -53,20 +53,16 @@
               </select>
             </div>
           </div>
-
-          <div>
-            <label class="mb-2 block text-[14px] text-[#4F4F4F]">Status</label>
-            <div class="relative">
-              <select class="h-[42px] min-w-[116px] appearance-none rounded-[8px] border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none">
-                <option>All status</option>
-              </select>
-            </div>
-          </div>
         </div>
 
-        <button class="inline-flex h-[42px] items-center justify-center rounded-[8px] bg-[#EB2525] px-6 text-[14px] font-semibold text-white">
-          Clear Filters
-        </button>
+        <div>
+          <label class="mb-2 block text-[14px] text-[#4F4F4F]">Status</label>
+          <div class="relative">
+            <select class="h-10.5 min-w-29 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none">
+              <option>All status</option>
+            </select>
+          </div>
+        </div>
       </section>
 
       <section id="eventList" class="mb-12 grid grid-cols-3 gap-12">

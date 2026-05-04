@@ -28,11 +28,10 @@ class DashboardController extends Controller {
     $events = Event::with('category')->latest()->take(3)->get();
 
     $iconMap = [
-      'UI/UX Design' => 'Palette',
-      'Web Development' => 'Code',
-      'Data Science' => 'Database',
-      'Frontend Development' => 'LayoutDashboard',
-      'Backend Development' => 'Server',
+      'Workshop' => 'Wrench',
+      'Lomba' => 'Trophy',
+      'Webinar' => 'Video',
+      'Seminar' => 'Users',
     ];
 
     $categoryStats = $dashboardService->getCategoryStats(auth()->id());
