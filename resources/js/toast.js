@@ -6,7 +6,7 @@ function showToast(title, message, type = "error", duration = 4000) {
 
   let bgColor = type === "success" ? "bg-green-500" : "bg-red-500";
 
-  toast.className = `${bgColor}  relative overflow-hidden text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full opacity-0`;
+  toast.className = `${bgColor} w-full max-w-[500px] relative overflow-hidden text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full opacity-0`;
   toast.innerHTML = `
     <div class="overflow-hidden">
       <div class="pr-4 text-xl">${title}</div>

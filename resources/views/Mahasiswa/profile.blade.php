@@ -1,4 +1,3 @@
-{{-- resources/views/profile.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +8,6 @@
 </head>
 <body class="min-h-screen bg-[#EAEAEA] text-slate-900">
     @php
-        $menuItems = [
-            ['icon' => 'assets/icons/home.svg', 'label' => 'Dashboard', 'href' => '/dashboard-design', 'active' => false],
-            ['icon' => 'assets/icons/bookmark.svg', 'label' => 'Bookmark', 'href' => '/bookmark-design', 'active' => false],
-            ['icon' => 'assets/icons/history.svg', 'label' => 'History', 'href' => '/history-design', 'active' => false],
-            ['icon' => 'assets/icons/list-event.svg', 'label' => 'List Event', 'href' => '#', 'active' => false],
-        ];
-
-        $settingItems = [
-            ['icon' => 'assets/icons/profile.svg', 'label' => 'Profile', 'href' => '/profile-design', 'active' => true],
-        ];
-
         $user = [
             'name' => 'Ahmad Rizki Maulana',
             'role' => 'Mahasiswa',
@@ -32,49 +20,10 @@
     @endphp
 
     <div class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
-        <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-10 py-8 text-white shadow-sm">
-            <div class="mb-12">
-                <div class="hidden leading-none">
-                    <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
-                    <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
-                </div>
-            </div>
-
-            <div>
-                <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">MAIN MENU</h2>
-                <nav class="space-y-8">
-                    @foreach ($menuItems as $item)
-                        <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
-                            <div class="flex h-10 w-10 items-center justify-center">
-
-                            </div>
-                            <span>{{ $item['label'] }}</span>
-                        </a>
-                    @endforeach
-                </nav>
-            </div>
-
-            <div class="mt-auto pt-16">
-                <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">SETTING</h2>
-                <div class="space-y-8">
-                    @foreach ($settingItems as $item)
-                        <a href="{{ $item['href'] }}" class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
-                            <div class="flex h-10 w-10 items-center justify-center">
-                            </div>
-                            <span>{{ $item['label'] }}</span>
-                        </a>
-                    @endforeach
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
-                            <div class="flex h-10 w-10 items-center justify-center">
-                            </div>
-                            <span>Logout</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </aside>
+      @include('components.sidebar-mahasiswa', [
+        'menuItems' => $menuItems,
+        'settingItems' => $settingItems
+      ])
 
         <main class="flex-1 px-10 py-10">
             <div class="mx-auto max-w-[920px]">
@@ -142,13 +91,10 @@
                                     <span>Change password</span>
                                 </button>
 
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="inline-flex h-[46px] min-w-[114px] items-center justify-center gap-2 rounded-[10px] border-2 border-[#FF6A27] bg-white px-5 text-[15px] font-semibold text-[#FF3A2F]">
-                                        <span>🚪</span>
-                                        <span>Logout</span>
-                                    </button>
-                                </form>
+                                <button class="inline-flex h-[46px] min-w-[114px] items-center justify-center gap-2 rounded-[10px] border-2 border-[#FF6A27] bg-white px-5 text-[15px] font-semibold text-[#FF3A2F] cursor-pointer">
+                                    <span>🚪</span>
+                                    <span>Logout</span>
+                                </button>
                             </div>
                         </div>
 

@@ -15,22 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::query()->updateOrCreate([
-            'email' => 'admin@filkomevent.test',
-        ], [
-            'name' => 'Admin FilkomEvent',
-            'nim' => '0000000000000001',
-            'password' => 'password',
-            'role' => 'Admin',
-        ]);
-
-        User::query()->updateOrCreate([
-            'email' => 'student@student.ub.ac.id',
-        ], [
-            'name' => 'Mahasiswa FilkomEvent',
-            'nim' => '0000000000000002',
-            'password' => 'password',
-            'role' => 'Mahasiswa',
-        ]);
+      $this->call([
+        CategorySeeder::class,
+        EventSeeder::class,
+        RegistrationSeeder::class,
+      ]);
     }
 }

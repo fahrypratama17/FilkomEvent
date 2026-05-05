@@ -1,0 +1,47 @@
+import { createIcons, icons } from "lucide";
+
+export function initFilters(eventList) {
+  const categoryFilter = document.getElementById("categoryFilter");
+  const statusFilter = document.getElementById("statusFilter");
+  const searchInput = document.getElementById("searchInput");
+
+  function fetchEvents() {
+    const search = searchInput ? searchInput.value : "";
+    const category = categoryFilter ? categoryFilter.value : "";
+    const status = statusFilter ? statusFilter.value : "";
+
+    const params = new URLSearchParams({
+      search,
+      category,
+      status,
+    });
+
+    eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
+
+    fetch(`?${params.toString()}`, {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
+      .then((res) => res.text())
+      .then((html) => {
+        eventList.innerHTML = html;
+        createIcons({ icons });
+      })
+      .catch(() => {
+        eventList.innerHTML = `
+          <p class="text-center col-span-3 text-red-500">
+            Gagal memuat data
+          </p>
+        `;
+      });
+  }
+
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", fetchEvents);
+  }
+
+  if (statusFilter) {
+    statusFilter.addEventListener("change", fetchEvents);
+  }
+}
