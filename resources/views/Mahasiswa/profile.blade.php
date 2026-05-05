@@ -93,10 +93,10 @@
               </div>
             </div>
 
-            <div class="mt-14 rounded-bl-[14px] rounded-tl-[14px] border-l-4 border-[#233E98] bg-white shadow-[0_8px_22px_rgba(0,0,0,0.08)]">
+            <div class="mt-8 rounded-bl-[14px] rounded-tl-[14px] border-l-4 border-[#233E98] bg-white shadow-[0_8px_22px_rgba(0,0,0,0.08)]">
               <div class="flex flex-wrap items-center gap-4 px-6 py-5">
-                <div class="flex h-[44px] w-[44px] items-center justify-center rounded-[10px] bg-[#EEF2FF] text-[20px] text-[#FF6A27]">
-                  📅
+                <div class="p-4 flex items-center justify-center rounded-[10px] bg-[#EEF2FF] text-[20px]">
+                  <i data-lucide="CalendarDays" class="h-8 w-8"></i>
                 </div>
 
                 <div class="min-w-0 flex-1">
