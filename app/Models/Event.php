@@ -39,7 +39,12 @@ class Event extends Model
   ];
 
   public function category() {
-    return $this->belongsTo(Category::class, 'category_id', 'category_id');
+    return $this->belongsTo(Category::class, 'category_id');
+  }
+
+  public function registrations()
+  {
+    return $this->hasMany(Registration::class, 'event_id');
   }
 
   public function bookmarkedBy() {
