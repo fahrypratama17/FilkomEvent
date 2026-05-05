@@ -68,9 +68,10 @@
               </div>
 
               <div class="flex flex-wrap items-center justify-between gap-4">
-                <button class="flex py-2.5 min-w-67.5 items-center gap-3 rounded-2xl border-2 border-[#233E98] bg-white px-5 text-[15px] font-semibold text-[#374151] cursor-pointer">
-                  <i data-lucide="Wrench"></i>
-                  <span>Ubah Kata Sandi</span>
+                <button id="openPasswordModal" class="group relative overflow-hidden flex py-2.5 min-w-67.5 items-center gap-3 rounded-2xl border-2 border-primary-lighter bg-white px-5 text-[15px] font-semibold text-[#374151] cursor-pointer">
+                  <i data-lucide="Wrench" class="relative z-10 transition-colors duration-300 group-hover:text-white"></i>
+                  <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Ubah Kata Sandi</span>
+                  <span class="absolute inset-0 rounded-xl origin-left scale-x-0 bg-secondary-dark transition-transform duration-300 group-hover:scale-x-100"></span>
                 </button>
 
                 <form action="{{ route('logout') }}" method="POST">
@@ -116,6 +117,8 @@
         </section>
       </div>
     </main>
+
+    @include('components.modal-change-password')
   </div>
 </body>
 </html>
