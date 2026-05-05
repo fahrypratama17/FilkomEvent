@@ -25,6 +25,10 @@ import {
   Calendar,
   Eye,
   EyeOff,
+  LockKeyhole,
+  CircleAlert,
+  Calendar1,
+  CalendarDays,
 } from "lucide";
 
 createIcons({
@@ -54,5 +58,9 @@ createIcons({
     Calendar,
     Eye,
     EyeOff,
+    LockKeyhole,
+    CircleAlert,
+    Calendar1,
+    CalendarDays,
   },
 });
