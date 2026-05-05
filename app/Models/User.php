@@ -21,6 +21,8 @@ class User extends Authenticatable
       'email',
       'password',
       'role',
+      'reset_token',
+      'reset_token_expired_at'
     ];
 
     protected $hidden = [
@@ -38,5 +40,16 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function bookmarks() {
+      return $this->belongsToMany(
+        Event::class,
+        'bookmarks',
+        'user_id',
+        'event_id',
+        'user_id',
+        'event_id'
+      );
     }
 }

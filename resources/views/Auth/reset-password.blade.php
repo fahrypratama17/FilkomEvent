@@ -27,14 +27,17 @@
       <h1 class="text-4xl text-white font-bold">Reset Password</h1>
       <h2 class="text-xl text-white">Masukkan password baru anda</h2>
     </div>
-    <form class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+    <form method="POST" action="{{ route('resetPassword.process') }}" class="mx-auto w-[80%] flex flex-col justify-center gap-2">
+      @csrf
+      <input type="hidden" name="token" value="{{ $token }}">
+
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Password</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="password">
+        <input name="password" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="password">
       </div>
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Konfirmasi Password</label>
-        <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="konfirmasi password">
+        <input name="password_confirmation" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="konfirmasi password">
       </div>
       <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Kirim</button>
     </form>

@@ -1,0 +1,111 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Service\DashboardService;
+use App\Models\Category;
+use App\Models\Registration;
+use App\Models\Event;
+
+class DashboardController extends Controller {
+  private function getMenu() {
+    $role = auth()->user()->role;
+
+    if ($role === 'admin') {
+      return [
+        ['label' => 'Dashboard', 'route' => 'Admin.AdminDashboard', 'icon' => 'UserRound']
+      ];
+    }
+
+    return [
+      ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
+      ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
+      ['label' => 'History', 'route' => 'history', 'icon' => 'History'],
+      ['label' => 'List Event', 'route' => 'events.*', 'icon' => 'List'],
+    ];
+  }
+
+  public function index(DashboardService $dashboardService) {
+    $events = Event::with('category')->latest()->take(3)->get();
+
+    $iconMap = [
+      'Workshop' => 'Wrench',
+      'Lomba' => 'Trophy',
+      'Webinar' => 'Video',
+      'Seminar' => 'Users',
+    ];
+
+    $categoryStats = $dashboardService->getCategoryStats(auth()->id());
+
+    $stats = [
+      [
+        'value' => Registration::where('user_id', auth()->id())->count(),
+        'label' => 'Acara yang Diikuti',
+        'icon' => 'UserRound'
+      ],
+      [
+        'value' => Registration::where('user_id', auth()->id())
+          ->where('registration_status', 'Selesai')
+          ->count(),
+        'label' => 'Sertifikat yang Diperoleh',
+        'icon' => 'Award'
+      ],
+      [
+        'value' => Event::where('event_start', '>', now())->count(),
+        'label' => 'Acara Mendatang',
+        'icon' => 'Calendar'
+      ],
+    ];
+
+    $categories = Category::withCount('events')
+      ->orderByDesc('events_count')
+      ->take(4)
+      ->get()
+      ->map(function ($cat) use ($iconMap) {
+        $cat->icon = $iconMap[$cat->category_name] ?? 'Tag';
+        return $cat;
+      });
+
+    return view('Mahasiswa.dashboard', [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+      'events' => $events,
+      'categories' => $categories,
+      'categoryStats' => $categoryStats,
+      'stats' => $stats,
+    ]);
+  }
+
+  public function bookmark() {
+    $bookmarks = auth()->user()
+      ->bookmarks()
+      ->with('category')
+      ->latest()
+      ->get();
+
+    return view('Mahasiswa.bookmark', [
+      'bookmarks' => $bookmarks,
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
+
+  public function history() {
+    return view('Mahasiswa.history', [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
+
+  private function getSetting() {
+    return [
+      ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound'],
+    ];
+  }
+
+  public function profile() {
+    return view('Mahasiswa.profile', [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
+}

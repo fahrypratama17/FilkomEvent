@@ -1,3 +1,10 @@
 import "./bootstrap";
 import "./icon.js";
-import "./toast.js"
+import "./toast.js";
+import "./counter.js";
+import "./whatsapp.js";
+import "./chart.js";
+import "./togglePassword.js";
+import "./toggleBookmark.js";
+import "./debounce.js";
+import "./eventFilter.js";

@@ -45,13 +45,21 @@
           <label class="text-white text-lg" for="email">Email (Hanya gunakan @student.ub.ac.id)</label>
           <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="email" type="text" placeholder="email">
         </div>
-        <div class="flex flex-col justify-center gap-2">
+        <div class="relative flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="password">Password</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password" type="password" placeholder="password">
+          <input id="password" class="bg-white p-2 px-4 pr-12 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password" type="password" placeholder="password">
+          <button type="button" onclick="togglePassword()" class="absolute right-10 top-1/2 translate-y-1 cursor-pointer">
+            <i id="eye-open-password" data-lucide="eye" class="absolute inset-0 transition-all duration-300 ease-in-out opacity-100 scale-100"></i>
+            <i id="eye-close-password" data-lucide="eyeOff" class="absolute inset-0 transition-all duration-300 ease-in-out opacity-0 scale-75"></i>
+          </button>
         </div>
-        <div class="flex flex-col justify-center gap-2">
+        <div class="relative flex flex-col justify-center gap-2">
           <label class="text-white text-lg" for="password_confirmation">Konfirmasi Password</label>
-          <input class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password_confirmation" type="password" placeholder="konfirmasi password">
+          <input id="password_confirmation" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" name="password_confirmation" type="password" placeholder="konfirmasi password">
+          <button type="button" onclick="togglePasswordConfirmation()" class="absolute right-10 top-1/2 translate-y-1 cursor-pointer">
+            <i id="eye-open-confirmation" data-lucide="eye" class="absolute inset-0 transition-all duration-300 ease-in-out opacity-100 scale-100"></i>
+            <i id="eye-close-confirmation" data-lucide="eyeOff" class="absolute inset-0 transition-all duration-300 ease-in-out opacity-0 scale-75"></i>
+          </button>
         </div>
         <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]" type="submit">Daftar</button>
       </form>
