@@ -5,35 +5,42 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service\MenuService;
 use App\Models\Category;
-use App\Models\Event;
+use App\Models\Registration;
 use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
-    public function index(Request $request) {
-      $query = Event::with(['category', 'bookmarkedBy' => function ($q) {
-        $q->where('bookmarks.user_id', auth()->id());
-      }])->latest();
+  public function index(Request $request)
+  {
+    $user = Auth::user();
 
-      if ($request->search) {
-        $query->where('title', 'like', '%' . $request->search . '%');
-      }
+    $query = Registration::with([
+      'event.category',
+    ])
+      ->where('user_id', $user->user_id)
+      ->orderBy('registration_date', 'desc');
 
-      if ($request->category) {
-        $query->where('category_id', $request->category);
-      }
-
-      $events = $query->paginate(6);
-
-      $categories = Category::all();
-
-      $user = Auth::user();
-
-      return view('Mahasiswa.history', [
-        'events' => $events,
-        'categories' => $categories,
-        'menuItems' => MenuService::getMenu($user->role),
-        'settingItems' => MenuService::getSetting(),
-      ]);
+    if ($request->search) {
+      $query->whereHas('event', function ($q) use ($request) {
+        $q->where('title', 'like', '%' . $request->search . '%');
+      });
     }
+
+    if ($request->category) {
+      $query->whereHas('event', function ($q) use ($request) {
+        $q->where('category_id', $request->category);
+      });
+    }
+
+    $registrations = $query->paginate(6);
+
+    $categories = Category::all();
+
+    return view('Mahasiswa.history', [
+      'registrations' => $registrations,
+      'categories' => $categories,
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
+    ]);
+  }
 }
