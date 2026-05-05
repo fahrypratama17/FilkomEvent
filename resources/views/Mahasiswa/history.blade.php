@@ -57,8 +57,9 @@
                     >
                 </div>
 
-                <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-                </button>
+              <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
+                <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
+              </button>
             </div>
 
             <div class="mb-6 flex items-center gap-5">

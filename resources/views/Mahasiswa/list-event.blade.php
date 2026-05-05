@@ -20,7 +20,7 @@
       'settingItems' => $settingItems
     ])
 
-    <main class="flex-1 overflow-y-auto px-12 py-8">
+    <main class="relative flex-1 overflow-y-auto px-12 py-8">
       <header class="mb-8 flex items-start justify-between gap-6">
         <div class="flex items-center gap-5">
           <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko" class="w-20 h-20 drop-shadow-2xl">
@@ -43,7 +43,7 @@
           <div>
             <label class="mb-2 block text-[14px] text-[#4F4F4F]">Kategori:</label>
             <div class="relative">
-              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none">
+              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
                 <option value="">Semua Kategori</option>
                 @foreach ($categories as $category)
                   <option value="{{ $category->category_id }}">
@@ -56,10 +56,14 @@
         </div>
 
         <div>
-          <label class="mb-2 block text-[14px] text-[#4F4F4F]">Status</label>
+          <label class="mb-2 block text-[14px] text-[#4F4F4F]">Status:</label>
           <div class="relative">
-            <select class="h-10.5 min-w-29 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none">
-              <option>All status</option>
+            <select id="statusFilter" name="status" class="h-10.5 min-w-29 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
+              <option value="">Semua Status</option>
+              <option value="akan_datang">Akan Datang</option>
+              <option value="berlangsung">Sedang Berlangsung</option>
+              <option value="selesai">Selesai</option>
+              <option value="dibatalkan">Dibatalkan</option>
             </select>
           </div>
         </div>

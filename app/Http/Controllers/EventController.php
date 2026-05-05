@@ -31,26 +31,46 @@ class EventController extends Controller
     ];
   }
 
-  public function index(Request $request) {
+  public function index(Request $request)
+  {
     $query = Event::with(['category', 'bookmarkedBy' => function ($q) {
       $q->where('bookmarks.user_id', auth()->id());
     }])->latest();
 
-    if (request('search')) {
-      $query->where('title', 'like', '%' . request('search') . '%');
+    if ($request->search) {
+      $query->where('title', 'like', '%' . $request->search . '%');
     }
 
     if ($request->category) {
       $query->where('category_id', $request->category);
     }
 
+    if ($request->status) {
+      if ($request->status === 'akan_datang') {
+        $query->where('event_start', '>', now());
+      }
+
+      if ($request->status === 'berlangsung') {
+        $query->where('event_start', '<=', now())
+          ->where('event_end', '>=', now());
+      }
+
+      if ($request->status === 'selesai') {
+        $query->where('event_end', '<', now());
+      }
+
+      if ($request->status === 'dibatalkan') {
+        $query->where('event_status', 'Dibatalkan');
+      }
+    }
+
     $events = $query->paginate(6);
+
+    $categories = Category::all();
 
     if ($request->ajax()) {
       return view('partials.event-list', compact('events'))->render();
     }
-
-    $categories = Category::all();
 
     return view('Mahasiswa.list-event', [
       'events' => $events,
