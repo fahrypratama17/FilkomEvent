@@ -18,6 +18,10 @@ class Registration extends Model
     'registration_date',
   ];
 
+  protected $casts = [
+    'registration_date' => 'datetime',
+  ];
+
   public function user() {
     return $this->belongsTo(User::class, 'user_id');
   }

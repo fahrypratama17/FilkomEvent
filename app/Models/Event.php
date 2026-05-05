@@ -10,6 +10,12 @@ class Event extends Model
   protected $primaryKey = 'event_id';
   public $timestamps = false;
 
+  protected $casts = [
+    'event_start' => 'datetime',
+    'event_end' => 'datetime',
+    'created_at' => 'datetime',
+  ];
+
   protected $fillable = [
     'title',
     'description',
@@ -51,6 +57,17 @@ class Event extends Model
   {
     return $this->belongsToMany(
       User::class,
+      'bookmarks',
+      'event_id',
+      'user_id'
+    );
+  }
+
+  public function bookmarkedBy()
+  {
+
+    return $this->belongsToMany(
+      \App\Models\User::class,
       'bookmarks',
       'event_id',
       'user_id'

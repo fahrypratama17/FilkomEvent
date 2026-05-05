@@ -62,63 +62,20 @@
             <article class="...">
               <div>
                 <h3>{{ $reg->event->title }}</h3>
-                <div>{{ $reg->event->event_start ? $reg->event->event_start->format('d M Y H:i') : '' }}</div>
+                <div>{{ $reg->event->event_start ? \Carbon\Carbon::parse($reg->event->event_start)->format('d M Y H:i') : '' }}</div>
                 <p>{{ $reg->event->short_description ?? Str::limit($reg->event->description, 120) }}</p>
 
                 <div>
                   <span>Status Pendaftaran: {{ $reg->registration_status }}</span>
-                  <span>Status Pembayaran: {{ optional($reg->payment)->status ?? 'Belum Bayar' }}</span>
                 </div>
 
-                @if ($reg->certificate)
-                  {{-- Jika sertifikat berupa file di storage --}}
-                  <a href="{{ route('certificate.download', $reg->certificate->certificate_id) }}" class="btn">
-                    Download Sertifikat
-                  </a>
-                @else
-                  <button class="btn" disabled>Belum Ada Sertifikat</button>
-                @endif
               </div>
             </article>
           @endforeach
-        </div>
-
-        <div class="mt-8 flex items-center justify-center gap-4">
-          <button class="flex h-[34px] w-[34px] items-center justify-center rounded-[6px] border border-[#C9C9C9] bg-[#EAEAEA]">
-          </button>
-
-          <button class="flex h-[40px] w-[33px] items-center justify-center rounded-[6px] bg-[#233E98] font-semibold text-white">1</button>
-          <button class="text-[#444444]">2</button>
-          <button class="text-[#444444]">3</button>
-
-          <button class="flex h-[34px] w-[34px] items-center justify-center rounded-[6px] border border-[#C9C9C9] bg-[#EAEAEA]">
-          </button>
         </div>
       </section>
     </main>
   </div>
   @include('components.certificate-processing-modal')
-
-<script>
-  function openCertificateModal() {
-    const modal = document.getElementById('certificateProcessingModal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.classList.add('overflow-hidden');
-  }
-
-  function closeCertificateModal() {
-    const modal = document.getElementById('certificateProcessingModal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.classList.remove('overflow-hidden');
-  }
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      closeCertificateModal();
-    }
-  });
-</script>
 </body>
 </html>
