@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -30,7 +31,7 @@ Route::post('/kirim-email', [AuthController::class, 'sendEmail'])->name('kirim-e
 Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-  Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+  Route::get('/profile', [UserController::class, 'index'])->name('profile');
 
   Route::get('/detail-event', fn() => view('Mahasiswa.detail-event'));
 
