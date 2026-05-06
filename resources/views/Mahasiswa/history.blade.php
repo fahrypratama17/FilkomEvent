@@ -59,7 +59,7 @@
       <section class="pb-6">
         <div class="space-y-6">
           @foreach ($registrations as $reg)
-            <article class="...">
+            <article class="">
               <div>
                 <h3>{{ $reg->event->title }}</h3>
                 <div>{{ $reg->event->event_start ? \Carbon\Carbon::parse($reg->event->event_start)->format('d M Y H:i') : '' }}</div>

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
       CategorySeeder::class,
       EventSeeder::class,
       SpeakerSeeder::class,
+      EventSpeakerSeeder::class,
       EventGoalSeeder::class,
       RegistrationSeeder::class,
       ActivityLogSeeder::class,
