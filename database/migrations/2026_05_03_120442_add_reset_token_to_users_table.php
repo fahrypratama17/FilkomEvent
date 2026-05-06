@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
       Schema::table('users', function (Blueprint $table) {
-        $table->string('reset_token')->nullable();
-        $table->timestamp('reset_token_expired_at')->nullable();
+        if (! Schema::hasColumn('users', 'reset_token')) {
+          $table->string('reset_token')->nullable();
+        }
+
+        if (! Schema::hasColumn('users', 'reset_token_expired_at')) {
+          $table->timestamp('reset_token_expired_at')->nullable();
+        }
       });
     }
 
@@ -23,7 +28,14 @@ return new class extends Migration
     public function down(): void
     {
       Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn(['reset_token', 'reset_token_expired_at']);
+        $columns = array_filter([
+          Schema::hasColumn('users', 'reset_token') ? 'reset_token' : null,
+          Schema::hasColumn('users', 'reset_token_expired_at') ? 'reset_token_expired_at' : null,
+        ]);
+
+        if ($columns !== []) {
+          $table->dropColumn($columns);
+        }
       });
     }
 };

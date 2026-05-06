@@ -101,6 +101,24 @@
                     </div>
                 @endif
 
+                @if(session('error'))
+                    <div class="mb-8 rounded-xl bg-red-100 px-5 py-4 text-red-700">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="mb-8 rounded-xl bg-red-100 px-5 py-4 text-red-700">
+                        <p class="mb-2 font-bold">Event belum bisa disimpan:</p>
+
+                        <ul class="list-disc space-y-1 pl-5">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 

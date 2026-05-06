@@ -39,13 +39,89 @@
             showDeleteModal: false,
             deleteUrl: '',
             eventTitle: '',
+
             openDeleteModal(url, title) {
                 this.deleteUrl = url;
                 this.eventTitle = title;
                 this.showDeleteModal = true;
+            },
+
+            closeDeleteModal() {
+                this.showDeleteModal = false;
+                this.deleteUrl = '';
+                this.eventTitle = '';
             }
         }"
     >
+        {{-- TOAST ALERT --}}
+        @if(session('success') || session('error'))
+            <div
+                x-data="{ show: true }"
+                x-init="setTimeout(() => show = false, 3500)"
+                x-show="show"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-[-12px]"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 translate-y-[-12px]"
+                class="fixed right-[46px] top-[46px] z-[80]"
+            >
+                @if(session('success'))
+                    <div class="flex h-[82px] w-[420px] items-center gap-[20px] rounded-[18px] border-[3px] border-[#142E0A] bg-[#B8F06A] px-[24px] shadow-[0_8px_20px_rgba(0,0,0,0.14)]">
+                        <div class="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#0D3A13]">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="3"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="h-[29px] w-[29px] text-[#B8F06A]">
+                                <path d="M20 6 9 17l-5-5" />
+                            </svg>
+                        </div>
+
+                        <div class="leading-tight text-[#10220C]">
+                            <p class="text-[15px] font-extrabold uppercase">
+                                INFORMASI PENTING!
+                            </p>
+                            <p class="mt-1 text-[15px] font-medium">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="flex h-[82px] w-[420px] items-center gap-[20px] rounded-[18px] border-[3px] border-[#A30000] bg-[#F4A0A7] px-[24px] shadow-[0_8px_20px_rgba(0,0,0,0.14)]">
+                        <div class="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#B00000]">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="3"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="h-[31px] w-[31px] text-white">
+                                <path d="M18 6 6 18" />
+                                <path d="m6 6 12 12" />
+                            </svg>
+                        </div>
+
+                        <div class="leading-tight text-[#950000]">
+                            <p class="text-[15px] font-extrabold uppercase">
+                                INFORMASI PENTING!
+                            </p>
+                            <p class="mt-1 text-[15px] font-medium">
+                                {{ session('error') }}
+                            </p>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        @endif
+
         {{-- SIDEBAR --}}
         <aside class="flex w-[330px] shrink-0 flex-col rounded-r-[26px] bg-[#1F388B] px-12 py-8 text-white shadow-sm">
             <div class="mb-14 flex items-center gap-3">
@@ -126,12 +202,6 @@
                     Event <span class="text-[#FF742E]">Management!</span>
                 </h1>
             </div>
-
-            @if(session('success'))
-                <div class="mb-6 rounded-xl bg-green-100 px-5 py-4 font-semibold text-green-700">
-                    {{ session('success') }}
-                </div>
-            @endif
 
             {{-- FILTER & STATS BAR --}}
             <div class="mb-6 flex items-center justify-between">
@@ -358,66 +428,82 @@
             </div>
         </main>
 
-        {{-- DELETE MODAL --}}
+        {{-- DELETE CONFIRMATION MODAL --}}
         <div
             x-show="showDeleteModal"
             x-cloak
-            class="fixed inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm"
+            x-transition:enter="transition-opacity ease-out duration-150"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity ease-in duration-100"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-[70] flex items-center justify-center bg-white/65 backdrop-blur-[1px]"
         >
-            <div class="relative flex h-[520px] w-[416px] flex-col items-center justify-center rounded-[40px] bg-[#00A9D8] p-8 text-center text-white shadow-2xl">
-                <div class="mb-4 flex justify-center">
-                    <img src="{{ asset('assets/img/mascot-filkom.png') }}"
-                         alt="Filko Warning"
-                         class="w-32"
-                         onerror="this.style.display='none'">
-                </div>
+            <div
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-[0.98] translate-y-3"
+                x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-120"
+                x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                x-transition:leave-end="opacity-0 scale-[0.98] translate-y-2"
+                class="relative h-[330px] w-[760px] max-w-[calc(100vw-48px)] transform-gpu will-change-transform"
+            >
+                {{-- Mascot --}}
+                <img
+                    src="{{ asset('assets/img/mascot-filkom.png') }}"
+                    alt="Filko Konfirmasi"
+                    class="absolute left-[18px] top-[-76px] z-20 w-[305px] max-w-[42vw] drop-shadow-[0_20px_22px_rgba(0,0,0,0.35)]"
+                    onerror="this.onerror=null; this.src='{{ asset('icon/FilkomEventAvatar.svg') }}'"
+                >
 
-                <h2 class="mb-3 text-xl font-bold">
-                    Apakah kamu yakin untuk menghapus Event ini?
-                </h2>
+                {{-- Card --}}
+                <div class="absolute bottom-0 left-0 h-[260px] w-full overflow-hidden rounded-[14px] bg-gradient-to-r from-[#08B9D5] to-[#1F388B] shadow-[0_20px_35px_rgba(0,0,0,0.30)]">
+                    {{-- Decorative circles --}}
+                    <div class="pointer-events-none absolute right-[52px] top-[25px] h-[78px] w-[78px] rounded-full bg-white/15 shadow-md"></div>
+                    <div class="pointer-events-none absolute right-[130px] top-[16px] h-[34px] w-[34px] rounded-full bg-white/15 shadow-md"></div>
+                    <div class="pointer-events-none absolute right-[28px] top-[108px] h-[34px] w-[34px] rounded-full bg-white/15 shadow-md"></div>
+                    <div class="pointer-events-none absolute right-[110px] bottom-[30px] h-[78px] w-[78px] rounded-full bg-white/15 shadow-md"></div>
+                    <div class="pointer-events-none absolute left-[330px] top-[64px] h-[104px] w-[104px] rounded-full bg-white/10 shadow-md"></div>
+                    <div class="pointer-events-none absolute left-[430px] bottom-[84px] h-[36px] w-[36px] rounded-full bg-white/10 shadow-md"></div>
 
-                <p class="mb-6 text-sm font-semibold text-white/90" x-text="eventTitle"></p>
+                    {{-- Content --}}
+                    <div class="relative z-10 ml-[335px] flex h-full w-[360px] flex-col items-center justify-center px-4 pb-7 pt-9 text-center text-white">
+                        <h2 class="text-[32px] font-black uppercase leading-[1.05] tracking-[5px]">
+                            FILKO butuh<br>
+                            konfirmasimu!
+                        </h2>
 
-                <div class="mb-8 flex gap-3 rounded-xl bg-white/20 p-4 text-left">
-                    <div class="text-orange-500">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="currentColor"
-                             class="h-6 w-6">
-                            <path fill-rule="evenodd"
-                                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                  clip-rule="evenodd" />
-                        </svg>
-                    </div>
-
-                    <div>
-                        <p class="text-sm font-bold">Informasi Penting:</p>
-                        <p class="text-xs">
-                            Setelah kamu mengklik tombol hapus maka event akan terhapus dari penyimpanan.
+                        <p class="mt-3 text-[14px] font-medium leading-tight text-white/95">
+                            Apakah kamu yakin untuk<br>
+                            menghapus Event ini?
                         </p>
+
+                        <p class="mt-2 h-[18px] max-w-[300px] truncate text-[12px] font-semibold text-white/80" x-text="eventTitle"></p>
+
+                        {{-- Buttons --}}
+                        <div class="mt-5 flex items-center justify-center gap-7">
+                            <button
+                                type="button"
+                                @click="closeDeleteModal()"
+                                class="h-[38px] w-[116px] rounded-[8px] bg-[#FF642B] text-[14px] font-bold text-white shadow-md transition hover:bg-orange-600 active:scale-95"
+                            >
+                                Batal
+                            </button>
+
+                            <form x-bind:action="deleteUrl" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button
+                                    type="submit"
+                                    class="h-[38px] w-[116px] rounded-[8px] bg-[#E92222] text-[14px] font-bold text-white shadow-md transition hover:bg-red-700 active:scale-95"
+                                >
+                                    Hapus
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mt-8 flex justify-center gap-4">
-                    <button
-                        type="button"
-                        @click="showDeleteModal = false"
-                        class="h-[48px] w-[150px] rounded-xl bg-[#FF742E] font-bold text-white shadow-md transition hover:bg-orange-600 active:scale-95"
-                    >
-                        Batal
-                    </button>
-
-                    <form x-bind:action="deleteUrl" method="POST">
-                        @csrf
-                        @method('DELETE')
-
-                        <button
-                            type="submit"
-                            class="h-[48px] w-[150px] rounded-xl bg-[#E31F26] font-bold text-white shadow-md transition hover:bg-red-700 active:scale-95"
-                        >
-                            Hapus
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>

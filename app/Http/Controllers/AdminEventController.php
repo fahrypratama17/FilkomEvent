@@ -13,7 +13,9 @@ class AdminEventController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = Schema::hasTable('categories')
+        $hasCategoriesTable = Schema::hasTable('categories');
+
+        $categories = $hasCategoriesTable
             ? Category::orderBy('category_name')->get()
             : collect();
 
@@ -33,7 +35,7 @@ class AdminEventController extends Controller
         }
 
         $query = Event::query()
-            ->with('category')
+            ->when($hasCategoriesTable, fn ($query) => $query->with('category'))
             ->latest();
 
         if ($request->filled('search')) {
@@ -50,6 +52,12 @@ class AdminEventController extends Controller
 
         $events = $query->paginate(10)->withQueryString();
 
+        if (! $hasCategoriesTable) {
+            $events->getCollection()->each(
+                fn (Event $event) => $event->setRelation('category', null)
+            );
+        }
+
         return view('Admin.EventsManagement', compact('events', 'categories'));
     }
 
@@ -64,24 +72,94 @@ class AdminEventController extends Controller
 
     public function store(Request $request)
     {
-        // Untuk sementara masih aman sebagai slicing.
-        // Kalau form kamu belum punya name lengkap atau database events belum siap,
-        // jangan dipaksa insert dulu.
+        if (! Schema::hasTable('events')) {
+            return back()
+                ->withInput()
+                ->with('error', 'Tabel events belum tersedia. Jalankan migration terlebih dahulu.');
+        }
 
-        return back()->with('success', 'Event berhasil disimpan.');
+        $categoryRules = ['required', 'integer'];
+
+        if (Schema::hasTable('categories')) {
+            $categoryRules[] = 'exists:categories,category_id';
+        }
+
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:150'],
+            'event_start' => ['required', 'date'],
+            'event_end' => ['required', 'date', 'after_or_equal:event_start'],
+            'location' => ['required', 'string', 'max:150'],
+            'quota' => ['required', 'integer', 'min:1'],
+            'event_status' => ['required', 'in:berlangsung,akan_datang,selesai,dibatalkan'],
+            'registration_status' => ['required', 'in:dibuka,ditutup'],
+            'is_paid' => ['required', 'boolean'],
+            'price' => ['required_if:is_paid,1', 'nullable', 'numeric', 'min:0'],
+            'category_id' => $categoryRules,
+            'organizer' => ['required', 'string', 'max:150'],
+            'contact_email' => ['required', 'email', 'max:100'],
+            'contact_phone' => ['required', 'string', 'max:20'],
+            'short_description' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'image_url' => ['required', 'image', 'max:2048'],
+        ]);
+
+        $imagePath = null;
+
+        try {
+            $imagePath = $request->file('image_url')->store('events', 'public');
+
+            Event::create([
+                'title' => $validated['title'],
+                'description' => $validated['description'],
+                'short_description' => $validated['short_description'],
+                'event_start' => $validated['event_start'],
+                'event_end' => $validated['event_end'],
+                'location' => $validated['location'],
+                'quota' => $validated['quota'],
+                'quota_filled' => 0,
+                'event_status' => $validated['event_status'],
+                'registration_status' => $validated['registration_status'],
+                'price' => $request->boolean('is_paid') ? ($validated['price'] ?? 0) : 0,
+                'is_paid' => $request->boolean('is_paid'),
+                'category_id' => $validated['category_id'],
+                'created_by' => auth()->id(),
+                'image_url' => 'storage/' . $imagePath,
+                'organizer' => $validated['organizer'],
+                'contact_email' => $validated['contact_email'],
+                'contact_phone' => $validated['contact_phone'],
+            ]);
+
+            return redirect()
+                ->route('admin.events.index')
+                ->with('success', 'Event Berhasil Ditambahkan ke Database');
+        } catch (\Throwable $e) {
+            if ($imagePath) {
+                Storage::disk('public')->delete($imagePath);
+            }
+
+            return back()
+                ->withInput()
+                ->with('error', 'Event Gagal Ditambahkan ke Database');
+        }
     }
 
     public function destroy(Event $event)
     {
-        if ($event->image_url && str_starts_with($event->image_url, 'storage/events/')) {
-            $filePath = str_replace('storage/', '', $event->image_url);
-            Storage::disk('public')->delete($filePath);
+        try {
+            if ($event->image_url && str_starts_with($event->image_url, 'storage/events/')) {
+                $filePath = str_replace('storage/', '', $event->image_url);
+                Storage::disk('public')->delete($filePath);
+            }
+
+            $event->delete();
+
+            return redirect()
+                ->route('admin.events.index')
+                ->with('success', 'Event Berhasil Dihapus dari Database');
+        } catch (\Throwable $e) {
+            return redirect()
+                ->route('admin.events.index')
+                ->with('error', 'Event Gagal Dihapus dari Database');
         }
-
-        $event->delete();
-
-        return redirect()
-            ->route('admin.events.index')
-            ->with('success', 'Event berhasil dihapus.');
     }
 }
