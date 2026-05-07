@@ -2,34 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\MenuService;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
-  private function getMenu() {
-    $role = auth()->user()->role;
-
-    if ($role === 'admin') {
-      return [
-        ['label' => 'Dashboard', 'route' => 'Admin.AdminDashboard', 'icon' => 'UserRound']
-      ];
-    }
-
-    return [
-      ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
-      ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
-      ['label' => 'History', 'route' => 'history', 'icon' => 'History'],
-      ['label' => 'List Event', 'route' => 'events.index', 'icon' => 'List'],
-    ];
-  }
-
-  private function getSetting() {
-    return [
-      ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound']
-    ];
-  }
-
   public function index(Request $request)
   {
     $query = $request->search;
@@ -48,10 +27,12 @@ class BookmarkController extends Controller
       return view('partials.bookmark-list', compact('bookmarks'))->render();
     }
 
+    $user = Auth::user();
+
     return view('Mahasiswa.bookmark', [
       'bookmarks' => $bookmarks,
-      'menuItems' => $this->getMenu(),
-      'settingItems' => $this->getSetting(),
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
     ]);
   }
 }
