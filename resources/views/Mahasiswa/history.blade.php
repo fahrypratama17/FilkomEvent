@@ -36,42 +36,125 @@
         </button>
       </header>
 
-      <x-search-bar />
+      <!-- <x-search-bar /> -->
 
-      <section class="mb-9 flex items-end justify-between gap-6">
-        <div class="flex items-end justify-between gap-8">
-          <div>
-            <label class="mb-2 block text-[14px] text-[#4F4F4F]">Kategori:</label>
-            <div class="relative">
-              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
-                <option value="">Semua Kategori</option>
-                @foreach ($categories as $category)
-                  <option value="{{ $category->category_id }}">
-                    {{ $category->category_name }}
-                  </option>
-                @endforeach
-              </select>
+      <section class="mb-9 rounded-[30px] bg-[#00B4D8] p-8 shadow-sm">
+        <h2 class="mb-6 text-2xl font-bold text-white">Filter & Cari</h2>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-white">Kategori Event</label>
+                <div class="relative">
+                    <select name="category" class="w-full h-12 rounded-xl border-none bg-white px-4 pr-10 text-sm text-[#FF742E] focus:ring-2 focus:ring-orange-300 appearance-none cursor-pointer font-semibold">
+                        <option value="">Semua Kategori</option>
+                        <option value="seminar">Seminar</option>
+                        <option value="lomba">Lomba</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="webinar">Webinar</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#FF742E]">
+                        <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-white">Status Event</label>
+                <div class="relative">
+                    <select name="status" class="w-full h-12 rounded-xl border-none bg-white px-4 pr-10 text-sm text-[#FF742E] focus:ring-2 focus:ring-orange-300 appearance-none cursor-pointer font-semibold">
+                        <option value="">Semua Status</option>
+                        <option value="Selesai">Selesai</option>
+                        <option value="Sedang Berlangsung">Sedang Berlangsung</option>
+                        <option value="Akan Datang">Akan Datang</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#FF742E]">
+                        <i data-lucide="chevron-down" class="h-5 w-5"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-white">Pencarian Event</label>
+                <div class="relative">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-[#FF742E]">
+                        <i data-lucide="search" class="h-5 w-5"></i>
+                    </div>
+                    <input 
+                        type="text" 
+                        placeholder="Cari berdasarkan nama Event" 
+                        class="w-full h-12 rounded-xl border-none bg-white pl-11 pr-4 text-sm placeholder:text-orange-200 focus:ring-2 focus:ring-orange-300 font-semibold"
+                    >
+                </div>
+            </div>
         </div>
       </section>
 
       <section class="pb-6">
-        <div class="space-y-6">
-          @foreach ($registrations as $reg)
-            <article class="">
-              <div>
-                <h3>{{ $reg->event->title }}</h3>
-                <div>{{ $reg->event->event_start ? \Carbon\Carbon::parse($reg->event->event_start)->format('d M Y H:i') : '' }}</div>
-                <p>{{ $reg->event->short_description ?? Str::limit($reg->event->description, 120) }}</p>
+        <div class="grid grid-cols-1 gap-6">
+            @forelse ($registrations as $reg)
+              <article class="flex items-center justify-between rounded-[30px] bg-[#0077B6] p-8 shadow-md border border-white/10 hover:scale-[1.01] transition-all duration-300">
+                  <div class="flex items-start gap-6">
+                      <div class="flex flex-col justify-center">
+                          <div class="flex items-center gap-3 mb-1">
+                              <h3 class="text-2xl font-bold text-white">{{ $reg->event->title }}</h3>
 
-                <div>
-                  <span>Status Pendaftaran: {{ $reg->registration_status }}</span>
+                              <!-- Badge status event -->
+                              @php
+                                  $eventStatus = $reg->event->status ?? 'Selesai'; // Logika status event dari DB
+                                  $statusClass = $eventStatus == 'Selesai' ? 'bg-[#03045E]' : 'bg-[#023E8A]';
+                              @endphp
+                              <span class="px-4 py-1 rounded-full text-[12px] font-medium text-white {{ $statusClass }}">
+                                  {{ $eventStatus }}
+                              </span>
+                          </div>
+
+                          <p class="text-white/80 text-sm mb-3">
+                              {{ $reg->event->event_start ? \Carbon\Carbon::parse($reg->event->event_start)->format('d M, Y') : 'TBA' }}
+                          </p>
+
+                          <p class="text-white/90 text-sm line-clamp-2 max-w-2xl leading-relaxed">
+                              {{ $reg->event->short_description ?? Str::limit($reg->event->description, 150) }}
+                          </p>
+                      </div>
+                  </div>
+
+                  <!-- Kolom tombol dinamis sesuai dengan status event yang diikuti -->
+                  <div class="flex flex-col items-end min-w-[200px]">
+                      @if($eventStatus == 'Selesai' && $reg->event->certificate_path)
+                          <button class="flex items-center gap-3 rounded-xl bg-[#03045E] px-6 py-3 text-white font-bold hover:bg-[#023E8A] transition shadow-lg w-full justify-center">
+                              <i data-lucide="download" class="w-5 h-5"></i>
+                              Download Certificate
+                          </button>
+                      @elseif($eventStatus == 'Sedang Berlangsung')
+                          <button class="flex items-center gap-3 rounded-xl bg-[#023E8A] px-6 py-3 text-white font-bold hover:bg-[#03045E] transition shadow-lg w-full justify-center">
+                              <i data-lucide="eye" class="w-5 h-5"></i>
+                              See Details
+                          </button>
+                      @else
+                          <button disabled class="rounded-xl bg-[#023E8A]/50 px-6 py-3 text-white/50 font-bold cursor-not-allowed w-full text-center">
+                              Not Available
+                          </button>
+                      @endif
+                  </div>
+              </article>
+
+
+            @empty
+                <!-- Tampilan Ketika Pengguna Belum Memiliki Riwayat -->
+                <div class="flex flex-col items-center justify-center py-20 bg-white rounded-[30px] shadow-sm border border-dashed border-gray-300">
+                    <div class="p-4 bg-gray-50 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-400">Belum Ada Riwayat Partisipasi</h3>
+                    <p class="text-sm text-gray-400 mt-2 text-center">Sepertinya kamu belum mendaftar di event manapun.<br>Yuk, eksplorasi event seru di FILKOM!</p>
+
+                    <a href="/events" class="mt-8 px-8 py-3 bg-[#FF742E] text-white font-bold rounded-2xl hover:bg-orange-600 transition shadow-lg active:scale-95">
+                        Cari Event Sekarang
+                    </a>
                 </div>
-
-              </div>
-            </article>
-          @endforeach
+            @endforelse
         </div>
       </section>
     </main>
