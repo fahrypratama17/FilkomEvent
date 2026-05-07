@@ -15,31 +15,31 @@ class SpeakerSeeder extends Seeder
         'name' => 'Prof. Dr. Budi Santoso',
         'title' => 'Professor of Computer Science',
         'organization' => 'Universitas Brawijaya',
-        'photo_url' => 'https://via.placeholder.com/200',
+        'photo_url' => 'assets/profile/boy.png',
       ],
       [
         'name' => 'Ir. Siti Nurhaliza, S.Kom, M.T',
         'title' => 'Senior Software Engineer',
         'organization' => 'PT. Indonesia Tech Solutions',
-        'photo_url' => 'https://via.placeholder.com/200',
+        'photo_url' => 'assets/profile/girl.png',
       ],
       [
         'name' => 'Drs. Ahmad Wijaya',
         'title' => 'Digital Marketing Specialist',
         'organization' => 'Digital Marketing Institute',
-        'photo_url' => 'https://via.placeholder.com/200',
+        'photo_url' => 'assets/profile/boy.png',
       ],
       [
         'name' => 'Dr. Eka Prasetya',
         'title' => 'Cybersecurity Expert',
         'organization' => 'Cyber Security Association',
-        'photo_url' => 'https://via.placeholder.com/200',
+        'photo_url' => 'assets/profile/boy.png',
       ],
       [
         'name' => 'Rini Handayani, S.T, M.Kom',
         'title' => 'Mobile Development Lead',
         'organization' => 'Startup Innovation Hub',
-        'photo_url' => 'https://via.placeholder.com/200',
+        'photo_url' => 'assets/profile/girl.png',
       ],
     ];
 
