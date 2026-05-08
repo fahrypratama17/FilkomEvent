@@ -36,56 +36,23 @@
         </button>
       </header>
 
-      <!-- <x-search-bar /> -->
+      <x-search-bar />
 
-      <section class="mb-9 rounded-[30px] bg-[#00B4D8] p-8 shadow-sm">
-        <h2 class="mb-6 text-2xl font-bold text-white">Filter & Cari</h2>
-
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div class="flex flex-col gap-2">
-                <label class="text-sm font-medium text-white">Kategori Event</label>
-                <div class="relative">
-                    <select name="category" class="w-full h-12 rounded-xl border-none bg-white px-4 pr-10 text-sm text-[#FF742E] focus:ring-2 focus:ring-orange-300 appearance-none cursor-pointer font-semibold">
-                        <option value="">Semua Kategori</option>
-                        <option value="seminar">Seminar</option>
-                        <option value="lomba">Lomba</option>
-                        <option value="workshop">Workshop</option>
-                        <option value="webinar">Webinar</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#FF742E]">
-                        <i data-lucide="chevron-down" class="h-5 w-5"></i>
-                    </div>
-                </div>
+      <section class="mb-9 flex items-end justify-between gap-6">
+        <div class="flex items-end justify-between gap-8">
+          <div>
+            <label class="mb-2 block text-[14px] text-[#4F4F4F]">Kategori:</label>
+            <div class="relative">
+              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
+                <option value="">Semua Kategori</option>
+                @foreach ($categories as $category)
+                  <option value="{{ $category->category_id }}">
+                    {{ $category->category_name }}
+                  </option>
+                @endforeach
+              </select>
             </div>
-
-            <div class="flex flex-col gap-2">
-                <label class="text-sm font-medium text-white">Status Event</label>
-                <div class="relative">
-                    <select name="status" class="w-full h-12 rounded-xl border-none bg-white px-4 pr-10 text-sm text-[#FF742E] focus:ring-2 focus:ring-orange-300 appearance-none cursor-pointer font-semibold">
-                        <option value="">Semua Status</option>
-                        <option value="Selesai">Selesai</option>
-                        <option value="Sedang Berlangsung">Sedang Berlangsung</option>
-                        <option value="Akan Datang">Akan Datang</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#FF742E]">
-                        <i data-lucide="chevron-down" class="h-5 w-5"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col gap-2">
-                <label class="text-sm font-medium text-white">Pencarian Event</label>
-                <div class="relative">
-                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-[#FF742E]">
-                        <i data-lucide="search" class="h-5 w-5"></i>
-                    </div>
-                    <input 
-                        type="text" 
-                        placeholder="Cari berdasarkan nama Event" 
-                        class="w-full h-12 rounded-xl border-none bg-white pl-11 pr-4 text-sm placeholder:text-orange-200 focus:ring-2 focus:ring-orange-300 font-semibold"
-                    >
-                </div>
-            </div>
+          </div>
         </div>
       </section>
 
