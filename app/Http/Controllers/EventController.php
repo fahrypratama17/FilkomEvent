@@ -63,7 +63,7 @@ class EventController extends Controller
 
   public function show($id) {
     $user = Auth::user();
-    $event = Event::with('category')->findOrFail($id);
+    $event = Event::with('category', 'speakers', 'goals')->findOrFail($id);
 
     return view ('Mahasiswa.detail-event', [
       'event' => $event,

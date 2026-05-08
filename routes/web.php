@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
+use \App\Http\Controllers\HistoryController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -46,7 +47,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
 
-  Route::get('/history', [DashboardController::class, 'history'])->name('history');
+  Route::get('/history', [HistoryController::class, 'index'])->name('history');
 });
 
 // Routing For Admin Page

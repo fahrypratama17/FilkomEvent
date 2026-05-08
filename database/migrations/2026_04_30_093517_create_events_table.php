@@ -20,17 +20,21 @@ return new class extends Migration
       $table->timestamp('event_end');
       $table->string('location', 150);
       $table->integer('quota');
-      $table->integer('quota_filled');
+      $table->integer('quota_filled')->default(0);
       $table->string('event_status', 20);
-      $table->string('registration_status', 20);
-      $table->decimal('price', 10, 2);
-      $table->boolean('is_paid');
-      $table->integer('category_id');
-      $table->integer('created_by');
+      $table->decimal('price', 10, 2)->default(0);
+      $table->boolean('is_paid')->default(false);
+      $table->foreignId('category_id')
+        ->constrained('categories', 'category_id')
+        ->cascadeOnDelete();
+      $table->foreignId('created_by')
+        ->constrained('users', 'user_id')
+        ->cascadeOnDelete();
       $table->text('image_url');
       $table->string('organizer', 150);
       $table->string('contact_email', 100);
       $table->string('contact_phone', 20);
+
       $table->timestamps();
     });
   }
