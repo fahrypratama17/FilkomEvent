@@ -19,7 +19,7 @@ if (countDownElement) {
     const menit = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const detik = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countDownElement.innerHTML = `${hari} hari ${jam} jam ${menit} menit ${detik} detik`;
+    countDownElement.innerHTML = `${hari} <span class="text-[10px]">hari</span> : ${jam} <span class="text-[10px]">jam</span> : ${menit} <span class="text-[10px]">menit</span> : ${detik} <span class="text-[10px]">detik</span>`;
   }
 
   updateCountDown();

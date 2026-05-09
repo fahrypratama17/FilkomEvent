@@ -93,7 +93,7 @@
                 <div id="donutChart" class="absolute inset-0 rounded-full"></div>
                 <div class="absolute inset-8 bg-white rounded-full flex flex-col items-center justify-center text-black">
                   <p class="text-xl opacity-80">Total</p>
-                  <p class="text-xl font-bold" id="totalEvents">0</p>
+                  <p class="text-xl font-bold" id="totalEvents"> 0</p>
                 </div>
               </div>
               <div id="chartLegend" class="flex flex-wrap justify-center gap-4 text-white text-xs"></div>

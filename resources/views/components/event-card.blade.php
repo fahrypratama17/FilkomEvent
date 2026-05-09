@@ -14,9 +14,9 @@
     <h3 class="text-[18px] font-bold">{{ $event->title }}</h3>
     <p class="text-[14px] font-light line-clamp-2 text-black/60">{{ $event->short_description }}</p>
   </div>
-  <div class="flex items-center justify-between px-2 text-[14px] mb-8">
-    <p class="flex items-center gap-1"><i data-lucide="UsersRound" class="w-4 h-4 text-orange-550"></i>{{ $event->quota }} participants</p>
-    <p class="flex items-center gap-1"><i data-lucide="Clock" class="w-4 h-4 text-orange-550"></i><span>{{ \Carbon\Carbon::parse($event->event_start)->format('H:i') }} -</span><span>{{ \Carbon\Carbon::parse($event->event_end)->format('H:i') }} WIB</span></p>
+  <div class="flex items-center justify-between px-2 text-[12px] mb-8">
+    <p class="flex items-center gap-2"><i data-lucide="UsersRound" class="w-3 h-3 text-orange-550"></i>{{ $event->quota }} participants</p>
+    <p class="flex items-center gap-2"><i data-lucide="Clock" class="w-3 h-3 text-orange-550"></i><span>{{ \Carbon\Carbon::parse($event->event_start)->format('H:i') }} -</span><span>{{ \Carbon\Carbon::parse($event->event_end)->format('H:i') }} WIB</span></p>
   </div>
   <div class="flex gap-4 mt-auto">
     <button onclick="location.href='{{ route('events.show', $event->event_id) }}'" class="w-full bg-orange-550 px-4 py-2 rounded-2xl cursor-pointer shadow-xl hover:scale-105 text-white duration-300">Detail Event</button>
