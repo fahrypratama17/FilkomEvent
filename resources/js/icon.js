@@ -29,6 +29,7 @@ import {
   CircleAlert,
   Calendar1,
   CalendarDays,
+  MoveLeft,
 } from "lucide";
 
 createIcons({
@@ -62,5 +63,6 @@ createIcons({
     CircleAlert,
     Calendar1,
     CalendarDays,
+    MoveLeft,
   },
 });
