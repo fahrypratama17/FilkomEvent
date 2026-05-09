@@ -3,34 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Service\MenuService;
 use App\Models\Category;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-  private function getMenu() {
-    $role = auth()->user()->role;
-
-    if ($role === 'admin') {
-      return [
-        ['label' => 'Dashboard', 'route' => 'Admin.AdminDashboard', 'icon' => 'UserRound']
-      ];
-    }
-
-    return [
-      ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
-      ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
-      ['label' => 'History', 'route' => 'history', 'icon' => 'History'],
-      ['label' => 'List Event', 'route' => 'events.index', 'icon' => 'List'],
-    ];
-  }
-
-  private function getSetting() {
-    return [
-      ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound']
-    ];
-  }
-
   public function index(Request $request)
   {
     $query = Event::with(['category', 'bookmarkedBy' => function ($q) {
@@ -72,21 +51,24 @@ class EventController extends Controller
       return view('partials.event-list', compact('events'))->render();
     }
 
+    $user = Auth::user();
+
     return view('Mahasiswa.list-event', [
       'events' => $events,
       'categories' => $categories,
-      'menuItems' => $this->getMenu(),
-      'settingItems' => $this->getSetting(),
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
     ]);
   }
 
   public function show($id) {
-    $event = Event::with('category')->findOrFail($id);
+    $user = Auth::user();
+    $event = Event::with('category', 'speakers', 'goals')->findOrFail($id);
 
     return view ('Mahasiswa.detail-event', [
       'event' => $event,
-      'menuItems' => $this->getMenu(),
-      'settingItems' => $this->getSetting(),
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
     ]);
   }
 

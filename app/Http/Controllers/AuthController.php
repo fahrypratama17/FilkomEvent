@@ -102,7 +102,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        $token = \Str::random(64);
+        $token = Str::random(64);
 
         $user->update([
             'reset_token' => $token,
