@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
+use \App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AdminEventController;
 
 // Routing For Auth Page
@@ -31,21 +33,19 @@ Route::post('/kirim-email', [AuthController::class, 'sendEmail'])->name('kirim-e
 Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-  Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
-
-  Route::get('/detail-event', fn() => view('Mahasiswa.detail-event'));
-
-  Route::get('/registration-event', fn() => view('Mahasiswa.registration-event'));
+  Route::get('/profile', [UserController::class, 'index'])->name('profile');
+  Route::post('/profile', [UserController::class, 'changePassword'])->name('profile.change-password');
 
   Route::get('/events', [EventController::class, 'index'])->name('events.index');
   Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+  Route::get('/events/{id}/registration', [EventController::class, 'registration'])->name('events.id.registration');
 
-  Route::get('/payment', fn() => view('Mahasiswa.payment'));
+  Route::get('/events/{id}/payment', [EventController::class, 'payment'])->name('events.id.payment');
 
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
 
-  Route::get('/history', [DashboardController::class, 'history'])->name('history');
+  Route::get('/history', [HistoryController::class, 'index'])->name('history');
 });
 
 // Routing For Admin Page

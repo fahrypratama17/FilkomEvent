@@ -8,3 +8,6 @@ import "./togglePassword.js";
 import "./toggleBookmark.js";
 import "./debounce.js";
 import "./eventFilter.js";
+import "./changePasswordModal.js";
+import "./countDown.js";
+import "./termsModal.js";

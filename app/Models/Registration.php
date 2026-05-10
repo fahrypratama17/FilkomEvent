@@ -17,4 +17,24 @@ class Registration extends Model
     'registration_status',
     'registration_date',
   ];
+
+  protected $casts = [
+    'registration_date' => 'datetime',
+  ];
+
+  public function user() {
+    return $this->belongsTo(User::class, 'user_id');
+  }
+
+  public function event() {
+    return $this->belongsTo(Event::class, 'event_id');
+  }
+
+  public function payment() {
+    return $this->hasOne(Payment::class, 'registration_id');
+  }
+
+  public function certificate() {
+    return $this->hasOne(Certificate::class, 'registration_id');
+  }
 }

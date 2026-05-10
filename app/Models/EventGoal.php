@@ -4,21 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bookmark extends Model
+class EventGoal extends Model
 {
-  protected $table = 'bookmarks';
-
-  protected $primaryKey = 'bookmark_id';
+  protected $table = 'event_goals';
+  protected $primaryKey = 'goal_id';
+  public $timestamps = false;
 
   protected $fillable = [
-    'user_id',
     'event_id',
+    'description',
   ];
-
-  public function user()
-  {
-    return $this->belongsTo(User::class, 'user_id');
-  }
 
   public function event()
   {
