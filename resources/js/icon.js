@@ -32,6 +32,7 @@ import {
   MoveLeft,
   IdCard,
   X,
+  Wallet,
 } from "lucide";
 
 createIcons({
@@ -68,5 +69,6 @@ createIcons({
     MoveLeft,
     IdCard,
     X,
+    Wallet,
   },
 });
