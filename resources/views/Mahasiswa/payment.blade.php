@@ -9,23 +9,6 @@
   <title>Filkom Event - Event Payments</title>
 </head>
 <body>
-  @php
-    $payment = [
-        'event_name' => 'Workshop UI/UX Design 2025',
-        'total_payment' => 'IDR 150.000',
-        'invoice_code' => 'INV-WDM-2025-001',
-        'deadline_time' => '23:40:20',
-        'deadline_date' => '15 Jan 2025, 23:59',
-        'virtual_account' => '8077 0001 2345 6789',
-        'instructions' => [
-            'Open the mobile banking application or ATM',
-            'Select the Transfer/Pay menu',
-            'Enter the Virtual Account number above',
-            'Confirmation of payment of Rp. 150,000',
-        ],
-    ];
-  @endphp
-
   <div class="relative flex min-h-screen w-full bg-[#EAEAEA]">
     <div class="absolute w-full h-full opacity-4"
          style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
@@ -118,7 +101,7 @@
                       <div class="mb-3 text-[14px] text-[#666666]">Instruksi Pembayaran</div>
 
                       <div class="mb-4 rounded-[6px] border border-[#D9D9D9] bg-[#F3F3F3] px-4 py-3 text-center text-[22px] font-bold text-[#111111]">
-                        {{ $payment['virtual_account'] }}
+                        8077 0001 2345 6789
                       </div>
 
                       <div class="mb-3 text-[14px] text-[#666666]">Instruksi Pembayaran</div>
