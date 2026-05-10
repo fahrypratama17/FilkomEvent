@@ -7,6 +7,7 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\HistoryController;
+use App\Http\Controllers\AdminEventController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -48,6 +49,23 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 });
 
 // Routing For Admin Page
-Route::middleware(['auth', 'role:admin'])->group(function() {
-  Route::get('/admin/dashboard', fn() => view('Admin.admin-dashboard'));
-});
+Route::middleware(['auth', 'role:admin'])
+  ->prefix('admin')
+  ->name('admin.')
+  ->group(function () {
+
+    Route::get('/dashboard', fn() => view('Admin.admin-dashboard'))
+      ->name('dashboard');
+
+    Route::get('/events', [AdminEventController::class, 'index'])
+      ->name('events.index');
+
+    Route::get('/events/create', [AdminEventController::class, 'create'])
+      ->name('events.create');
+
+    Route::post('/events', [AdminEventController::class, 'store'])
+      ->name('events.store');
+
+    Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])
+      ->name('events.destroy');
+  });
