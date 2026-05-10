@@ -31,6 +31,7 @@ import {
   CalendarDays,
   MoveLeft,
   IdCard,
+  X,
 } from "lucide";
 
 createIcons({
@@ -66,5 +67,6 @@ createIcons({
     CalendarDays,
     MoveLeft,
     IdCard,
+    X,
   },
 });
