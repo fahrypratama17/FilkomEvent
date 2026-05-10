@@ -75,6 +75,10 @@
         @endforeach
       </section>
 
+      <div class="mt-8">
+        {{ $events->links() }}
+      </div>
+
     </main>
   </div>
 </body>

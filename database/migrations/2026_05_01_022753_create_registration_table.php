@@ -13,8 +13,15 @@ return new class extends Migration
     {
       Schema::create('registrations', function (Blueprint $table) {
         $table->id('registration_id');
-        $table->foreignId('user_id')->constrained('users', 'user_id');
-        $table->foreignId('event_id')->constrained('events', 'event_id');
+
+        $table->foreignId('user_id')
+          ->constrained('users', 'user_id')
+          ->cascadeOnDelete();
+
+        $table->foreignId('event_id')
+          ->constrained('events', 'event_id')
+          ->cascadeOnDelete();
+
         $table->string('registration_status', 20);
         $table->timestamp('registration_date')->nullable();
       });
@@ -25,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrations');
+      Schema::dropIfExists('registrations');
     }
 };

@@ -18,6 +18,8 @@ return new  class extends Migration
             $table->string('email')->unique();
             $table->text('password');
             $table->rememberToken();
+            $table->string('reset_token')->nullable();
+            $table->timestamp('reset_token_expired_at')->nullable();
             $table->string('role')->default('Mahasiswa');
             $table->timestamp('created_at')->useCurrent();
         });
