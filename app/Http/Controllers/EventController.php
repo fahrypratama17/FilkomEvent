@@ -72,6 +72,18 @@ class EventController extends Controller
     ]);
   }
 
+  public function registration($id) {
+    $user = Auth::user();
+    $event = Event::with('category')->findOrFail($id);
+
+    return view ('Mahasiswa.registration-event', [
+      'event' => $event,
+      'user' => $user,
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
+    ]);
+  }
+
   public function toggleBookmark($id) {
     $user = auth()->user();
 

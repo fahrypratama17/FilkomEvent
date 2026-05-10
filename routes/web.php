@@ -35,12 +35,11 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/profile', [UserController::class, 'index'])->name('profile');
   Route::post('/profile', [UserController::class, 'changePassword'])->name('profile.change-password');
 
-  Route::get('/detail-event', fn() => view('Mahasiswa.detail-event'));
-
-  Route::get('/registration-event', fn() => view('Mahasiswa.registration-event'));
-
   Route::get('/events', [EventController::class, 'index'])->name('events.index');
   Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+  Route::get('/events/{id}/registration', [EventController::class, 'registration'])->name('events.id.registration');
+
+  Route::get('/registration-event', fn() => view('Mahasiswa.registration-event'));
 
   Route::get('/payment', fn() => view('Mahasiswa.payment'));
 
