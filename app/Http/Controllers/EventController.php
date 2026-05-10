@@ -84,6 +84,18 @@ class EventController extends Controller
     ]);
   }
 
+  public function payment($id) {
+    $user = Auth::user();
+    $event = Event::with('category')->findOrFail($id);
+
+    return view ('Mahasiswa.payment', [
+      'event' => $event,
+      'user' => $user,
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
+    ]);
+  }
+
   public function toggleBookmark($id) {
     $user = auth()->user();
 

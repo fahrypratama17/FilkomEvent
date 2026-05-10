@@ -142,7 +142,7 @@
                     <span class="absolute inset-0 rounded-[50px] origin-left scale-x-0 bg-primary-lighter transition-transform duration-300 group-hover:scale-x-100"></span>
                   </button>
 
-                  <button type="button" onclick="" class="w-full group relative overflow-hidden text-white font-bold px-8 py-4 rounded-[50px] mb-6 bg-primary-lighter cursor-pointer">
+                <button type="button" onclick="location.href='{{ route('events.id.payment', $event->event_id) }}'" class="w-full group relative overflow-hidden text-white font-bold px-8 py-4 rounded-[50px] mb-6 bg-primary-lighter cursor-pointer">
                     <span class="relative flex justify-center z-10 transition-colors duration-300 group-hover:text-secondary-dark">
                       Daftar Sekarang
                     </span>
