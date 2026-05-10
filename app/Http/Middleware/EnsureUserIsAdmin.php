@@ -14,6 +14,7 @@ class EnsureUserIsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         $user = $request->user();
+        dd($user->role);
 
         if (! $user || strtolower((string) $user->role) !== 'admin') {
             abort(403, 'Anda tidak memiliki akses ke halaman admin.');

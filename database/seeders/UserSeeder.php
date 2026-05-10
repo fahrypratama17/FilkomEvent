@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
           'nim' => '245150207111049',
           'email' => 'helwa@student.ub.ac.id',
           'password' => Hash::make('1234567890'),
-          'role' => 'Mahasiswa',
+          'role' => 'admin',
           'created_at' => now(),
         ],
         [
