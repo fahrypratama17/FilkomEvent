@@ -37,7 +37,7 @@
               @if($event->is_paid)
                 Rp {{ number_format($event->price, 0, ',', '.') }}
               @else
-                Free
+                Gratis
               @endif
             </span>
           </div>
@@ -81,7 +81,7 @@
                 </div>
               </div>
 
-              <button class="w-full bg-primary-lighter text-white py-2 rounded-2xl hover:scale-105 duration-300 cursor-pointer">
+              <button onclick="location.href='{{ route('events.id.registration', $event->event_id, 'registration') }}'" class="w-full bg-primary-lighter text-white py-2 rounded-2xl hover:scale-105 duration-300 cursor-pointer">
                 Daftar Sekarang
               </button>
 
