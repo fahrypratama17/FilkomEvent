@@ -54,18 +54,13 @@ Route::middleware(['auth', 'role:admin'])
   ->name('admin.')
   ->group(function () {
 
-    Route::get('/dashboard', fn() => view('Admin.admin-dashboard'))
-      ->name('dashboard');
+    Route::get('/dashboard', fn() => view('Admin.admin-dashboard'))->name('dashboard');
 
-    Route::get('/events', [AdminEventController::class, 'index'])
-      ->name('events.index');
+    Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
 
-    Route::get('/events/create', [AdminEventController::class, 'create'])
-      ->name('events.create');
+    Route::get('/events/create', [AdminEventController::class, 'create'])->name('events.create');
 
-    Route::post('/events', [AdminEventController::class, 'store'])
-      ->name('events.store');
+    Route::post('/events', [AdminEventController::class, 'store'])->name('events.store');
 
-    Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])
-      ->name('events.destroy');
+    Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('events.destroy');
   });
