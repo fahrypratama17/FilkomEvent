@@ -7,6 +7,7 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\HistoryController;
+use App\Http\Controllers\AdminEventController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -35,14 +36,11 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/profile', [UserController::class, 'index'])->name('profile');
   Route::post('/profile', [UserController::class, 'changePassword'])->name('profile.change-password');
 
-  Route::get('/detail-event', fn() => view('Mahasiswa.detail-event'));
-
-  Route::get('/registration-event', fn() => view('Mahasiswa.registration-event'));
-
   Route::get('/events', [EventController::class, 'index'])->name('events.index');
   Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+  Route::get('/events/{id}/registration', [EventController::class, 'registration'])->name('events.id.registration');
 
-  Route::get('/payment', fn() => view('Mahasiswa.payment'));
+  Route::get('/events/{id}/payment', [EventController::class, 'payment'])->name('events.id.payment');
 
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
@@ -51,6 +49,18 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 });
 
 // Routing For Admin Page
-Route::middleware(['auth', 'role:admin'])->group(function() {
-  Route::get('/admin/dashboard', fn() => view('Admin.admin-dashboard'));
-});
+Route::middleware(['auth', 'role:admin'])
+  ->prefix('admin')
+  ->name('admin.')
+  ->group(function () {
+
+    Route::get('/dashboard', fn() => view('Admin.admin-dashboard'))->name('dashboard');
+
+    Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
+
+    Route::get('/events/create', [AdminEventController::class, 'create'])->name('events.create');
+
+    Route::post('/events', [AdminEventController::class, 'store'])->name('events.store');
+
+    Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('events.destroy');
+  });

@@ -64,7 +64,13 @@ class AuthController extends Controller
         ])) {
             $request->session()->regenerate();
 
-            return redirect('/dashboard')->with('success', 'Login berhasil');
+          if (strtolower(Auth::user()->role) === 'admin') {
+            return redirect()->route('admin.dashboard')
+              ->with('success', 'Login berhasil sebagai admin');
+          }
+
+          return redirect()->route('dashboard')
+            ->with('success', 'Login berhasil');
         }
 
         return back()

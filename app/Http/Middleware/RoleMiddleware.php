@@ -15,7 +15,7 @@ class RoleMiddleware
         }
 
         if (Auth::user()->role !== $role) {
-          abort(403, 'Akses ditolak');
+          abort(403, 'Hanya Admin yang bisa masuk');
         }
 
         return $next($request);

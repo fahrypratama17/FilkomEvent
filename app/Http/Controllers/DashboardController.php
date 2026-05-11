@@ -46,7 +46,7 @@ class DashboardController extends Controller {
         'value' => Registration::where('user_id', auth()->id())
           ->where('registration_status', 'Selesai')
           ->count(),
-        'label' => 'Sertifikat yang Diperoleh',
+        'label' => 'Sertifikat Diperoleh',
         'icon' => 'Award'
       ],
       [
