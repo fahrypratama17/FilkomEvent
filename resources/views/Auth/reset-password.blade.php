@@ -6,7 +6,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @vite(['resources/css/auth.css', 'resources/js/app.js'])
-  <title>FilkomEvent - Login</title>
+  <title>FilkomEvent - Reset Password</title>
 </head>
 <body class="relative min-h-screen">
 {{--  For All Icon  --}}
@@ -33,15 +33,22 @@
 
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Password</label>
-        <input name="password" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="password">
+        <input name="password" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="password">
       </div>
       <div class="flex flex-col justify-center gap-2">
         <label class="text-white text-lg" for="">Konfirmasi Password</label>
-        <input name="password_confirmation" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="text" placeholder="konfirmasi password">
+        <input name="password_confirmation" class="bg-white p-2 px-4 rounded-[40px] focus:outline-none focus:ring-0 focus:ring-transparent focus:border-transparent" type="password" placeholder="konfirmasi password">
       </div>
       <button class="w-full mt-4 bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Kirim</button>
     </form>
   </div>
+  @if ($errors->any())
+    <div class="text-red-500">
+      @foreach ($errors->all() as $error)
+        <p>{{ $error }}</p>
+      @endforeach
+    </div>
+  @endif
 </section>
 
 </body>
