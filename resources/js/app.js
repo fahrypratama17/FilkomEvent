@@ -11,3 +11,5 @@ import "./eventFilter.js";
 import "./changePasswordModal.js";
 import "./countDown.js";
 import "./termsModal.js";
+import "./buttonTerm.js";
+import "./accordion.js";

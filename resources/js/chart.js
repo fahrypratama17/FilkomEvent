@@ -1,17 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("chartRoot");
 
-  const categoryData = root ? JSON.parse(root.dataset.stats) : [];
-
   const chart = document.getElementById("donutChart");
   const legend = document.getElementById("chartLegend");
   const totalText = document.getElementById("totalEvents");
   const tooltip = document.getElementById("tooltip");
 
+  if (!root || !chart || !legend || !totalText || !tooltip) return;
+
+  let categoryData = [];
+
+  try {
+    categoryData = JSON.parse(root.dataset.stats || "[]");
+  } catch (e) {
+    categoryData = [];
+  }
+
   const colors = ["#1E90FF", "#FFD700", "#FF4D4D", "#00C49F", "#A78BFA"];
 
   const total = categoryData.reduce(
-    (sum, item) => sum + parseInt(item.total),
+    (sum, item) => sum + Number(item.total || 0),
     0,
   );
 
@@ -27,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let gradientParts = [];
 
   categoryData.forEach((item, index) => {
-    const percent = (item.total / total) * 100;
+    const percent = (Number(item.total) / total) * 100;
     const start = currentPercent;
     const end = currentPercent + percent;
     const color = colors[index % colors.length];
@@ -48,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ${item.total} events<br>
         ${percent.toFixed(1)}%
       `;
+
       tooltip.style.top = e.clientY + 12 + "px";
       tooltip.style.left = e.clientX + 12 + "px";
     });

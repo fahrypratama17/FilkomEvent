@@ -31,7 +31,7 @@ class AdminEventController extends Controller
                 ]
             );
 
-            return view('Admin.EventsManagement', compact('events', 'categories'));
+            return view('Admin.events-management', compact('events', 'categories'));
         }
 
         $query = Event::query()
@@ -58,7 +58,7 @@ class AdminEventController extends Controller
             );
         }
 
-        return view('Admin.EventsManagement', compact('events', 'categories'));
+        return view('Admin.events-management', compact('events', 'categories'));
     }
 
     public function create()
