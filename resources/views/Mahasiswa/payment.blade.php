@@ -23,12 +23,12 @@
               <p class="text-[18px] font-medium">Pembayaran Event</p>
             </div>
 
-            <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer">
+            <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer shadow-2xl">
               <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
             </button>
           </div>
 
-          <button onclick="location.href='{{ route('events.index') }}'" class="group relative overflow-hidden text-white font-bold px-8 py-2 rounded-[50px] mb-6 bg-primary-lighter cursor-pointer">
+          <button onclick="location.href='{{ route('events.index') }}'" class="group relative overflow-hidden text-white font-bold px-8 py-2 rounded-[50px] mb-6 bg-primary-lighter cursor-pointer shadow-2xl">
             <span class="relative flex gap-2 z-10 transition-colors duration-300 group-hover:text-secondary-dark">
               <i data-lucide="MoveLeft"></i>
               Kembali ke Daftar Event
@@ -38,7 +38,7 @@
 
           <div class="grid grid-cols-[3fr_1fr] gap-x-7 pb-8">
             <div class="flex flex-col gap-6">
-              <section class="rounded-2xl border border-[#D9D9D9] bg-[#F7F7F7] px-6 py-5">
+              <section class="rounded-2xl border border-[#D9D9D9] bg-[#F7F7F7] px-6 py-5 shadow-2xl">
                 <h2 class="mb-6 text-[18px] font-bold text-[#233E98]">Detail Pembayaran</h2>
 
                 <div class="space-y-5 text-[#4F4F4F]">
@@ -74,7 +74,7 @@
                 </div>
               </section>
 
-              <section class="rounded-[10px] border border-[#D9D9D9] bg-[#F7F7F7] px-6 py-5">
+              <section class="rounded-[10px] border border-[#D9D9D9] bg-[#F7F7F7] px-6 py-5 shadow-2xl">
                 <h2 class="mb-6 text-[18px] font-medium text-[#233E98]">Pilih Metode Pembayaran</h2>
 
                 <div class="space-y-3">
@@ -138,19 +138,8 @@
             </div>
 
             <aside>
-              <section class="mb-10 rounded-[10px] border border-[#D9D9D9] bg-[#F7F7F7] px-5 py-5">
-                <h2 class="mb-5 text-[18px] text-[#2D2D2D]">Status & Konfirmasi</h2>
-
-                <button class="mb-4 inline-flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-[#233E98] px-4 text-[14px] font-medium text-white hover:scale-105 duration-300 cursor-pointer">
-
-                  <p>Refresh</p>
-                </button>
-
-                <p class="mx-auto mb-6 max-w-[230px] text-center text-[14px] leading-[1.45] text-[#2F2F2F]">
-                  Klik tombol di atas untuk melihat status pembayaran Anda.
-                </p>
-
-                <div class="rounded-[8px] bg-[#F2F2F2] px-4 py-4 text-[14px] text-[#666666]">
+              <section class="mb-10 rounded-2xl border border-[#D9D9D9] bg-[#F7F7F7] px-5 py-5 shadow-2xl">
+                <div class="rounded-2xl bg-[#F2F2F2] px-4 py-4 text-[14px] text-[#666666]">
                   <div class="mb-2 flex items-start gap-2">
 
                     <div>
@@ -163,7 +152,7 @@
                 </div>
               </section>
 
-              <button type="button" onclick="history.back()" class="w-full group relative overflow-hidden text-black font-bold px-8 py-2.5 rounded-[50px] mb-6 bg-white cursor-pointer">
+              <button type="button" onclick="history.back()" class="w-full group relative overflow-hidden text-black font-bold px-8 py-2.5 rounded-[50px] mb-6 bg-white cursor-pointer shadow-2xl">
                     <span class="relative flex justify-center z-10 transition-colors duration-300 group-hover:text-white">
                       Kembali ke Registrasi Event
                     </span>
