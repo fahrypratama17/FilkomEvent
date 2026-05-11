@@ -49,10 +49,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 });
 
 // Routing For Admin Page
-Route::middleware(['auth', 'role:admin'])
-  ->prefix('admin')
-  ->name('admin.')
-  ->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', fn() => view('Admin.admin-dashboard'))->name('dashboard');
 
