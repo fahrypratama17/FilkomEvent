@@ -85,7 +85,7 @@
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">Transfer Bank</span>
-                      <span id="icon-bank" class="transition-transform duration-300">⌄</span>
+                      <i data-lucide="ChevronDown" id="icon-bank" class="transition-transform duration-300"></i>
                     </div>
 
                     <div id="content-bank" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
@@ -107,7 +107,7 @@
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">Nomor Virtual Account</span>
-                      <span id="icon-va" class="transition-transform duration-300">⌄</span>
+                      <i data-lucide="ChevronDown" id="icon-va" class="transition-transform duration-300"></i>
                     </div>
 
                     <div id="content-va"
@@ -136,7 +136,7 @@
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">E-Wallet</span>
-                      <span id="icon-ewallet" class="transition-transform duration-300">⌄</span>
+                      <i data-lucide="ChevronDown" id="icon-ewallet" class="transition-transform duration-300">⌄</i>
                     </div>
 
                     <div id="content-ewallet" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
@@ -150,7 +150,7 @@
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">QRIS</span>
-                      <span id="icon-qris" class="transition-transform duration-300">⌄</span>
+                      <i data-lucide="ChevronDown" id="icon-qris" class="transition-transform duration-300">⌄</i>
                     </div>
 
                     <div id="content-qris" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
