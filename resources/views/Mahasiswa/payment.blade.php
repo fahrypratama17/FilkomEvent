@@ -23,7 +23,7 @@
               <p class="text-[18px] font-medium">Pembayaran Event</p>
             </div>
 
-            <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 shadow-sm cursor-pointer shadow-2xl">
+            <button onclick="location.href='{{ route('profile') }}'" class="flex h-14.5 w-14.5 items-center justify-center rounded-full bg-[#233E98] hover:scale-105 duration-200 cursor-pointer shadow-2xl">
               <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
             </button>
           </div>
@@ -81,19 +81,16 @@
 
                 <div class="space-y-3">
 
-                  <!-- TRANSFER BANK -->
-                  <div onclick="togglePayment('bank')"
-                       class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('bank')" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">Transfer Bank</span>
                       <span id="icon-bank" class="transition-transform duration-300">⌄</span>
                     </div>
 
-                    <div id="content-bank"
-                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+                    <div id="content-bank" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
 
-                      <div class="mt-4 rounded-[8px] border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
+                      <div class="mt-4 rounded-2xl border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
                         <div class="mb-3 text-[14px] text-[#666666]">Instruksi Pembayaran</div>
 
                         <ol class="list-decimal px-4 space-y-2 text-[14px] text-[#5A5A5A]">
@@ -106,8 +103,7 @@
                     </div>
                   </div>
 
-                  <div onclick="togglePayment('va')"
-                       class="cursor-pointer rounded-[8px] border border-[#8F8F8F] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('va')" class="cursor-pointer rounded-2xl border border-[#8F8F8F] bg-[#FBFBFB] px-4 py-4">
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">Nomor Virtual Account</span>
@@ -117,11 +113,11 @@
                     <div id="content-va"
                          class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
 
-                      <div class="mt-4 rounded-[8px] border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
+                      <div class="mt-4 rounded-2xl border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
 
                         <div class="mb-3 text-[14px] text-[#666666]">Nomor VA</div>
 
-                        <div class="mb-4 rounded-[6px] border border-[#D9D9D9] bg-[#F3F3F3] px-4 py-3 text-center text-[22px] font-bold text-[#111111]">
+                        <div class="mb-4 rounded-2xl border border-[#D9D9D9] bg-[#F3F3F3] px-4 py-3 text-center text-[22px] font-bold text-[#111111]">
                           8077 0001 2345 6789
                         </div>
 
@@ -136,33 +132,28 @@
                     </div>
                   </div>
 
-                  <div onclick="togglePayment('ewallet')"
-                       class="cursor-pointer rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('ewallet')" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">E-Wallet</span>
                       <span id="icon-ewallet" class="transition-transform duration-300">⌄</span>
                     </div>
 
-                    <div id="content-ewallet"
-                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+                    <div id="content-ewallet" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
                       <div class="mt-4 text-sm text-gray-500">
                         Pembayaran via GoPay / OVO / DANA (coming soon)
                       </div>
                     </div>
                   </div>
 
-                  <!-- QRIS -->
-                  <div onclick="togglePayment('qris')"
-                       class="cursor-pointer rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('qris')" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">QRIS</span>
                       <span id="icon-qris" class="transition-transform duration-300">⌄</span>
                     </div>
 
-                    <div id="content-qris"
-                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+                    <div id="content-qris" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
                       <div class="mt-4 text-sm text-gray-500">
                         Scan QR untuk pembayaran instan
                       </div>
@@ -189,9 +180,9 @@
               </section>
 
               <button type="button" onclick="history.back()" class="w-full group relative overflow-hidden text-black font-bold px-8 py-2.5 rounded-[50px] mb-6 bg-white cursor-pointer shadow-2xl">
-                    <span class="relative flex justify-center z-10 transition-colors duration-300 group-hover:text-white">
-                      Kembali ke Registrasi Event
-                    </span>
+                <span class="relative flex justify-center z-10 transition-colors duration-300 group-hover:text-white">
+                  Kembali ke Registrasi Event
+                </span>
                 <span class="absolute inset-0 rounded-[50px] origin-left scale-x-0 bg-primary-lighter transition-transform duration-300 group-hover:scale-x-100"></span>
               </button>
             </aside>

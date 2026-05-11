@@ -127,7 +127,7 @@
               <form>
                 <div class="mb-24 border-t border-[#D8D8D8] pt-4">
                   <label class="flex items-start gap-3 text-[14px] text-[#555555]">
-                    <input id="termsCheckbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-[#999999] text-[#233E98] focus:ring-0">
+                    <input id="termsCheckbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-[#999999] text-[#233E98] focus:ring-0 cursor-pointer">
                     <p>Saya menyetujui
                       <button type="button" onclick="openTermsModal()" class="font-semibold text-primary-dark underline hover:text-primary-lighter cursor-pointer">syarat dan ketentuan</button>
                       yang berlaku dan bersedia mengikuti seluruh rangkaian acara sesuai dengan jadwal yang telah ditentukan.</p>
