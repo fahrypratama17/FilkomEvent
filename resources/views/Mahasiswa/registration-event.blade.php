@@ -127,7 +127,7 @@
               <form>
                 <div class="mb-24 border-t border-[#D8D8D8] pt-4">
                   <label class="flex items-start gap-3 text-[14px] text-[#555555]">
-                    <input type="checkbox" class="mt-0.5 h-4 w-4 rounded border-[#999999] text-[#233E98] focus:ring-0">
+                    <input id="termsCheckbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-[#999999] text-[#233E98] focus:ring-0">
                     <p>Saya menyetujui
                       <button type="button" onclick="openTermsModal()" class="font-semibold text-primary-dark underline hover:text-primary-lighter cursor-pointer">syarat dan ketentuan</button>
                       yang berlaku dan bersedia mengikuti seluruh rangkaian acara sesuai dengan jadwal yang telah ditentukan.</p>
@@ -142,7 +142,7 @@
                     <span class="absolute inset-0 rounded-[50px] origin-left scale-x-0 bg-primary-lighter transition-transform duration-300 group-hover:scale-x-100"></span>
                   </button>
 
-                <button type="button" onclick="location.href='{{ route('events.id.payment', $event->event_id) }}'" class="w-full group relative overflow-hidden text-white font-bold px-8 py-4 rounded-[50px] mb-6 bg-primary-lighter cursor-pointer">
+                <button id="registerBtn" type="button" disabled onclick="location.href='{{ route('events.id.payment', $event->event_id) }}'" class="w-full group relative overflow-hidden text-white font-bold px-8 py-4 rounded-[50px] mb-6 bg-gray-400 cursor-not-allowed">
                     <span class="relative flex justify-center z-10 transition-colors duration-300 group-hover:text-secondary-dark">
                       Daftar Sekarang
                     </span>
