@@ -1,16 +1,20 @@
-const checkbox = document.getElementById("termsCheckbox");
-const button = document.getElementById("registerBtn");
+document.addEventListener("DOMContentLoaded", () => {
+  const checkbox = document.getElementById("termsCheckbox");
+  const button = document.getElementById("registerBtn");
 
-checkbox.addEventListener("change", function () {
-  if (this.checked) {
-    button.disabled = false;
+  if (!checkbox || !button) return;
 
-    button.classList.remove("bg-gray-400", "cursor-not-allowed");
-    button.classList.add("bg-primary-lighter", "cursor-pointer");
-  } else {
-    button.disabled = true;
+  checkbox.addEventListener("change", function () {
+    if (this.checked) {
+      button.disabled = false;
 
-    button.classList.add("bg-gray-400", "cursor-not-allowed");
-    button.classList.remove("bg-primary-lighter", "cursor-pointer");
-  }
+      button.classList.remove("bg-gray-400", "cursor-not-allowed");
+      button.classList.add("bg-primary-lighter", "cursor-pointer");
+    } else {
+      button.disabled = true;
+
+      button.classList.add("bg-gray-400", "cursor-not-allowed");
+      button.classList.remove("bg-primary-lighter", "cursor-pointer");
+    }
+  });
 });

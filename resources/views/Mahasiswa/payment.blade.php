@@ -75,64 +75,100 @@
               </section>
 
               <section class="rounded-[10px] border border-[#D9D9D9] bg-[#F7F7F7] px-6 py-5 shadow-2xl">
-                <h2 class="mb-6 text-[18px] font-medium text-[#233E98]">Pilih Metode Pembayaran</h2>
+                <h2 class="mb-6 text-[18px] font-medium text-[#233E98]">
+                  Pilih Metode Pembayaran
+                </h2>
 
                 <div class="space-y-3">
-                  <div class="rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+
+                  <!-- TRANSFER BANK -->
+                  <div onclick="togglePayment('bank')"
+                       class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+
                     <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-3 text-[16px] text-[#333333]">
+                      <span class="text-[16px] text-[#333333]">Transfer Bank</span>
+                      <span id="icon-bank" class="transition-transform duration-300">⌄</span>
+                    </div>
 
-                        <span>Transfer Bank</span>
+                    <div id="content-bank"
+                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+
+                      <div class="mt-4 rounded-[8px] border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
+                        <div class="mb-3 text-[14px] text-[#666666]">Instruksi Pembayaran</div>
+
+                        <ol class="list-decimal px-4 space-y-2 text-[14px] text-[#5A5A5A]">
+                          <li>Buka aplikasi mobile banking atau ATM</li>
+                          <li>Pilih menu Transfer atau Pembayaran</li>
+                          <li>Masukkan nomor Virtual Account</li>
+                          <li>Konfirmasi pembayaran</li>
+                        </ol>
                       </div>
-
                     </div>
                   </div>
 
-                  <div class="rounded-[8px] border border-[#8F8F8F] bg-[#FBFBFB] px-4 py-4">
-                    <div class="mb-4 flex items-center justify-between">
-                      <div class="flex items-center gap-3 text-[16px] text-[#333333]">
+                  <div onclick="togglePayment('va')"
+                       class="cursor-pointer rounded-[8px] border border-[#8F8F8F] bg-[#FBFBFB] px-4 py-4">
 
-                        <span>Nomor Virtual Account</span>
-                      </div>
-
-                    </div>
-
-                    <div class="rounded-[8px] border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
-                      <div class="mb-3 text-[14px] text-[#666666]">Instruksi Pembayaran</div>
-
-                      <div class="mb-4 rounded-[6px] border border-[#D9D9D9] bg-[#F3F3F3] px-4 py-3 text-center text-[22px] font-bold text-[#111111]">
-                        8077 0001 2345 6789
-                      </div>
-
-                      <div class="mb-3 text-[14px] text-[#666666]">Instruksi Pembayaran</div>
-                      <ol class="list-decimal px-4 space-y-2 text-[14px] text-[#5A5A5A]">
-                        <li>Buka aplikasi mobile banking atau ATM</li>
-                        <li>Pilih menu Transfer atau Pembayaran.</li>
-                        <li>Masukkan nomor Virtual Account di atas.</li>
-                        <li>Periksa konfirmasi pembayaran sebesar</li>
-                      </ol>
-                    </div>
-                  </div>
-
-                  <div class="rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
                     <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-3 text-[16px] text-[#333333]">
+                      <span class="text-[16px] text-[#333333]">Nomor Virtual Account</span>
+                      <span id="icon-va" class="transition-transform duration-300">⌄</span>
+                    </div>
 
-                        <span>E-Wallet</span>
+                    <div id="content-va"
+                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+
+                      <div class="mt-4 rounded-[8px] border border-[#D9D9D9] bg-[#F7F7F7] px-4 py-4">
+
+                        <div class="mb-3 text-[14px] text-[#666666]">Nomor VA</div>
+
+                        <div class="mb-4 rounded-[6px] border border-[#D9D9D9] bg-[#F3F3F3] px-4 py-3 text-center text-[22px] font-bold text-[#111111]">
+                          8077 0001 2345 6789
+                        </div>
+
+                        <ol class="list-decimal px-4 space-y-2 text-[14px] text-[#5A5A5A]">
+                          <li>Buka mobile banking</li>
+                          <li>Pilih transfer</li>
+                          <li>Masukkan VA</li>
+                          <li>Konfirmasi</li>
+                        </ol>
+
                       </div>
-
                     </div>
                   </div>
 
-                  <div class="rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('ewallet')"
+                       class="cursor-pointer rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+
                     <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-3 text-[16px] text-[#333333]">
+                      <span class="text-[16px] text-[#333333]">E-Wallet</span>
+                      <span id="icon-ewallet" class="transition-transform duration-300">⌄</span>
+                    </div>
 
-                        <span>QRIS</span>
+                    <div id="content-ewallet"
+                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+                      <div class="mt-4 text-sm text-gray-500">
+                        Pembayaran via GoPay / OVO / DANA (coming soon)
                       </div>
-
                     </div>
                   </div>
+
+                  <!-- QRIS -->
+                  <div onclick="togglePayment('qris')"
+                       class="cursor-pointer rounded-[8px] border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+
+                    <div class="flex items-center justify-between">
+                      <span class="text-[16px] text-[#333333]">QRIS</span>
+                      <span id="icon-qris" class="transition-transform duration-300">⌄</span>
+                    </div>
+
+                    <div id="content-qris"
+                         class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
+                      <div class="mt-4 text-sm text-gray-500">
+                        Scan QR untuk pembayaran instan
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </section>
             </div>
@@ -145,7 +181,7 @@
                     <div>
                       <div class="font-medium text-[#555555]">Catatan Penting:</div>
                       <div class="mt-1 leading-[1.45]">
-                        Pembayaran akan diverifikasi secara otomatis dalam 1-5 menit setelah transfer berhasil.
+                        Pembayaran akan diverifikasi secara otomatis dalam 1-2 menit setelah transfer berhasil.
                       </div>
                     </div>
                   </div>
