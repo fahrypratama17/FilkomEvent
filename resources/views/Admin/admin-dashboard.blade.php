@@ -1,171 +1,211 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <title>Admin - Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Dashboard Admin</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      :root {
+            --cyan-bg: #00B4D8;
+            --orange-main: #F9682A;
+            --bg-body: #FFFFFF;
+        }
+      /* --- MAIN CONTENT --- */
+        .main-content {
+            flex: 1;
+            padding: 40px 60px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header-title img {
+            width: 70px;
+        }
+
+        .header-title h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin: 0;
+            color: #000;
+        }
+
+        .header-title h1 span {
+            color: var(--orange-main);
+        }
+
+        /* --- STATS CARDS --- */
+        .stats-wrapper {
+            background-color: var(--cyan-bg);
+            border-radius: 20px;
+            padding: 30px 100px;
+            display: flex;
+            gap: 55px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background-color: var(--orange-main);
+            border-radius: 20px;
+            padding: 60px 45px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-item, .stat-card {
+            flex: 1;
+            max-width: 180px; 
+            margin: 0 auto; 
+        }
+
+        .stat-card h2 {
+            font-size: 70px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            line-height: 1;
+        }
+
+        .stat-card p {
+            font-size: 20px;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* --- CHART SECTION --- */
+        .chart-wrapper {
+            background-color: var(--orange-main);
+            border-radius: 30px;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+        /* Donut Chart CSS Murni */
+        .donut-chart {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #03045E 0deg 90deg,     
+                #023E8A 90deg 180deg,   
+                #0096C7 180deg 270deg,  
+                #00B4D8 270deg 360deg   
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-inner {
+            width: 160px;
+            height: 160px;
+            background-color: var(--orange-main);
+            border-radius: 50%;
+        }
+
+        /* Legend */
+        .legend-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px 40px;
+            width: 400px;
+            height: 200px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .legend-list {
+            list-style: none;
+            padding: 20;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: 650;
+            color: #03045E;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            gap: 10px;
+            padding: 8px;
+        }
+    </style>
 </head>
 <body>
-@php
-  $menuItems = [
-      ['icon' => 'assets/icons/home.svg', 'label' => 'Dashboard', 'active' => true],
-      ['icon' => 'assets/icons/bookmark.svg', 'label' => 'Events', 'active' => false],
-      ['icon' => 'assets/icons/history.svg', 'label' => 'User Management', 'active' => false],
-  ];
 
-  $settingItems = [
-      ['icon' => 'assets/icons/profile.svg', 'label' => 'Profile'],
-  ];
+    @php
+        // Data PHP untuk Statistik
+        $stats = [
+            ['value' => '24', 'label' => 'Jumlah<br>Event'],
+            ['value' => '08', 'label' => 'Event Akan<br>Datang'],
+            ['value' => '15', 'label' => 'Event Sedang<br>Berlangsung'],
+            ['value' => '01', 'label' => 'Event<br>Selesai'],
+        ];
+    @endphp
 
-  $adminCard = [
-    ['title' => "Event Management", 'desc' => "Manage all existing events by editing information and monitoring event status.", 'action' => "Enter Event Management"],
-    ['title' => "Add Event", 'desc' => "Create new events easily and quickly.", 'action' => "Add New Event"],
-    ['title' => "Account Management", 'desc' => "Manage user access rights.", 'action' => "Manage Users"],
-  ];
+    @include('components.sidebar-admin')
 
-  $actCard = [
-    ['title' => "John Doe mendaftar untuk event Workshop React.js", 'desc' => "2 minutes ago"],
-    ['title' => "The Digital Marketing Seminar Event has been updated", 'desc' => "30 minutes ago"],
-    ['title' => "UI/UX Workshop Certificate for the event has been uploaded", 'desc' => "1 hour ago"],
-  ];
-
-  $stats = [
-      ['value' => '24', 'label' => 'Total Event'],
-      ['value' => '08', 'label' => 'Event Takes Place'],
-      ['value' => '15', 'label' => 'New Registrant'],
-  ];
-
-  $reqAction = [
-    ['title' => "Workshop UI/UX Design", 'desc' => "Completed 2 days ago - Upload Certificate"],
-    ['title' => "Web Development Training", 'desc' => "Finished today - Upload Certificate"],
-  ]
-@endphp
-
-<section class="mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
-  <div class="flex w-82.5 shrink-0 flex-col rounded-r-[26px] bg-[#223E96] px-12 py-8 text-white shadow-sm">
-    <div class="mb-14">
-      <div class="mb-3 flex items-center gap-3">
-        <h1 class="">Filkom Event</h1>
-          <div class="hidden leading-none">
-        <div class="text-[30px] font-extrabold tracking-wide">FILKOM</div>
-        <div class="text-[30px] font-extrabold tracking-wide">EVENT</div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">MAIN MENU</h2>
-    <nav class="space-y-8">
-      @foreach ($menuItems as $item)
-        <div class="flex items-center gap-8 text-[24px] {{ $item['active'] ? 'font-bold text-white' : 'text-white/90' }}">
-
-          <span>{{ $item['label'] }}</span>
+    <main class="main-content">
+        
+        <div class="header-title">
+            <img src="{{ asset('icon/FilkomEventAvatar.svg') }}" alt="Filko">
+            <h1>Welcome, <span>Admin!</span></h1>
         </div>
-      @endforeach
-    </nav>
-  </div>
 
-  <div class="mt-auto pt-16">
-    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide">SETTING</h2>
-    <div class="space-y-8">
-      @foreach ($settingItems as $item)
-        <div class="flex items-center gap-8 text-[24px] text-white/90">
-          <span>{{ $item['label'] }}</span>
-        </div>
-      @endforeach
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="flex w-full items-center gap-8 text-[24px] text-white/90">
-          <span>Logout</span>
-        </button>
-      </form>
-    </div>
-  </div>
-  </div>
-
-  <div class="flex-1 overflow-y-auto px-12 py-8">
-    <div class="mb-8 flex items-start justify-between gap-6">
-      <div class="relative w-full max-w-[660px]">
-        <input
-          type="text"
-          placeholder="Search here"
-          class="h-14 w-full rounded-xl border-0 bg-[#03479B] pl-16 pr-5 text-lg text-white placeholder:text-white/80 focus:outline-none"
-        >
-      </div>
-
-      <button class="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-[#233E98] shadow-sm">
-      </button>
-    </div>
-
-    <div class="mb-8 flex items-center gap-5">
-      <div class="flex h-19.5 w-19.5 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm">
-
-      </div>
-      <h1 class="text-[60px] font-extrabold leading-none tracking-tight text-black">
-        Welcome, <span class="text-[#FF742E]">Admin!</span>
-      </h1>
-    </div>
-
-    <section class="mb-12 grid grid-cols-3 gap-12">
-      @foreach($adminCard as $item)
-        <div class="w-full bg-secondary-dark rounded-[20px] flex flex-col gap-4 p-4 text-white">
-          <div class="h-15 w-15 rounded-2xl bg-white"></div>
-          <h1 class="text-2xl">{{$item['title']}}</h1>
-          <p class="text-sm">{{$item['desc']}}</p>
-          <button class="bg-orange rounded-full py-2 mt-auto cursor-pointer hover:scale-105 duration-300" type="submit">{{$item['action']}}</button>
-        </div>
-      @endforeach
-    </section>
-
-    <div class="grid grid-cols-[308px_1fr] gap-12 pb-6">
-      <div class="rounded-3xl bg-[#0790C7] px-7 py-7 text-white shadow-sm">
-        <h2 class="mb-6 text-[28px] font-extrabold leading-tight">
-          New Activities
-        </h2>
-
-        <div class="space-y-7">
-          @foreach ($actCard as $item)
-            <div class="flex justify-between rounded-[20px] bg-[#ECECEC] gap-4 px-6 py-5">
-              <div class="bg-primary-dark  w-10 h-5 rounded-full"></div>
-              <div>
-                <h2 class="text-[14px] font-bold text-[#FF6A27]">{{ $item['title'] }}</h2>
-                <p class="text-[11px] text-[#314A9A]">{{ $item['desc'] }}</p>
-              </div>
+        <div class="stats-wrapper">
+            @foreach($stats as $item)
+            <div class="stat-card">
+                <h2>{{ $item['value'] }}</h2>
+                <p>{!! $item['label'] !!}</p>
             </div>
-          @endforeach
-        </div>
-      </div>
-
-      <div class="rounded-3xl bg-[#16B6D9] px-9 py-9 shadow-sm">
-        <div class="mb-9 grid grid-cols-3 gap-9">
-          @foreach ($stats as $item)
-            <div class="flex h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white">
-              <div>
-                <div class="mb-4 text-[54px] font-extrabold leading-none">{{ $item['value'] }}</div>
-                <div class="text-[17px] leading-snug">{{ $item['label'] }}</div>
-              </div>
-            </div>
-          @endforeach
+            @endforeach
         </div>
 
-        <div class="flex flex-col gap-8 h-auto p-8 overflow-hidden rounded-[28px] bg-[#FF6A27]">
-          <h1 class="text-3xl text-white font-bold">Event Require Action</h1>
-          @foreach($reqAction as $item)
-            <div class="flex gap-4 bg-white p-4 w-full rounded-3xl">
-              <div class="w-15 h-15 rounded-2xl bg-primary-dark"></div>
-              <div class="flex flex-col">
-                <h4 class="text-[20px]">{{$item['title']}}</h4>
-                <p>{{$item['desc']}}</p>
-              </div>
+        <div class="chart-wrapper">
+            <div class="donut-chart">
+                <div class="donut-inner"></div>
             </div>
-          @endforeach
+
+            <div class="legend-card">
+                <ul class="legend-list">
+                    <li class="legend-item"><span class="dot" style="background-color: #03045E;"></span> Lomba</li>
+                    <li class="legend-item"><span class="dot" style="background-color: #023E8A;"></span> Webinar</li>
+                    <li class="legend-item"><span class="dot" style="background-color: #0096C7;"></span> Seminar</li>
+                    <li class="legend-item"><span class="dot" style="background-color: #00B4D8;"></span> Workshop</li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
