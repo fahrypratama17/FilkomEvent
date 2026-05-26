@@ -36,31 +36,16 @@
         <i data-lucide="UserRound" class="w-10 h-10 text-orange-550"></i>
       </button>
     </header>
-    <section class="flex-1 overflow-y-auto bg-white px-12 py-8">
+      <div class="flex flex-col rounded-3xl bg-linear-to-br from-primary-dark via-primary-lighter to-secondary-lighter px-9 py-9 h-full border-2 border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.4)] overflow-hidden">
 
-      <section class="mb-[28px] flex items-center gap-[24px]">
-        <img
-          src="{{ asset('icon/FilkomEventAvatar.svg') }}"
-          alt="Admin Mascot"
-          class="h-[72px] w-[86px] object-contain"
-        >
-
-        <h1 class="text-[40px] font-extrabold leading-none">
-          Welcome,
-          <span class="text-[#FF5C28]">Admin!</span>
-        </h1>
-      </section>
-
-      <section class="rounded-[18px] bg-[#FF5C28] px-[63px] py-[49px]">
-
-        <div class="mb-10 grid grid-cols-4 gap-6">
+        <div class="grid grid-cols-4 gap-6">
           @foreach ($summaryCards as $card)
-            <div class="rounded-2xl bg-white p-6 shadow">
-              <h2 class="text-4xl font-bold">
-                {{ $card['value'] }}
-              </h2>
+            <div class="relative flex flex-col h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)] hover:scale-105 hover:shadow-none duration-300">
+              <p class="mb-4 text-[54px] font-extrabold leading-none counter" data-target={{ $card['value'] }}>
+                0
+              </p>
 
-              <p class="mt-2 text-sm font-medium leading-6 text-gray-600">
+              <p class="text-lg text-white/80">
                 {!! $card['label'] !!}
               </p>
             </div>
@@ -83,7 +68,7 @@
           </div>
         </div>
 
-      </section>
+      </div>
     </section>
   </main>
 </div>
