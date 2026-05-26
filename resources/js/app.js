@@ -13,3 +13,4 @@ import "./countDown.js";
 import "./termsModal.js";
 import "./buttonTerm.js";
 import "./accordion.js";
+import "./modal.js";
