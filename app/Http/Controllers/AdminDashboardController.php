@@ -8,44 +8,111 @@ use Illuminate\Support\Facades\Schema;
 
 class AdminDashboardController extends Controller
 {
-    public function index()
-    {
-        $hasEventsTable = Schema::hasTable('events');
-        $hasCategoriesTable = Schema::hasTable('categories');
+  private function getMenu(): array
+  {
+    return [
+      [
+        'label' => 'Dashboard',
+        'route' => 'admin.dashboard',
+        'icon' => 'House'
+      ],
+      [
+        'label' => 'Manajemen Event',
+        'route' => 'admin.events.index',
+        'icon' => 'Calendar'
+      ],
+      [
+        'label' => 'Tambah Event',
+        'route' => 'admin.events.create',
+        'icon' => 'CalendarPlus'
+      ]
+    ];
+  }
 
-        $totalEvents = $hasEventsTable ? Event::count() : 0;
-        $upcomingEvents = $hasEventsTable
-            ? Event::where('event_start', '>', now())->count()
-            : 0;
-        $ongoingEvents = $hasEventsTable
-            ? Event::where('event_start', '<=', now())
-                ->where('event_end', '>=', now())
-                ->count()
-            : 0;
-        $finishedEvents = $hasEventsTable
-            ? Event::where('event_end', '<', now())->count()
-            : 0;
+  private function getSetting(): array
+  {
+    return [];
+  }
 
-        $palette = ['#08076F', '#054D92', '#0497C7', '#0CB2C9', '#7C3AED', '#F9682A'];
+  private function sharedData(): array
+  {
+    return [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ];
+  }
 
-        $categoryStats = $hasEventsTable && $hasCategoriesTable
-            ? Category::withCount('events')
-                ->orderBy('category_name')
-                ->get()
-                ->map(fn (Category $category, int $index) => [
-                    'label' => $category->category_name,
-                    'value' => $category->events_count,
-                    'color' => $palette[$index % count($palette)],
-                ])
-                ->values()
-            : collect();
+  public function index()
+  {
+    $hasEventsTable = Schema::hasTable('events');
+    $hasCategoriesTable = Schema::hasTable('categories');
 
-        return view('Admin.admin-dashboard', [
-            'totalEvents' => $totalEvents,
-            'upcomingEvents' => $upcomingEvents,
-            'ongoingEvents' => $ongoingEvents,
-            'finishedEvents' => $finishedEvents,
-            'categoryStats' => $categoryStats,
-        ]);
-    }
+    $totalEvents = $hasEventsTable ? Event::count() : 0;
+
+    $upcomingEvents = $hasEventsTable
+      ? Event::where('event_start', '>', now())->count()
+      : 0;
+
+    $ongoingEvents = $hasEventsTable
+      ? Event::where('event_start', '<=', now())
+        ->where('event_end', '>=', now())
+        ->count()
+      : 0;
+
+    $finishedEvents = $hasEventsTable
+      ? Event::where('event_end', '<', now())->count()
+      : 0;
+
+    $summaryCards = [
+      [
+        'icon' => 'Calendars',
+        'value' => str_pad((string) $totalEvents, 2, '0', STR_PAD_LEFT),
+        'label' => 'Jumlah Event',
+      ],
+      [
+        'icon' => 'CalendarClock',
+        'value' => str_pad((string) $upcomingEvents, 2, '0', STR_PAD_LEFT),
+        'label' => 'Event Mendatang',
+      ],
+      [
+        'icon' => 'Calendar',
+        'value' => str_pad((string) $ongoingEvents, 2, '0', STR_PAD_LEFT),
+        'label' => 'Event Berlangsung',
+      ],
+      [
+        'icon' => 'CalendarCheck2',
+        'value' => str_pad((string) $finishedEvents, 2, '0', STR_PAD_LEFT),
+        'label' => 'Event Selesai',
+      ],
+    ];
+
+    $palette = [
+      '#08076F',
+      '#054D92',
+      '#0497C7',
+      '#0CB2C9',
+      '#7C3AED',
+      '#F9682A'
+    ];
+
+    $categoryStats = $hasEventsTable && $hasCategoriesTable
+      ? Category::withCount('events')
+        ->orderBy('category_name')
+        ->get()
+        ->map(fn (Category $category) => [
+          'category_name' => $category->category_name,
+          'total' => $category->events_count,
+        ])
+        ->values()
+        ->all()
+      : [];
+
+    return view('Admin.admin-dashboard', array_merge(
+      $this->sharedData(),
+      [
+        'summaryCards' => $summaryCards,
+        'categoryStats' => $categoryStats,
+      ]
+    ));
+  }
 }

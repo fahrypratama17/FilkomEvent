@@ -45,8 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement("div");
     div.className = "flex items-center gap-2 cursor-pointer";
     div.innerHTML = `
-      <span class="w-3 h-3 rounded-full" style="background:${color}"></span>
-      ${item.category_name}
+      <span class="w-3 h-3 rounded-full shrink-0"
+            style="background:${color}">
+      </span>
+
+      <span>${item.category_name}</span>
     `;
 
     div.addEventListener("mousemove", (e) => {
@@ -57,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ${percent.toFixed(1)}%
       `;
 
-      tooltip.style.top = e.clientY + 12 + "px";
-      tooltip.style.left = e.clientX + 12 + "px";
+      tooltip.style.left = `${e.clientX + 12}px`;
+      tooltip.style.top = `${e.clientY + 12}px`;
     });
 
     div.addEventListener("mouseleave", () => {

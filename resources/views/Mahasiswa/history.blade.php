@@ -15,7 +15,7 @@
          style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
     </div>
 
-    @include('components.sidebar-mahasiswa', [
+    @include('components.sidebar', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])

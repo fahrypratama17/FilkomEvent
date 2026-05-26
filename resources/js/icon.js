@@ -38,6 +38,10 @@ import {
   IdCard,
   X,
   Wallet,
+  CalendarPlus,
+  CalendarClock,
+  Calendars,
+  CalendarCheck2,
 } from "lucide";
 
 createIcons({
@@ -80,5 +84,9 @@ createIcons({
     IdCard,
     X,
     Wallet,
+    CalendarPlus,
+    CalendarClock,
+    Calendars,
+    CalendarCheck2,
   },
 });

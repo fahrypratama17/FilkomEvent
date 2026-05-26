@@ -134,7 +134,7 @@
                 </h2>
 
                 <nav class="space-y-8">
-                    <a href="{{ route('admin.dashboard') }}"
+                    <a href="{{ route('admin.admin-dashboard') }}"
                        class="flex items-center gap-8 text-[24px] text-white/70">
                         <span>Dashboard</span>
                     </a>

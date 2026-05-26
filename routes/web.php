@@ -8,7 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AdminEventController;
-use App\Http\Controllers\AdminDashboardController;
+use \App\Http\Controllers\AdminDashboardController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -51,7 +51,6 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 
 // Routing For Admin Page
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
