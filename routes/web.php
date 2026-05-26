@@ -52,7 +52,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 // Routing For Admin Page
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'indexAdmin'])->name('admin-dashboard');
 
     Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
 
