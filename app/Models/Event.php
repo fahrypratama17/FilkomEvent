@@ -88,4 +88,26 @@ class Event extends Model
   {
     return $this->hasMany(EventGoal::class, 'event_id');
   }
+
+  public function getStatusLabelAttribute(): string
+  {
+    return match ($this->event_status) {
+      'Aktif' => 'Aktif',
+      'Akan Datang' => 'Akan Datang',
+      'Berlangsung' => 'Berlangsung',
+      'Selesai' => 'Selesai',
+      'Dibatalkan' => 'Dibatalkan',
+      default => ucfirst(str_replace('_', ' ', $this->event_status)),
+    };
+  }
+
+  public function getStatusClassAttribute(): string
+  {
+    return match ($this->event_status) {
+      'Aktif', 'Akan Datang' => 'bg-[#1F388B]',
+      'Berlangsung', 'Selesai' => 'bg-[#16A34A]',
+      'Dibatalkan' => 'bg-[#E13427]',
+      default => 'bg-gray-400',
+    };
+  }
 }

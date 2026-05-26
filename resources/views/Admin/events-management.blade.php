@@ -9,24 +9,6 @@
   <title>Admin Event Management - FILKOM Event</title>
 </head>
 <body>
-@php
-  $statusLabels = [
-    'Aktif' => 'Aktif',
-      'Akan Datang' => 'Akan Datang',
-      'Berlangsung' => 'Berlangsung',
-      'Selesai' => 'Selesai',
-      'Dibatalkan' => 'Dibatalkan',
-  ];
-
-  $statusClasses = [
-    'Aktif' => 'bg-[#1F388B]',
-      'Akan Datang' => 'bg-[#1F388B]',
-      'Berlangsung' => 'bg-[#16A34A]',
-      'Selesai' => 'bg-[#16A34A]',
-      'Dibatalkan' => 'bg-[#E13427]',
-  ];
-@endphp
-
   <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
     <div
       class="absolute h-full w-full opacity-4"
@@ -114,9 +96,6 @@
             @php
               $status = $event->event_status;
 
-              $statusLabel = $statusLabels[$status] ?? ucfirst(str_replace('_', ' ', $status));
-              $statusClass = $statusClasses[$status];
-
               $start = $event->event_start ? \Carbon\Carbon::parse($event->event_start) : null;
               $end = $event->event_end ? \Carbon\Carbon::parse($event->event_end) : null;
 
@@ -131,25 +110,22 @@
             <div class="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center py-6 text-center text-sm">
               <div class="text-left">
                 <p class="font-bold text-gray-800">{{ $event->title }}</p>
-
                 <p class="text-xs italic text-gray-400">By: {{ $event->organizer ?? 'Admin FILKOM' }}</p>
               </div>
 
               <div>
                 <p class="font-semibold">{{ $start ? $start->format('d M Y') : '-' }}</p>
-
                 <p class="text-[10px] text-gray-500">{{ $start ? $start->format('H:i') : '-' }} - {{ $end ? $end->format('H:i') : '-' }}
                 </p>
               </div>
 
               <div>
-                <span class="{{ $statusClass }} rounded-full px-4 py-1 text-[10px] font-bold text-white">
-                  {{ $statusLabel }}
+                <span class="{{ $event->status_class }} rounded-full px-4 py-1 text-[10px] font-bold text-white">
+                  {{ $event->status_label }}
                 </span>
               </div>
 
               <div class="font-semibold text-gray-600">{{ $quotaFilled }}/{{ $quotaTotal }}</div>
-
               <div class="font-semibold text-gray-600">{{ $priceText }}</div>
 
               <div>
