@@ -115,4 +115,11 @@ class AdminDashboardController extends Controller
       ]
     ));
   }
+
+  public function EventManagement() {
+    return view('Admin.events-management', [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ]);
+  }
 }
