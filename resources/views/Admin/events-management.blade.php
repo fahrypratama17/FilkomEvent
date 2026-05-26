@@ -93,20 +93,6 @@
 
         <div class="divide-y divide-gray-100">
           @forelse($events as $event)
-            @php
-              $status = $event->event_status;
-
-              $start = $event->event_start ? \Carbon\Carbon::parse($event->event_start) : null;
-              $end = $event->event_end ? \Carbon\Carbon::parse($event->event_end) : null;
-
-              $quotaFilled = $event->quota_filled ?? 0;
-              $quotaTotal = $event->quota ?? 0;
-
-              $priceText = $event->is_paid
-                  ? 'Rp' . number_format((float) $event->price, 0, ',', '.')
-                  : 'Gratis';
-            @endphp
-
             <div class="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center py-6 text-center text-sm">
               <div class="text-left">
                 <p class="font-bold text-gray-800">{{ $event->title }}</p>
@@ -114,9 +100,8 @@
               </div>
 
               <div>
-                <p class="font-semibold">{{ $start ? $start->format('d M Y') : '-' }}</p>
-                <p class="text-[10px] text-gray-500">{{ $start ? $start->format('H:i') : '-' }} - {{ $end ? $end->format('H:i') : '-' }}
-                </p>
+                <p class="font-semibold">{{ $event->formatted_start_date }}</p>
+                <p class="text-[10px] text-gray-500">{{ $event->formatted_time }}</p>
               </div>
 
               <div>
@@ -125,8 +110,8 @@
                 </span>
               </div>
 
-              <div class="font-semibold text-gray-600">{{ $quotaFilled }}/{{ $quotaTotal }}</div>
-              <div class="font-semibold text-gray-600">{{ $priceText }}</div>
+              <div class="font-semibold text-gray-600">{{ $event->quota_text }}</div>
+              <div class="font-semibold text-gray-600">{{ $event->quota_text }}</div>
 
               <div>
                 <span class="rounded-full bg-[#1F388B] px-4 py-1 text-[10px] font-bold text-white">

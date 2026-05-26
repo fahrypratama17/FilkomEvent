@@ -110,4 +110,43 @@ class Event extends Model
       default => 'bg-gray-400',
     };
   }
+
+  public function getFormattedStartDateAttribute(): string
+  {
+    if (!$this->event_start) {
+      return '-';
+    }
+
+    return \Carbon\Carbon::parse($this->event_start)
+      ->format('d M Y');
+  }
+
+  public function getFormattedTimeAttribute(): string
+  {
+    if (!$this->event_start || !$this->event_end) {
+      return '-';
+    }
+
+    $start = \Carbon\Carbon::parse($this->event_start);
+    $end = \Carbon\Carbon::parse($this->event_end);
+
+    return $start->format('H:i') . ' - ' . $end->format('H:i');
+  }
+
+  public function getQuotaTextAttribute(): string
+  {
+    $filled = $this->quota_filled ?? 0;
+    $total = $this->quota ?? 0;
+
+    return "{$filled}/{$total}";
+  }
+
+  public function getPriceTextAttribute(): string
+  {
+    if (!$this->is_paid) {
+      return 'Gratis';
+    }
+
+    return 'Rp' . number_format((float) $this->price, 0, ',', '.');
+  }
 }
