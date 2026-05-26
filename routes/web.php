@@ -54,6 +54,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
+//    Route::get('/events', [AdminDashboardController::class, 'eventManagement'])->name('events.index');
 
     Route::get('/events/create', [AdminEventController::class, 'create'])->name('events.create');
 
