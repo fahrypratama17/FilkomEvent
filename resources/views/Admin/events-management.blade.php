@@ -47,17 +47,17 @@
         </a>
       </div>
 
-      <x-search-bar />
+      <x-search-bar :value="request('search')" />
 
       <section class="mb-9 flex items-end justify-between gap-6">
         <div class="flex items-end justify-between gap-8">
           <div>
             <label class="mb-2 block text-[14px] text-[#4F4F4F]">Kategori:</label>
             <div class="relative">
-              <select id="categoryFilter" name="category" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
+              <select id="categoryFilter" name="category_id" class="h-10.5 min-w-63.5 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-18 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
                 <option value="">Semua Kategori</option>
                 @foreach ($categories as $category)
-                  <option value="{{ $category->category_id }}">
+                  <option value="{{ $category->category_id }}" {{ request('category_id') == $category->category_id ? 'selected' : '' }}>
                     {{ $category->category_name }}
                   </option>
                 @endforeach
@@ -69,12 +69,12 @@
         <div>
           <label class="mb-2 block text-[14px] text-[#4F4F4F]">Status:</label>
           <div class="relative">
-            <select id="statusFilter" name="status" class="h-10.5 min-w-29 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
+            <select id="statusFilter" name="event_status" class="h-10.5 min-w-29 rounded-2xl border border-[#D0D0D0] bg-[#F7F7F7] px-4 pr-10 text-[14px] text-[#2F2F2F] focus:outline-none appearance-none cursor-pointer">
               <option value="">Semua Status</option>
-              <option value="akan_datang">Akan Datang</option>
-              <option value="berlangsung">Sedang Berlangsung</option>
-              <option value="selesai">Selesai</option>
-              <option value="dibatalkan">Dibatalkan</option>
+              <option value="akan_datang" {{ request('event_status') == 'akan_datang' ? 'selected' : '' }}>Akan Datang</option>
+              <option value="berlangsung" {{ request('event_status') == 'berlangsung' ? 'selected' : '' }}>Sedang Berlangsung</option>
+              <option value="selesai" {{ request('event_status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
+              <option value="dibatalkan" {{ request('event_status') == 'dibatalkan' ? 'selected' : '' }}>Dibatalkan</option>
             </select>
           </div>
         </div>
@@ -91,57 +91,8 @@
           <div>Aksi</div>
         </div>
 
-        <div class="divide-y divide-gray-100">
-          @forelse($events as $event)
-            <div class="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center py-6 text-center text-sm">
-              <div class="text-left">
-                <p class="font-bold text-gray-800">{{ $event->title }}</p>
-                <p class="text-xs italic text-gray-400">By: {{ $event->organizer ?? 'Admin FILKOM' }}</p>
-              </div>
-
-              <div>
-                <p class="font-semibold">{{ $event->formatted_start_date }}</p>
-                <p class="text-[10px] text-gray-500">{{ $event->formatted_time }}</p>
-              </div>
-
-              <div>
-                <span class="{{ $event->status_class }} rounded-full px-4 py-1 text-[10px] font-bold text-white">
-                  {{ $event->status_label }}
-                </span>
-              </div>
-
-              <div class="font-semibold text-gray-600">{{ $event->quota_text }}</div>
-              <div class="font-semibold text-gray-600">{{ $event->quota_text }}</div>
-
-              <div>
-                <span class="rounded-full bg-[#1F388B] px-4 py-1 text-[10px] font-bold text-white">
-                  {{ $event->category->category_name ?? '-' }}
-                </span>
-              </div>
-
-              <div class="flex justify-center gap-3">
-                <i data-lucide="SquarePen" class="text-orange-400 hover:text-orange-600 duration-200 cursor-pointer"></i>
-
-                <button title="Hapus Event" type="button" class="delete-button" data-url="{{ route('admin.events.destroy', $event) }}" data-title="{{ $event->title }}">
-                  <i data-lucide="Trash2" class="text-red-800 hover:text-red-600 duration-200 cursor-pointer"></i>
-                </button>
-              </div>
-            </div>
-          @empty
-            <div class="py-12 text-center">
-              <p class="text-lg font-bold text-[#1F388B]">
-                Belum ada event.
-              </p>
-
-              <p class="mt-2 text-sm text-gray-500">
-                Klik tombol Add New Event untuk menambahkan event baru.
-              </p>
-            </div>
-          @endforelse
-        </div>
-
-        <div class="mt-8">
-          {{ $events->links() }}
+        <div id="adminEventResults">
+          @include('Admin.partials.events-management-results', ['events' => $events])
         </div>
       </div>
     </main>

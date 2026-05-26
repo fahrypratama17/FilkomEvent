@@ -58,12 +58,18 @@ class AdminEventController extends Controller
             );
         }
 
-      return view('Admin.events-management', [
-        'events' => $events,
-        'categories' => $categories,
-        'menuItems' => $this->getMenu(),
-        'settingItems' => $this->getSetting(),
-      ]);
+        if ($request->ajax()) {
+            return response()->view('Admin.partials.events-management-results', [
+                'events' => $events,
+            ]);
+        }
+
+        return view('Admin.events-management', [
+            'events' => $events,
+            'categories' => $categories,
+            'menuItems' => $this->getMenu(),
+            'settingItems' => $this->getSetting(),
+        ]);
     }
 
   private function getMenu(): array
