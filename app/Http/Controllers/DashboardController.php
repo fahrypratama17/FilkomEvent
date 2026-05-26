@@ -8,14 +8,6 @@ use App\Models\Event;
 
 class DashboardController extends Controller {
   private function getMenu() {
-    $role = auth()->user()->role;
-
-    if ($role === 'admin') {
-      return [
-        ['label' => 'Dashboard', 'route' => 'Admin.AdminDashboard', 'icon' => 'UserRound']
-      ];
-    }
-
     return [
       ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
       ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
@@ -24,7 +16,24 @@ class DashboardController extends Controller {
     ];
   }
 
+  private function getSetting() {
+    return [
+      ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound'],
+    ];
+  }
+
+  private function sharedData() {
+    return [
+      'menuItems' => $this->getMenu(),
+      'settingItems' => $this->getSetting(),
+    ];
+  }
+
   public function index(DashboardService $dashboardService) {
+    if (auth()->user()->role === 'admin') {
+      return view('Admin.admin-dashboard', $this->sharedData());
+    }
+
     $events = Event::with('category')->latest()->take(3)->get();
 
     $iconMap = [
@@ -65,27 +74,21 @@ class DashboardController extends Controller {
         return $cat;
       });
 
-    return view('Mahasiswa.dashboard', [
-      'menuItems' => $this->getMenu(),
-      'settingItems' => $this->getSetting(),
-      'events' => $events,
-      'categories' => $categories,
-      'categoryStats' => $categoryStats,
-      'stats' => $stats,
-    ]);
+    return view('Mahasiswa.dashboard', array_merge(
+      $this->sharedData(),
+      [
+        'events' => $events,
+        'categories' => $categories,
+        'categoryStats' => $categoryStats,
+        'stats' => $stats,
+      ]
+    ));
   }
-
   public function history() {
     return view('Mahasiswa.history', [
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
     ]);
-  }
-
-  private function getSetting() {
-    return [
-      ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound'],
-    ];
   }
 
   public function profile() {

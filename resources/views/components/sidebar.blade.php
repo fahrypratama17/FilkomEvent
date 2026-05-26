@@ -21,26 +21,34 @@
   </div>
 
   <div class="pt-16">
-    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide text-white/85">SETTING</h2>
-    <div class="space-y-8">
+    <h2 class="mb-8 text-[26px] font-extrabold tracking-wide text-white/85">
+      SETTING
+    </h2>
+  </div>
+
+  @if (count($settingItems) > 0)
+    <div class="mb-8">
       @foreach ($settingItems as $item)
         @php
           $isActive = request()->routeIs($item['route']);
           $routeName = str_replace('.*', '.index', $item['route']);
         @endphp
 
-        <a href="{{ route($routeName) }}" class="flex items-center gap-4 text-[20px] transition {{ $isActive ? 'font-bold text-white' : 'text-white/70 hover:text-white' }}">
+        <a href="{{ route($routeName) }}"
+           class="flex items-center gap-4 text-[20px] transition {{ $isActive ? 'font-bold text-white' : 'text-white/70 hover:text-white' }}">
           <i data-lucide="{{ $item['icon'] }}"></i>
           <p>{{ $item['label'] }}</p>
         </a>
       @endforeach
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="flex w-full items-center gap-4 text-[20px] text-white/70 hover:text-white cursor-pointer">
-          <i data-lucide="LogOut"></i>
-          <span>Logout</span>
-        </button>
-      </form>
     </div>
-  </div>
+
+  @endif
+  <form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit"
+            class="flex w-full items-center gap-4 text-[20px] text-white/70 hover:text-white cursor-pointer">
+      <i data-lucide="LogOut"></i>
+      <span>Logout</span>
+    </button>
+  </form>
 </aside>
