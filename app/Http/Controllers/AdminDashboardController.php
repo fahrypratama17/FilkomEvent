@@ -99,10 +99,9 @@ class AdminDashboardController extends Controller
       ? Category::withCount('events')
         ->orderBy('category_name')
         ->get()
-        ->map(fn (Category $category, int $index) => [
-          'label' => $category->category_name,
-          'value' => $category->events_count,
-          'color' => $palette[$index % count($palette)],
+        ->map(fn (Category $category) => [
+          'category_name' => $category->category_name,
+          'total' => $category->events_count,
         ])
         ->values()
         ->all()

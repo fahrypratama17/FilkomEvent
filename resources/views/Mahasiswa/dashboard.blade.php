@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <title>Filkom Event - Dashboard</title>
+  <title>Dashboard - Filkom Event</title>
 </head>
 <body>
   <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
