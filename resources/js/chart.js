@@ -6,11 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalText = document.getElementById("totalEvents");
   const tooltip = document.getElementById("tooltip");
 
-  tooltip.innerHTML = "TEST TOOLTIP";
-  tooltip.classList.remove("hidden");
-  tooltip.style.left = "200px";
-  tooltip.style.top = "200px";
-
   if (!root || !chart || !legend || !totalText || !tooltip) return;
 
   let categoryData = [];
@@ -58,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     div.addEventListener("mousemove", (e) => {
-      console.log("hover jalan");
       tooltip.classList.remove("hidden");
       tooltip.innerHTML = `
         <strong>${item.category_name}</strong><br>
