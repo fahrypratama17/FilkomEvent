@@ -98,8 +98,10 @@
               </div>
               <div id="chartLegend" class="flex flex-wrap justify-center gap-4 text-white text-xs"></div>
 
-              <div id="tooltip" class="fixed hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50">
-              </div>
+              <div
+                id="tooltip"
+                class="absolute hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50"
+              ></div>
             </div>
           </div>
         </div>
