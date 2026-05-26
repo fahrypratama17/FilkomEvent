@@ -42,6 +42,7 @@ import {
   CalendarClock,
   Calendars,
   CalendarCheck2,
+  Trash2,
 } from "lucide";
 
 createIcons({
@@ -88,5 +89,6 @@ createIcons({
     CalendarClock,
     Calendars,
     CalendarCheck2,
+    Trash2,
   },
 });

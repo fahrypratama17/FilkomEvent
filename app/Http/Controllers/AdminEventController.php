@@ -58,8 +58,39 @@ class AdminEventController extends Controller
             );
         }
 
-        return view('Admin.events-management', compact('events', 'categories'));
+      return view('Admin.events-management', [
+        'events' => $events,
+        'categories' => $categories,
+        'menuItems' => $this->getMenu(),
+        'settingItems' => $this->getSetting(),
+      ]);
     }
+
+  private function getMenu(): array
+  {
+    return [
+      [
+        'label' => 'Dashboard',
+        'route' => 'admin.dashboard',
+        'icon' => 'House'
+      ],
+      [
+        'label' => 'Manajemen Event',
+        'route' => 'admin.events.index',
+        'icon' => 'Calendar'
+      ],
+      [
+        'label' => 'Tambah Event',
+        'route' => 'admin.events.create',
+        'icon' => 'CalendarPlus'
+      ]
+    ];
+  }
+
+  private function getSetting(): array
+  {
+    return [];
+  }
 
     public function create()
     {
@@ -67,7 +98,11 @@ class AdminEventController extends Controller
             ? Category::orderBy('category_name')->get()
             : collect();
 
-        return view('Admin.form-upload-admin', compact('categories'));
+      return view('Admin.form-upload-admin', [
+        'categories' => $categories,
+        'menuItems' => $this->getMenu(),
+        'settingItems' => $this->getSetting(),
+      ]);
     }
 
     public function store(Request $request)
