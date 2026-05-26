@@ -43,8 +43,8 @@
                 <div class="absolute top-4 right-4 opacity-40 duration-200 hover:opacity-100">
                   <i data-lucide="{{ $card['icon'] }}" class="w-8 h-8"></i>
                 </div>
-                <p class="mb-4 text-[54px] font-extrabold leading-none counter" data-target={{ $card['value'] }}>0</p>
-                <p class="text-lg text-white/80">{!! $card['label'] !!}</p>
+                <p class="mb-4 text-[54px] font-extrabold leading-none">{{ $card['value'] }}</p>
+                <p class="text-lg text-white/80">{{ $card['label'] }}</p>
               </div>
             @endforeach
           </div>

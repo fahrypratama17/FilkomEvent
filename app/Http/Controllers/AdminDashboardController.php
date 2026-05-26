@@ -66,22 +66,22 @@ class AdminDashboardController extends Controller
     $summaryCards = [
       [
         'icon' => 'Calendars',
-        'value' => str_pad((string) $totalEvents, 2, '0', STR_PAD_LEFT),
+        'value' => $totalEvents,
         'label' => 'Jumlah Event',
       ],
       [
         'icon' => 'CalendarClock',
-        'value' => str_pad((string) $upcomingEvents, 2, '0', STR_PAD_LEFT),
+        'value' => $upcomingEvents,
         'label' => 'Event Mendatang',
       ],
       [
         'icon' => 'Calendar',
-        'value' => str_pad((string) $ongoingEvents, 2, '0', STR_PAD_LEFT),
+        'value' => $ongoingEvents,
         'label' => 'Event Berlangsung',
       ],
       [
         'icon' => 'CalendarCheck2',
-        'value' => str_pad((string) $finishedEvents, 2, '0', STR_PAD_LEFT),
+        'value' => $finishedEvents,
         'label' => 'Event Selesai',
       ],
     ];
@@ -116,7 +116,7 @@ class AdminDashboardController extends Controller
     ));
   }
 
-  public function EventManagement() {
+  public function eventManagement() {
     return view('Admin.events-management', [
       'menuItems' => $this->getMenu(),
       'settingItems' => $this->getSetting(),
