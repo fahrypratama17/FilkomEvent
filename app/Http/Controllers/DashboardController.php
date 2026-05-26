@@ -8,16 +8,6 @@ use App\Models\Event;
 
 class DashboardController extends Controller {
   private function getMenu() {
-    $role = auth()->user()->role;
-
-    if ($role === 'admin') {
-      return [
-        ['label' => 'Dashboard', 'route' => 'admin.admin-dashboard', 'icon' => 'House'],
-        ['label' => 'Manajemen Event', 'route' => 'admin.events.index', 'icon' => 'Calendar'],
-        ['label' => 'Tambah Event', 'route' => 'admin.events.index', 'icon' => 'CalendarPlus']
-      ];
-    }
-
     return [
       ['label' => 'Dashboard', 'route' => 'dashboard', 'icon' => 'House'],
       ['label' => 'Bookmark', 'route' => 'bookmark', 'icon' => 'BookMarked'],
@@ -27,12 +17,6 @@ class DashboardController extends Controller {
   }
 
   private function getSetting() {
-    $role = auth()->user()->role;
-
-    if ($role === 'admin') {
-      return [];
-    }
-
     return [
       ['label' => 'Profile', 'route' => 'profile', 'icon' => 'UserRound'],
     ];
