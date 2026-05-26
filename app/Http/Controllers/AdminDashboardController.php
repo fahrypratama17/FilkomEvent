@@ -65,18 +65,22 @@ class AdminDashboardController extends Controller
 
     $summaryCards = [
       [
+        'icon' => 'Calendars',
         'value' => str_pad((string) $totalEvents, 2, '0', STR_PAD_LEFT),
         'label' => 'Jumlah Event',
       ],
       [
+        'icon' => 'CalendarClock',
         'value' => str_pad((string) $upcomingEvents, 2, '0', STR_PAD_LEFT),
-        'label' => 'Event Akan Datang',
+        'label' => 'Event Mendatang',
       ],
       [
+        'icon' => 'Calendar',
         'value' => str_pad((string) $ongoingEvents, 2, '0', STR_PAD_LEFT),
-        'label' => 'Event Sedang Berlangsung',
+        'label' => 'Event Berlangsung',
       ],
       [
+        'icon' => 'CalendarCheck2',
         'value' => str_pad((string) $finishedEvents, 2, '0', STR_PAD_LEFT),
         'label' => 'Event Selesai',
       ],

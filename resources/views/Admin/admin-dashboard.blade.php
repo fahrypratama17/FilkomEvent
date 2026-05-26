@@ -41,13 +41,11 @@
         <div class="grid grid-cols-4 gap-6">
           @foreach ($summaryCards as $card)
             <div class="relative flex flex-col h-42.5 items-center justify-center rounded-3xl bg-[#FF6A27] px-6 text-center text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)] hover:scale-105 hover:shadow-none duration-300">
-              <p class="mb-4 text-[54px] font-extrabold leading-none counter" data-target={{ $card['value'] }}>
-                0
-              </p>
-
-              <p class="text-lg text-white/80">
-                {!! $card['label'] !!}
-              </p>
+              <div class="absolute top-4 right-4 opacity-40 duration-200 hover:opacity-100">
+                <i data-lucide="{{ $card['icon'] }}" class="w-8 h-8"></i>
+              </div>
+              <p class="mb-4 text-[54px] font-extrabold leading-none counter" data-target={{ $card['value'] }}>0</p>
+              <p class="text-lg text-white/80">{!! $card['label'] !!}</p>
             </div>
           @endforeach
         </div>
