@@ -43,6 +43,7 @@ import {
   Calendars,
   CalendarCheck2,
   Trash2,
+  SquarePen,
 } from "lucide";
 
 createIcons({
@@ -90,5 +91,6 @@ createIcons({
     Calendars,
     CalendarCheck2,
     Trash2,
+    SquarePen,
   },
 });

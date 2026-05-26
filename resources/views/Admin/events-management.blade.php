@@ -109,7 +109,6 @@
           <div>Aksi</div>
         </div>
 
-        {{-- TABLE BODY --}}
         <div class="divide-y divide-gray-100">
           @forelse($events as $event)
             @php
@@ -131,64 +130,38 @@
 
             <div class="grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center py-6 text-center text-sm">
               <div class="text-left">
-                <p class="font-bold text-gray-800">
-                  {{ $event->title }}
-                </p>
+                <p class="font-bold text-gray-800">{{ $event->title }}</p>
 
-                <p class="text-xs italic text-gray-400">
-                  By: {{ $event->organizer ?? 'Admin FILKOM' }}
-                </p>
+                <p class="text-xs italic text-gray-400">By: {{ $event->organizer ?? 'Admin FILKOM' }}</p>
               </div>
 
               <div>
-                <p class="font-semibold">
-                  {{ $start ? $start->format('d M Y') : '-' }}
-                </p>
+                <p class="font-semibold">{{ $start ? $start->format('d M Y') : '-' }}</p>
 
-                <p class="text-[10px] text-gray-500">
-                  {{ $start ? $start->format('H:i') : '-' }}
-                  -
-                  {{ $end ? $end->format('H:i') : '-' }}
+                <p class="text-[10px] text-gray-500">{{ $start ? $start->format('H:i') : '-' }} - {{ $end ? $end->format('H:i') : '-' }}
                 </p>
               </div>
 
               <div>
                 <span class="{{ $statusClass }} rounded-full px-4 py-1 text-[10px] font-bold text-white">
-                    {{ $statusLabel }}
+                  {{ $statusLabel }}
                 </span>
               </div>
 
-              <div class="font-semibold text-gray-600">
-                {{ $quotaFilled }}/{{ $quotaTotal }}
-              </div>
+              <div class="font-semibold text-gray-600">{{ $quotaFilled }}/{{ $quotaTotal }}</div>
 
-              <div class="font-semibold text-gray-600">
-                {{ $priceText }}
-              </div>
+              <div class="font-semibold text-gray-600">{{ $priceText }}</div>
 
               <div>
                 <span class="rounded-full bg-[#1F388B] px-4 py-1 text-[10px] font-bold text-white">
-                    {{ $event->category->category_name ?? '-' }}
+                  {{ $event->category->category_name ?? '-' }}
                 </span>
               </div>
 
               <div class="flex justify-center gap-3">
-                <a href="#"
-                   class="text-[#FF742E] transition-colors hover:text-orange-600"
-                   title="Edit event">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                       fill="none"
-                       viewBox="0 0 24 24"
-                       stroke-width="1.5"
-                       stroke="currentColor"
-                       class="h-6 w-6">
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                  </svg>
-                </a>
+                <i data-lucide="SquarePen" class="text-orange-400 hover:text-orange-600 duration-200 cursor-pointer"></i>
 
-                <button type="button" class="delete-button" data-url="{{ route('admin.events.destroy', $event) }}" data-title="{{ $event->title }}">
+                <button title="Hapus Event" type="button" class="delete-button" data-url="{{ route('admin.events.destroy', $event) }}" data-title="{{ $event->title }}">
                   <i data-lucide="Trash2" class="text-red-800 hover:text-red-600 duration-200 cursor-pointer"></i>
                 </button>
               </div>
@@ -206,7 +179,6 @@
           @endforelse
         </div>
 
-        {{-- PAGINATION --}}
         <div class="mt-8">
           {{ $events->links() }}
         </div>
