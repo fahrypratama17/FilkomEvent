@@ -30,7 +30,8 @@
       <h2 class="mb-[28px] text-[22px] font-extrabold tracking-wide">MAIN MENU</h2>
 
       <div class="space-y-[30px]">
-        <a href="{{ url('/admin/dashboard') }}" class="flex items-center gap-[28px] text-[18px] font-medium text-white/80">
+        <a href="{{ url('/admin/dashboard') }}"
+           class="flex items-center gap-[28px] text-[18px] font-medium text-white/80">
           <i data-lucide="home" class="h-[24px] w-[24px]"></i>
           <span>Dashboard</span>
         </a>
@@ -61,7 +62,8 @@
     {{-- CONTAINER TOAST NOTIFICATION (MELAYANG DI POJOK KANAN ATAS) --}}
     <div class="fixed top-[34px] right-[76px] z-50 space-y-4 w-full max-w-[420px]">
       @if(session('success'))
-        <div id="toast-success" class="flex items-center gap-4 rounded-[20px] border border-[#234E1A] bg-[#C1EEA6] px-6 py-4 text-[#1E3E14] shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300">
+        <div id="toast-success"
+             class="flex items-center gap-4 rounded-[20px] border border-[#234E1A] bg-[#C1EEA6] px-6 py-4 text-[#1E3E14] shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300">
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1E3E14]">
             <i data-lucide="check" class="h-5 w-5 text-[#C1EEA6]"></i>
           </div>
@@ -73,7 +75,8 @@
       @endif
 
       @if(session('error'))
-        <div id="toast-error" class="flex items-center gap-4 rounded-[20px] border border-[#A71919] bg-[#F7A4A4] px-6 py-4 text-[#640505] shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300">
+        <div id="toast-error"
+             class="flex items-center gap-4 rounded-[20px] border border-[#A71919] bg-[#F7A4A4] px-6 py-4 text-[#640505] shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300">
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#640505]">
             <i data-lucide="x" class="h-5 w-5 text-[#F7A4A4]"></i>
           </div>
@@ -85,7 +88,8 @@
       @endif
 
       @if($errors->any())
-        <div id="toast-validation" class="flex items-center gap-4 rounded-[20px] border border-[#A71919] bg-[#F7A4A4] px-6 py-4 text-[#640505] shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300">
+        <div id="toast-validation"
+             class="flex items-center gap-4 rounded-[20px] border border-[#A71919] bg-[#F7A4A4] px-6 py-4 text-[#640505] shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300">
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#640505]">
             <i data-lucide="x" class="h-5 w-5 text-[#F7A4A4]"></i>
           </div>
@@ -141,7 +145,8 @@
     </div>
 
     {{-- FORM CARD --}}
-    <section class="w-full max-w-[1028px] rounded-[28px] border border-[#DCDCDC] bg-white px-[75px] pb-[47px] pt-[67px] shadow-sm">
+    <section
+      class="w-full max-w-[1028px] rounded-[28px] border border-[#DCDCDC] bg-white px-[75px] pb-[47px] pt-[67px] shadow-sm">
 
       <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="multiStepForm">
         @csrf
@@ -153,21 +158,24 @@
           $textareaClass = 'w-full resize-none rounded-[8px] bg-[#E7E7E7] px-[30px] py-[23px] text-[17px] font-medium text-[#555] outline-none placeholder:text-[#666] focus:ring-2 focus:ring-[#263F92]/30';
         @endphp
 
-        @include('Admin.partials.form-upload.step-1')
-        @include('Admin.partials.form-upload.step-2')
-        @include('Admin.partials.form-upload.step-3')
+        @include('partials.form-upload.step-1')
+        @include('partials.form-upload.step-2')
+        @include('partials.form-upload.step-3')
 
         {{-- ==================== NAVIGATION BUTTONS ==================== --}}
         <div class="mt-[60px] flex justify-between gap-5 max-w-[573px] mx-auto">
-          <button type="button" id="prevBtn" class="hidden h-[48px] flex-1 rounded-full border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
+          <button type="button" id="prevBtn"
+                  class="hidden h-[48px] flex-1 rounded-full border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
             Kembali
           </button>
 
-          <button type="button" id="nextBtn" class="h-[48px] flex-1 rounded-full bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
+          <button type="button" id="nextBtn"
+                  class="h-[48px] flex-1 rounded-full bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
             Selanjutnya
           </button>
 
-          <button type="submit" id="submitBtn" class="hidden h-[48px] flex-1 rounded-full bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
+          <button type="submit" id="submitBtn"
+                  class="hidden h-[48px] flex-1 rounded-full bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
             Simpan Event
           </button>
         </div>
@@ -262,6 +270,7 @@
       speakerContainer.classList.remove('hidden');
     }
   }
+
   categorySelect?.addEventListener('change', checkCategory);
 
   // 4. MULTI-STEP FORM NAVIGATION CONTROL
@@ -328,7 +337,7 @@
     if (currentStep < totalSteps) {
       currentStep++;
       updateFormStep();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   });
 
@@ -336,7 +345,7 @@
     if (currentStep > 1) {
       currentStep--;
       updateFormStep();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   });
 
@@ -351,7 +360,9 @@
         setTimeout(() => {
           toastElement.style.opacity = '0';
           toastElement.style.transform = 'translateY(-10px)';
-          setTimeout(() => { toastElement.remove(); }, 300);
+          setTimeout(() => {
+            toastElement.remove();
+          }, 300);
         }, 4000);
       }
     });
