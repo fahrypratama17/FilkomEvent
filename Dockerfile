@@ -15,13 +15,21 @@ RUN rm -rf node_modules public/build
 
 # install dependency
 RUN composer install --no-dev --optimize-autoloader
+
+# install node modules
 RUN npm install
 
 # build vite
 RUN npm run build
 
-# clear cache laravel
+# clear cache
 RUN php artisan optimize:clear || true
+
+# migrate database
+RUN php artisan migrate --force
+
+# optional seeder
+RUN php artisan db:seed --force
 
 EXPOSE 8080
 
