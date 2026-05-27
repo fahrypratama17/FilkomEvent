@@ -21,7 +21,10 @@ RUN npm install
 RUN npm run build
 
 # clear cache laravel
-RUN php artisan optimize:clear || true
+RUN php artisan optimize:clear
+RUN php artisan config:clear
+RUN php artisan cache:clear
+RUN php artisan config:cache
 
 EXPOSE 8080
 
