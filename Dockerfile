@@ -25,12 +25,6 @@ RUN npm run build
 # clear cache
 RUN php artisan optimize:clear || true
 
-# migrate database
-RUN php artisan migrate --force
-
-# optional seeder
-RUN php artisan db:seed --force
-
 EXPOSE 8080
 
 CMD php artisan serve --host=0.0.0.0 --port=8080
