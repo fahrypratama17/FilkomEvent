@@ -146,7 +146,7 @@
                     </div>
                   </div>
 
-                  <div onclick="togglePayment('qris')" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('qris')" id="qris-card" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">QRIS</span>
@@ -155,7 +155,19 @@
 
                     <div id="content-qris" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out">
                       <div class="mt-4 text-sm text-gray-500">
-                        Scan QR untuk pembayaran instan
+                        Scan QR untuk pembayaran instan.
+                      </div>
+                      <div class="mt-4 flex items-center gap-4">
+                        <a href="https://www.youtube.com/watch?v=4f5YQh7iG3Q" target="_blank" rel="noopener" class="inline-flex">
+                          <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D4f5YQh7iG3Q"
+                            alt="QRIS menuju video"
+                            class="h-28 w-28 rounded-lg border border-[#D9D9D9] bg-white p-2"
+                          />
+                        </a>
+                        <div class="text-xs text-gray-500">
+                          Setelah 5 detik akan diarahkan ke halaman sukses pembayaran.
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -195,5 +207,22 @@
       </div>
     </main>
   </div>
+
+  <script>
+    (function() {
+      const qrisCard = document.getElementById('qris-card');
+      if (!qrisCard) return;
+
+      let qrisTimerStarted = false;
+      qrisCard.addEventListener('click', function() {
+        if (qrisTimerStarted) return;
+        qrisTimerStarted = true;
+
+        setTimeout(function() {
+          window.location.href = "{{ route('events.id.payment.success', $event->event_id) }}";
+        }, 5000);
+      });
+    })();
+  </script>
 </body>
 </html>

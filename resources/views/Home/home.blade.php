@@ -114,7 +114,7 @@
 
       <div class="mx-auto w-[60%] grid grid-cols-[0.8fr_1.5fr]">
         <div class="flex items-end justify-center h-100 w-full bg-orange-550 -translate-y-30 rounded-tr-[50px] rounded-bl-[50px] shadow-lg">
-          <img src="{{ asset('icon/testimonials_2.svg') }}" alt="testimonial 2">
+          <img src="{{ asset('icon/Testimonials_2.svg') }}" alt="testimonial 2">
         </div>
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">
           <h2 class="text-white font-bold text-2xl w-[60%]">The Ultimate Launchpad</h2>
@@ -134,7 +134,7 @@
           <p class="text-white text-[14px] font-bold">~ Salsabila, Information Systems '23</p>
         </div>
         <div class="flex items-end justify-center h-100 w-full bg-orange-550 -translate-y-30 rounded-tl-[50px] rounded-br-[50px] shadow-lg">
-          <img class="w-65" src="{{ asset('icon/testimonials_3.png') }}" alt="testimonial 3">
+          <img class="w-65" src="{{ asset('icon/Testimonials_3.png') }}" alt="testimonial 3">
         </div>
       </div>
     </div>
