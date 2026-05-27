@@ -62,7 +62,7 @@ class AuthController extends Controller
       'email' => $request->email,
       'password' => $request->password,
     ])) {
-      $request->session()->regenerate();
+    $request->session()->regenerate();
 
       if (strtolower(Auth::user()->role) === 'admin') {
         return redirect()->route('admin.dashboard')

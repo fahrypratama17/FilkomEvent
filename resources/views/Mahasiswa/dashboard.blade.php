@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <title>Filkom Event - Dashboard</title>
+  <title>Dashboard - Filkom Event</title>
 </head>
 <body>
   <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
@@ -15,7 +15,7 @@
          style="background-image: radial-gradient(#001d3d 1px, transparent 2px); background-size: 10px 10px;">
     </div>
 
-    @include('components.sidebar-mahasiswa', [
+    @include('components.sidebar', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
@@ -98,8 +98,10 @@
               </div>
               <div id="chartLegend" class="flex flex-wrap justify-center gap-4 text-white text-xs"></div>
 
-              <div id="tooltip" class="fixed hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50">
-              </div>
+              <div
+                id="tooltip"
+                class="absolute hidden px-3 py-2 text-xs text-white bg-black/80 rounded-lg shadow-lg pointer-events-none z-50"
+              ></div>
             </div>
           </div>
         </div>

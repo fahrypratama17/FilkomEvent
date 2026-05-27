@@ -1,0 +1,13 @@
+{
+  "$schema": "https://railpack.com/schema.json",
+
+  "providers": ["php", "node"],
+
+  "packages": {
+    "php": "8.4"
+  },
+
+  "deploy": {
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT"
+  }
+}

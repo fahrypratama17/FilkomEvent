@@ -8,7 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AdminEventController;
-use App\Http\Controllers\AdminDashboardController;
+use \App\Http\Controllers\AdminDashboardController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -42,6 +42,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/events/{id}/registration', [EventController::class, 'registration'])->name('events.id.registration');
 
   Route::get('/events/{id}/payment', [EventController::class, 'payment'])->name('events.id.payment');
+  Route::get('/events/{id}/payment/success', fn($id) => view('Mahasiswa.payment-success', ['eventId' => $id]))->name('events.id.payment.success');
 
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
@@ -51,7 +52,6 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 
 // Routing For Admin Page
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
