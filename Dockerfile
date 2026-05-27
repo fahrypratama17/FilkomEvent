@@ -26,10 +26,10 @@ RUN npm run build
 RUN php artisan optimize:clear || true
 
 # migrate database
-RUN php artisan migrate
+RUN php artisan migrate --force
 
 # optional seeder
-RUN php artisan db:seed
+RUN php artisan db:seed --force
 
 EXPOSE 8080
 
