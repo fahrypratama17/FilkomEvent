@@ -15,11 +15,10 @@
       <label class="{{ $labelClass }}">Tujuan Event:</label>
       <div id="purposeWrapper" class="space-y-3">
         <div class="relative">
-          <input type="text" name="event_purpose[]" placeholder="Tujuan dari Event" class="{{ $inputClass }} pr-[60px]">
+          <input type="text" name="event_goals[]" placeholder="Tujuan dari Event" class="{{ $inputClass }} pr-[60px]">
           <button type="button" id="addPurpose" class="absolute right-[21px] top-1/2 -translate-y-1/2 text-[28px] font-extrabold leading-none text-[#FF5F2A]">+</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-

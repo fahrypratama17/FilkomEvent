@@ -36,29 +36,27 @@
         </button>
       </header>
 
-      {{-- STEP PROGRESS BAR INDICATOR --}}
-      <div class="mb-8 flex max-w-[1028px] items-center justify-center gap-4 px-[75px]">
+      <div class="mb-8 flex max-w-257 items-center justify-center gap-4 px-18.75">
         <div id="stepBadges" class="flex w-full items-center justify-between text-sm font-bold">
-          <div class="step-indicator flex items-center gap-2 text-[#FF5F2A]">
+          <div class="step-indicator flex items-center gap-2 text-[#FF5F2A] text-xl">
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-[#FF5F2A] text-white">1</span>
             <span>Info Utama</span>
           </div>
-          <div class="h-[2px] flex-1 bg-gray-300 mx-4 step-line"></div>
-          <div class="step-indicator flex items-center gap-2 text-gray-400">
+          <div class="h-0.5 flex-1 bg-gray-300 mx-4 step-line"></div>
+          <div class="step-indicator flex items-center gap-2 text-gray-400 text-xl">
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white">2</span>
             <span>Status & Kontak</span>
           </div>
-          <div class="h-[2px] flex-1 bg-gray-300 mx-4 step-line"></div>
-          <div class="step-indicator flex items-center gap-2 text-gray-400">
+          <div class="h-0.5 flex-1 bg-gray-300 mx-4 step-line"></div>
+          <div class="step-indicator flex items-center gap-2 text-gray-400 text-xl">
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white">3</span>
             <span>Deskripsi</span>
           </div>
         </div>
       </div>
 
-      {{-- FORM CARD --}}
       <section
-        class="w-full max-w-[1028px] rounded-[28px] border border-[#DCDCDC] bg-white px-[75px] pb-[47px] pt-[67px] shadow-sm">
+        class="w-full max-w-257 rounded-[28px] border border-[#DCDCDC] bg-white px-18.75 pb-11.75 pt-16.75 shadow-sm">
 
         <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="multiStepForm">
           @csrf
@@ -74,20 +72,16 @@
           @include('partials.form-upload.step-2')
           @include('partials.form-upload.step-3')
 
-          {{-- ==================== NAVIGATION BUTTONS ==================== --}}
-          <div class="mt-[60px] flex justify-between gap-5 max-w-[573px] mx-auto">
-            <button type="button" id="prevBtn"
-                    class="hidden h-[48px] flex-1 rounded-full border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
+          <div class="mt-15 flex justify-between gap-5 max-w-143.25 mx-auto">
+            <button type="button" id="prevBtn" class="hidden h-12 flex-1 rounded-full border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
               Kembali
             </button>
 
-            <button type="button" id="nextBtn"
-                    class="h-[48px] flex-1 rounded-full bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
+            <button type="button" id="nextBtn" class="h-12 flex-1 rounded-full bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
               Selanjutnya
             </button>
 
-            <button type="submit" id="submitBtn"
-                    class="hidden h-[48px] flex-1 rounded-full bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
+            <button type="submit" id="submitBtn" class="hidden h-12 flex-1 rounded-full bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
               Simpan Event
             </button>
           </div>

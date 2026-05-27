@@ -21,11 +21,6 @@
   {{-- GRID FORM HALAMAN 1 --}}
   <div class="grid grid-cols-2 gap-x-[60px] gap-y-[26px]">
     <div>
-      <label class="{{ $labelClass }}">ID Event:</label>
-      <input type="text" name="event_id" value="EVT-{{ strtoupper(\Illuminate\Support\Str::random(6)) }}" class="{{ $inputClass }} bg-gray-200 cursor-not-allowed font-mono text-[17px] text-[#FF5F2A] font-bold text-center tracking-wide" readonly>
-    </div>
-
-    <div>
       <label class="{{ $labelClass }}">Judul Event:</label>
       <input type="text" name="title" placeholder="Nama Event" class="{{ $inputClass }}">
     </div>
@@ -57,4 +52,3 @@
     </div>
   </div>
 </div>
-

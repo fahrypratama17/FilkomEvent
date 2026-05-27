@@ -18,8 +18,9 @@
       <label class="{{ $labelClass }}">Status Pendaftaran:</label>
       <div class="relative">
         <select name="registration_status" class="{{ $selectClass }}">
-          <option value="dibuka">Dibuka</option>
-          <option value="ditutup">Ditutup</option>
+          <option value="terdaftar">Terdaftar</option>
+          <option value="lunas">Lunas</option>
+          <option value="batal">Batal</option>
         </select>
         <i data-lucide="chevron-down" class="pointer-events-none absolute right-[23px] top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#555]"></i>
       </div>
@@ -58,18 +59,16 @@
       </div>
     </div>
 
-    <div>
-      <label class="{{ $labelClass }}">Dibuat Oleh:</label>
-      <input type="text" name="created_by_name" value="{{ auth()->user()->name ?? 'Administrator' }}" class="{{ $inputClass }}" readonly>
-      <input type="hidden" name="created_by" value="{{ auth()->id() }}">
-    </div>
-
     {{-- CONTAINER PEMBICARA DENGAN ID CONTAINER AGAR BISA DIKONTROL JS --}}
     <div class="col-span-2 transition-all duration-300" id="speakerContainer">
       <label class="{{ $labelClass }}">Pembicara:</label>
       <div id="speakerWrapper" class="space-y-3">
         <div class="relative">
-          <input type="text" name="speakers[]" id="firstSpeakerInput" placeholder="Nama pembicara" class="{{ $inputClass }} pr-[60px]">
+          <div class="grid grid-cols-3 gap-3 pr-[60px]">
+            <input type="text" name="speaker_names[]" id="firstSpeakerInput" placeholder="Nama" class="{{ $inputClass }}">
+            <input type="text" name="speaker_titles[]" placeholder="Jabatan" class="{{ $inputClass }}">
+            <input type="text" name="speaker_organizations[]" placeholder="Organisasi" class="{{ $inputClass }}">
+          </div>
           <button type="button" id="addSpeaker" class="absolute right-[21px] top-1/2 -translate-y-1/2 text-[28px] font-extrabold leading-none text-[#FF5F2A]">+</button>
         </div>
       </div>
@@ -89,14 +88,5 @@
       <label class="{{ $labelClass }}">Narahubung:</label>
       <input type="text" name="contact_phone" placeholder="Kontak penyelenggara" class="{{ $inputClass }}">
     </div>
-
-    <div>
-      <label class="{{ $labelClass }}">Tanggal Penambahan Event:</label>
-      <div class="relative">
-        <input type="text" name="created_at" value="{{ date('Y-m-d') }}" onfocus="this.type='date'" class="{{ $inputClass }} pr-[55px]">
-        <i data-lucide="calendar-days" class="pointer-events-none absolute right-[23px] top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#FF5F2A]"></i>
-      </div>
-    </div>
   </div>
 </div>
-
