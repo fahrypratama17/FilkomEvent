@@ -59,10 +59,10 @@
           <span>Events</span>
         </a>
 
-        <a href="#"
+        <!-- <a href="#"
            class="flex items-center gap-8 text-[24px] text-white/70">
-          <span>User Management</span>
-        </a>
+          <span>Manajemen Pengguna</span>
+        </a> -->
       </nav>
     </div>
 
@@ -72,10 +72,10 @@
       </h2>
 
       <div class="space-y-8">
-        <a href="#"
+        <!-- <a href="#"
            class="flex items-center gap-8 text-[24px] text-white/90">
           <span>Profile</span>
-        </a>
+        </a> -->
 
         <form method="POST" action="{{ route('logout') }}">
           @csrf

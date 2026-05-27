@@ -18,8 +18,10 @@ return new class extends Migration
           ->constrained('users', 'user_id')
           ->cascadeOnDelete();
 
-        $table->foreignId('event_id')
-          ->constrained('events', 'event_id')
+        $table->string('event_id', 20);
+        $table->foreign('event_id')
+          ->references('event_id')
+          ->on('events')
           ->cascadeOnDelete();
 
         $table->string('registration_status', 20);

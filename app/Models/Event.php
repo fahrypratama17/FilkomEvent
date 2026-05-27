@@ -15,8 +15,12 @@ class Event extends Model
     'event_end' => 'datetime',
     'created_at' => 'datetime',
   ];
+  
+  public $incrementing = false; 
+  protected $keyType = 'string';
 
   protected $fillable = [
+    'event_id',
     'title',
     'description',
     'short_description',
