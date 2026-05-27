@@ -10,14 +10,18 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+# bersihkan build lama
+RUN rm -rf node_modules public/build
 
+# install dependency
+RUN composer install --no-dev --optimize-autoloader
 RUN npm install
+
+# build vite
 RUN npm run build
 
-RUN php artisan config:clear || true
-RUN php artisan route:clear || true
-RUN php artisan view:clear || true
+# clear cache laravel
+RUN php artisan optimize:clear || true
 
 EXPOSE 8080
 
