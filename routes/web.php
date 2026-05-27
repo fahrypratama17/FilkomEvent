@@ -42,6 +42,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/events/{id}/registration', [EventController::class, 'registration'])->name('events.id.registration');
 
   Route::get('/events/{id}/payment', [EventController::class, 'payment'])->name('events.id.payment');
+  Route::get('/events/{id}/payment/success', fn($id) => view('Mahasiswa.payment-success', ['eventId' => $id]))->name('events.id.payment.success');
 
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
@@ -54,7 +55,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
-//    Route::get('/events', [AdminDashboardController::class, 'eventManagement'])->name('events.index');
 
     Route::get('/events/create', [AdminEventController::class, 'create'])->name('events.create');
 
