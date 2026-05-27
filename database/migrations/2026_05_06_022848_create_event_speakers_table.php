@@ -10,10 +10,11 @@ return new class extends Migration
   {
     Schema::create('event_speakers', function (Blueprint $table) {
       $table->id();
-      $table->string('event_id', 20);
+      $table->foreignId('event_id')
+        ->constrained('events', 'event_id')
+        ->cascadeOnDelete();
       $table->unsignedBigInteger('speaker_id');
 
-      $table->foreign('event_id')->references('event_id')->on('events')->onDelete('cascade');
       $table->foreign('speaker_id')->references('speaker_id')->on('speakers')->onDelete('cascade');
     });
   }
