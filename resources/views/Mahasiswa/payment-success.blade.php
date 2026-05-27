@@ -15,11 +15,13 @@
 
     <main class="relative w-full max-w-2xl rounded-2xl border border-[#D9D9D9] bg-white px-10 py-12 text-center shadow-2xl">
       <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-        <i data-lucide="BadgeCheck" class="h-10 w-10 text-green-600"></i>
+        <video autoPlay muted playsInline  class="h-16 w-16">
+          <source src="{{ asset('icon/success.webm')}}" type="video/webm">
+        </video>
       </div>
 
       <h1 class="mb-3 text-2xl font-bold text-[#233E98]">Pembayaran Berhasil</h1>
-      <p class="mb-6 text-sm text-gray-600">
+      <p class="mb-6 px-8 text-sm text-gray-600">
         Terima kasih, pembayaran Anda telah kami terima. Anda akan kembali ke halaman pembayaran dalam 10 detik.
       </p>
 
@@ -37,4 +39,3 @@
   </script>
 </body>
 </html>
-
