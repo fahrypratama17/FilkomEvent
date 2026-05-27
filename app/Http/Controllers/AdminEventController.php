@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\EventGoal;
+use App\Models\Speaker;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
@@ -132,7 +135,7 @@ class AdminEventController extends Controller
             'location' => ['required', 'string', 'max:150'],
             'quota' => ['required', 'integer', 'min:1'],
             'event_status' => ['required', 'in:berlangsung,akan_datang,selesai,dibatalkan'],
-            'registration_status' => ['required', 'in:dibuka,ditutup'],
+            'registration_status' => ['required', 'in:terdaftar,lunas,batal'],
             'is_paid' => ['required', 'boolean'],
             'price' => ['required_if:is_paid,1', 'nullable', 'numeric', 'min:0'],
             'category_id' => $categoryRules,
@@ -142,14 +145,59 @@ class AdminEventController extends Controller
             'short_description' => ['required', 'string'],
             'description' => ['required', 'string'],
             'image_url' => ['required', 'image', 'max:2048'],
+            'speaker_names' => ['array'],
+            'speaker_names.*' => ['nullable', 'string', 'max:100'],
+            'speaker_titles' => ['array'],
+            'speaker_titles.*' => ['nullable', 'string', 'max:100'],
+            'speaker_organizations' => ['array'],
+            'speaker_organizations.*' => ['nullable', 'string', 'max:150'],
+            'event_goals' => ['array'],
+            'event_goals.*' => ['nullable', 'string'],
         ]);
+
+        $speakerNames = $request->input('speaker_names', []);
+        $speakerTitles = $request->input('speaker_titles', []);
+        $speakerOrganizations = $request->input('speaker_organizations', []);
+
+        $speakerRows = [];
+        $maxSpeakers = max(count($speakerNames), count($speakerTitles), count($speakerOrganizations));
+
+        for ($i = 0; $i < $maxSpeakers; $i++) {
+            $name = trim($speakerNames[$i] ?? '');
+            $title = trim($speakerTitles[$i] ?? '');
+            $organization = trim($speakerOrganizations[$i] ?? '');
+
+            if ($name === '' && $title === '' && $organization === '') {
+                continue;
+            }
+
+            if ($name === '' || $title === '' || $organization === '') {
+                return back()
+                    ->withInput()
+                    ->withErrors(['speakers' => 'Lengkapi data pembicara (nama, jabatan, organisasi).']);
+            }
+
+            $speakerRows[] = [
+                'name' => $name,
+                'title' => $title,
+                'organization' => $organization,
+            ];
+        }
+
+        $goals = collect($request->input('event_goals', []))
+            ->map(fn ($goal) => trim((string) $goal))
+            ->filter()
+            ->values()
+            ->all();
 
         $imagePath = null;
 
         try {
+            DB::beginTransaction();
+
             $imagePath = $request->file('image_url')->store('events', 'public');
 
-            Event::create([
+            $event = Event::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'short_description' => $validated['short_description'],
@@ -170,10 +218,28 @@ class AdminEventController extends Controller
                 'contact_phone' => $validated['contact_phone'],
             ]);
 
+            if ($speakerRows) {
+                $speakerIds = collect($speakerRows)
+                    ->map(fn ($row) => Speaker::create($row)->speaker_id)
+                    ->all();
+
+                $event->speakers()->attach($speakerIds);
+            }
+
+            if ($goals) {
+                $event->goals()->createMany(
+                    array_map(fn ($goal) => ['description' => $goal], $goals)
+                );
+            }
+
+            DB::commit();
+
             return redirect()
                 ->route('admin.events.index')
                 ->with('success', 'Event Berhasil Ditambahkan ke Database');
         } catch (\Throwable $e) {
+            DB::rollBack();
+
             if ($imagePath) {
                 Storage::disk('public')->delete($imagePath);
             }
