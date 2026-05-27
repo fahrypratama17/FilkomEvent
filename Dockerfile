@@ -27,4 +27,4 @@ RUN php artisan optimize:clear || true
 
 EXPOSE 8080
 
-CMD php artisan serve --host=0.0.0.0 --port=8080
+CMD sh -c "php artisan migrate --force || true; php artisan db:seed --force || true; php artisan serve --host=0.0.0.0 --port=8080"
