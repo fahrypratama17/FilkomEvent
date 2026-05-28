@@ -32,7 +32,6 @@
       <label class="admin-label">Mulai Event:</label>
       <div class="relative">
         <input type="text" name="event_start" placeholder="Kapan Event dimulai?" onfocus="this.type='datetime-local'" class="admin-input pr-13.75" value="{{ $eventStartValue }}" data-step-required="true">
-        <i data-lucide="calendar-days" class="pointer-events-none absolute right-5.75 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-orange-550"></i>
       </div>
     </div>
 
@@ -40,7 +39,6 @@
       <label class="admin-label">Akhir Event:</label>
       <div class="relative">
         <input type="text" name="event_end" placeholder="Kapan Event berakhir?" onfocus="this.type='datetime-local'" class="admin-input pr-13.75" value="{{ $eventEndValue }}" data-step-required="true">
-        <i data-lucide="calendar-days" class="pointer-events-none absolute right-5.75 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-orange-550"></i>
       </div>
     </div>
 
