@@ -14,7 +14,7 @@ export function initImagePreview() {
         imagePreview.src = e.target.result;
         uploadIconContainer.classList.add('hidden');
         imagePreview.classList.remove('hidden');
-        uploadLabel.classList.remove('min-h-[202px]', 'bg-[#FF5F2A]');
+        uploadLabel.classList.remove('min-h-50.5', 'bg-orange-550');
         uploadLabel.classList.add('bg-white', 'border-2', 'border-dashed', 'border-[#FF5F2A]');
       };
       reader.readAsDataURL(file);
@@ -23,7 +23,7 @@ export function initImagePreview() {
       imagePreview.src = '#';
       imagePreview.classList.add('hidden');
       uploadIconContainer.classList.remove('hidden');
-      uploadLabel.classList.add('min-h-[202px]', 'bg-[#FF5F2A]');
+      uploadLabel.classList.add('min-h-50.5', 'bg-orange-550');
       uploadLabel.classList.remove('bg-white', 'border-2', 'border-dashed', 'border-[#FF5F2A]');
     }
   });

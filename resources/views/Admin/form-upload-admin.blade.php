@@ -57,8 +57,15 @@
 
       <section class="w-full rounded-2xl border border-[#DCDCDC] bg-white p-12 shadow-sm">
 
-        <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="multiStepForm">
+        @php
+          $isEdit = isset($event) && $event;
+        @endphp
+
+        <form action="{{ $isEdit ? route('admin.events.update', $event) : route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="multiStepForm">
           @csrf
+          @if($isEdit)
+            @method('PUT')
+          @endif
 
           @include('partials.form-upload.step-1')
           @include('partials.form-upload.step-2')
