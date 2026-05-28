@@ -109,4 +109,55 @@ class EventController extends Controller
       'status' => 'ok'
     ]);
   }
+
+  public function store(Request $request)
+  {
+    $request->validate([
+      'event_id'          => 'required', 
+      'title'             => 'required',
+      'event_start'       => 'required',
+      'location'          => 'required',
+      'short_description' => 'required',
+      'description'       => 'required',
+    ]);
+
+    try {
+      $idEvent = $request->event_id;
+
+      $isExists = Event::where('event_id', $idEvent)->exists();
+      
+      if ($isExists) {
+        do {
+          $idEvent = 'EVT-' . strtoupper(\Illuminate\Support\Str::random(6));
+          $checkAgain = Event::where('event_id', $idEvent)->exists();
+        } while ($checkAgain);
+      }
+
+      Event::create([
+        'event_id'            => $idEvent, 
+        'title'               => $request->title,
+        'event_start'         => $request->event_start,
+        'event_end'           => $request->event_end,
+        'location'            => $request->location,
+        'quota'               => $request->quota,
+        'event_status'        => $request->event_status,
+        'registration_status' => $request->registration_status,
+        'is_paid'             => $request->is_paid,
+        'price'               => $request->price ?? 0,
+        'category_id'         => $request->category_id,
+        'organizer'           => $request->organizer,
+        'contact_email'       => $request->contact_email,
+        'contact_phone'       => $request->contact_phone,
+        'short_description'   => $request->short_description,
+        'description'         => $request->description,
+        'event_purpose'       => $request->event_purpose,
+        'created_by'          => auth()->id(),
+      ]);
+
+      return redirect()->back()->with('success', 'Event Berhasil Disimpan di Database');
+
+    } catch (\Exception $e) {
+      return redirect()->back()->with('error', 'Event Gagal Disimpan ke Database');
+    }
+  }
 }

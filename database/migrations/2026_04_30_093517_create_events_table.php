@@ -22,6 +22,7 @@ return new class extends Migration
       $table->integer('quota');
       $table->integer('quota_filled')->default(0);
       $table->string('event_status', 20);
+      $table->string('registration_status', 20);
       $table->decimal('price', 10, 2)->default(0);
       $table->boolean('is_paid')->default(false);
       $table->foreignId('category_id')
