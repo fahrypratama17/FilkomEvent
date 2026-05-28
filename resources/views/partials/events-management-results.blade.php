@@ -27,7 +27,9 @@
       </div>
 
       <div class="flex justify-center gap-3">
-        <i data-lucide="SquarePen" class="text-orange-400 hover:text-orange-600 duration-200 cursor-pointer"></i>
+        <a href="{{ route('admin.events.edit', $event) }}" title="Edit Event" class="inline-flex items-center">
+          <i data-lucide="SquarePen" class="text-orange-400 hover:text-orange-600 duration-200 cursor-pointer"></i>
+        </a>
 
         <button title="Hapus Event" type="button" class="delete-button" data-url="{{ route('admin.events.destroy', $event) }}" data-title="{{ $event->title }}">
           <i data-lucide="Trash2" class="text-red-800 hover:text-red-600 duration-200 cursor-pointer"></i>

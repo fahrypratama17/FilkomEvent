@@ -60,5 +60,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     Route::post('/events', [AdminEventController::class, 'store'])->name('events.store');
 
+    Route::get('/events/{event}/edit', [AdminEventController::class, 'edit'])->name('events.edit');
+
+    Route::put('/events/{event}', [AdminEventController::class, 'update'])->name('events.update');
+
     Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('events.destroy');
   });
