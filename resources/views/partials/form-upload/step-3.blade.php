@@ -5,12 +5,12 @@
   <div class="grid grid-cols-2 gap-x-15 gap-y-6.5">
     <div class="col-span-2">
       <label class="admin-label">Deskripsi Pembuka / Singkat:</label>
-      <textarea name="short_description" placeholder="Deskripsi singkat Event" class="admin-textarea h-29">{{ old('short_description', $event->short_description ?? '') }}</textarea>
+      <textarea name="short_description" placeholder="Deskripsi singkat Event" class="admin-textarea h-29" data-step-required="true">{{ old('short_description', $event->short_description ?? '') }}</textarea>
     </div>
 
     <div class="col-span-2">
       <label class="admin-label">Deskripsi Lengkap:</label>
-      <textarea name="description" placeholder="Definisi Event" class="admin-textarea h-34.75">{{ old('description', $event->description ?? '') }}</textarea>
+      <textarea name="description" placeholder="Definisi Event" class="admin-textarea h-34.75" data-step-required="true">{{ old('description', $event->description ?? '') }}</textarea>
     </div>
 
     <div class="col-span-2">

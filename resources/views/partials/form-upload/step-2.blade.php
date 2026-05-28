@@ -15,7 +15,7 @@
     <div>
       <label class="admin-label">Status Event:</label>
       <div class="relative">
-        <select name="event_status" class="admin-select">
+        <select name="event_status" class="admin-select" data-step-required="true">
           <option value="berlangsung" {{ $selectedEventStatus === 'berlangsung' ? 'selected' : '' }}>Sedang Berlangsung</option>
           <option value="akan_datang" {{ $selectedEventStatus === 'akan_datang' ? 'selected' : '' }}>Akan Datang</option>
           <option value="selesai" {{ $selectedEventStatus === 'selesai' ? 'selected' : '' }}>Selesai</option>
@@ -28,7 +28,7 @@
     <div>
       <label class="admin-label">Status Pendaftaran:</label>
       <div class="relative">
-        <select name="registration_status" class="admin-select">
+        <select name="registration_status" class="admin-select" data-step-required="true">
           <option value="terdaftar" {{ $selectedRegistrationStatus === 'terdaftar' ? 'selected' : '' }}>Terdaftar</option>
           <option value="lunas" {{ $selectedRegistrationStatus === 'lunas' ? 'selected' : '' }}>Lunas</option>
           <option value="batal" {{ $selectedRegistrationStatus === 'batal' ? 'selected' : '' }}>Batal</option>
@@ -40,7 +40,7 @@
     <div>
       <label class="admin-label">Status Pembayaran Event:</label>
       <div class="relative">
-        <select name="is_paid" class="admin-select">
+        <select name="is_paid" class="admin-select" data-step-required="true">
           <option value="1" {{ (string) $selectedPaidStatus === '1' ? 'selected' : '' }}>Berbayar</option>
           <option value="0" {{ (string) $selectedPaidStatus === '0' ? 'selected' : '' }}>Gratis</option>
         </select>
@@ -50,13 +50,13 @@
 
     <div>
       <label class="admin-label">Biaya Pendaftaran:</label>
-      <input type="number" name="price" placeholder="Berapa biaya pendaftaran?" class="admin-input" value="{{ old('price', $event->price ?? '') }}">
+      <input type="number" name="price" placeholder="Berapa biaya pendaftaran?" class="admin-input" value="{{ old('price', $event->price ?? '') }}" data-require-if="is_paid:1">
     </div>
 
     <div>
       <label class="admin-label">Kategori:</label>
       <div class="relative">
-        <select name="category_id" class="admin-select">
+        <select name="category_id" class="admin-select" data-step-required="true">
           @forelse($categories ?? [] as $category)
             <option value="{{ $category->category_id }}" {{ (string) $selectedCategory === (string) $category->category_id ? 'selected' : '' }}>{{ $category->category_name }}</option>
           @empty
@@ -97,17 +97,17 @@
 
     <div>
       <label class="admin-label">Penyelenggara:</label>
-      <input type="text" name="organizer" placeholder="Nama penyelenggara" class="admin-input" value="{{ old('organizer', $event->organizer ?? '') }}">
+      <input type="text" name="organizer" placeholder="Nama penyelenggara" class="admin-input" value="{{ old('organizer', $event->organizer ?? '') }}" data-step-required="true">
     </div>
 
     <div>
       <label class="admin-label">Email Penyelenggara:</label>
-      <input type="email" name="contact_email" placeholder="Email penyelenggara" class="admin-input" value="{{ old('contact_email', $event->contact_email ?? '') }}">
+      <input type="email" name="contact_email" placeholder="Email penyelenggara" class="admin-input" value="{{ old('contact_email', $event->contact_email ?? '') }}" data-step-required="true">
     </div>
 
     <div>
       <label class="admin-label">Narahubung:</label>
-      <input type="text" name="contact_phone" placeholder="Kontak penyelenggara" class="admin-input" value="{{ old('contact_phone', $event->contact_phone ?? '') }}">
+      <input type="text" name="contact_phone" placeholder="Kontak penyelenggara" class="admin-input" value="{{ old('contact_phone', $event->contact_phone ?? '') }}" data-step-required="true">
     </div>
   </div>
 </div>
