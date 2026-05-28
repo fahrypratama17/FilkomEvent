@@ -65,16 +65,19 @@
           @include('partials.form-upload.step-3')
 
           <div class="flex justify-between gap-5 w-[50%] mx-auto mt-20">
-            <button type="button" id="prevBtn" class="hidden h-12 flex-1 rounded-2xl border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
-              Kembali
+            <button type="button" id="prevBtn" class="hidden group flex-1 relative overflow-hidden border border-primary-dark text-primary-dark font-bold px-8 py-2 w-40 rounded-2xl bg-white cursor-pointer">
+              <span class="relative z-10 transition-colors duration-300 group-hover:text-white">Kembali</span>
+              <span class="absolute inset-0 rounded-2xl origin-left scale-x-0 bg-primary-dark transition-transform duration-300 group-hover:scale-x-100"></span>
             </button>
 
-            <button type="button" id="nextBtn" class="h-12 flex-1 rounded-2xl bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
-              Selanjutnya
+            <button type="button" id="nextBtn" class="group flex-1 relative overflow-hidden text-white font-bold px-8 py-2 w-40 rounded-2xl bg-primary-dark cursor-pointer">
+              <span class="relative z-10 transition-colors duration-300 group-hover:text-secondary-dark">Selanjutnya</span>
+              <span class="absolute inset-0 rounded-2xl origin-left scale-x-0 bg-white transition-transform duration-300 group-hover:scale-x-100"></span>
             </button>
 
-            <button type="submit" id="submitBtn" class="hidden h-12 flex-1 rounded-2xl bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
-              Simpan Event
+            <button type="submit" id="submitBtn" class="hidden group flex-1 relative overflow-hidden text-white font-bold px-8 py-2 w-40 rounded-2xl bg-orange-550 cursor-pointer">
+              <span class="relative z-10 transition-colors duration-300 group-hover:text-primary-dark">Simpan Event</span>
+              <span class="absolute inset-0 rounded-2xl origin-left scale-x-0 bg-white transition-transform duration-300 group-hover:scale-x-100"></span>
             </button>
           </div>
 

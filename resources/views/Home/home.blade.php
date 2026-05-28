@@ -125,7 +125,7 @@
     </div>
 
     <div class="relative w-full h-70 bg-tertiary rounded-[50px] shadow-2xl shadow-blue-900/20">
-      <div class="absolute right-10 left-10 h-70 w-[95%] opacity-20 dot"></div>
+      <div class="absolute right-10 left-10 h-70 w-[95 %] opacity-20 dot"></div>
 
       <div class="mx-auto w-[60%] grid grid-cols-[1.5fr_0.8fr]">
         <div class="flex flex-col w-full h-70 bg-primary-dark px-20 py-10 gap-2">
