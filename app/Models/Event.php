@@ -8,13 +8,16 @@ class Event extends Model
 {
   protected $table = 'events';
   protected $primaryKey = 'event_id';
-  public $timestamps = false;
+  public $timestamps = true;
 
   protected $casts = [
     'event_start' => 'datetime',
     'event_end' => 'datetime',
     'created_at' => 'datetime',
   ];
+
+  public $incrementing = true;
+  protected $keyType = 'int';
 
   protected $fillable = [
     'title',
@@ -35,7 +38,6 @@ class Event extends Model
     'organizer',
     'contact_email',
     'contact_phone',
-    'created_at',
   ];
 
   public function category()
