@@ -1,6 +1,5 @@
-{{-- ==================== HALAMAN 2: STATUS & KONTAK ==================== --}}
 <div class="form-step hidden" id="step-2">
-  <div class="grid grid-cols-2 gap-x-[60px] gap-y-[26px]">
+  <div class="grid grid-cols-2 gap-x-15 gap-y-6.5">
     <div>
       <label class="admin-label">Status Event:</label>
       <div class="relative">
@@ -10,7 +9,7 @@
           <option value="selesai">Selesai</option>
           <option value="dibatalkan">Dibatalkan</option>
         </select>
-        <i data-lucide="chevron-down" class="pointer-events-none absolute right-[23px] top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#555]"></i>
+        <i data-lucide="chevron-down" class="pointer-events-none absolute right-5.75 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-[#555]"></i>
       </div>
     </div>
 
@@ -22,7 +21,7 @@
           <option value="lunas">Lunas</option>
           <option value="batal">Batal</option>
         </select>
-        <i data-lucide="chevron-down" class="pointer-events-none absolute right-[23px] top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#555]"></i>
+        <i data-lucide="chevron-down" class="pointer-events-none absolute right-5.75 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-[#555]"></i>
       </div>
     </div>
 
@@ -33,7 +32,7 @@
           <option value="1">Berbayar</option>
           <option value="0">Gratis</option>
         </select>
-        <i data-lucide="chevron-down" class="pointer-events-none absolute right-[23px] top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#555]"></i>
+        <i data-lucide="chevron-down" class="pointer-events-none absolute right-5.75 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-[#555]"></i>
       </div>
     </div>
 
@@ -55,21 +54,20 @@
             <option value="4">Seminar</option>
           @endforelse
         </select>
-        <i data-lucide="chevron-down" class="pointer-events-none absolute right-[23px] top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#555]"></i>
+        <i data-lucide="chevron-down" class="pointer-events-none absolute right-5.75 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-[#555]"></i>
       </div>
     </div>
 
-    {{-- CONTAINER PEMBICARA DENGAN ID CONTAINER AGAR BISA DIKONTROL JS --}}
     <div class="col-span-2 transition-all duration-300" id="speakerContainer">
       <label class="admin-label">Pembicara:</label>
       <div id="speakerWrapper" class="space-y-3">
         <div class="relative">
-          <div class="grid grid-cols-3 gap-3 pr-[60px]">
+          <div class="grid grid-cols-3 gap-3 pr-15">
             <input type="text" name="speaker_names[]" id="firstSpeakerInput" placeholder="Nama" class="admin-input">
             <input type="text" name="speaker_titles[]" placeholder="Jabatan" class="admin-input">
             <input type="text" name="speaker_organizations[]" placeholder="Organisasi" class="admin-input">
           </div>
-          <button type="button" id="addSpeaker" class="absolute right-[21px] top-1/2 -translate-y-1/2 text-[28px] font-extrabold leading-none text-[#FF5F2A]">+</button>
+          <button type="button" id="addSpeaker" class="absolute right-5.25 top-1/2 -translate-y-1/2 text-[28px] font-extrabold leading-none text-[#FF5F2A]">+</button>
         </div>
       </div>
     </div>
