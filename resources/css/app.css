@@ -44,6 +44,22 @@ body {
   }
 }
 
+.admin-label {
+  @apply mb-3.25 block text-[18px] font-extrabold text-[#06005D];
+}
+
+.admin-input {
+  @apply h-12 w-full rounded-lg bg-[#E7E7E7] px-7.5 text-[17px] font-medium text-[#555] outline-none placeholder:text-[#666] focus:ring-2 focus:ring-[#263F92]/30;
+}
+
+.admin-select {
+  @apply h-12 w-full appearance-none rounded-lg bg-[#E7E7E7] px-7.5 text-[17px] font-medium text-[#555] outline-none focus:ring-2 focus:ring-[#263F92]/30;
+}
+
+.admin-textarea {
+  @apply w-full resize-none rounded-lg bg-[#E7E7E7] px-7.5 py-5.75 text-[17px] font-medium text-[#555] outline-none placeholder:text-[#666] focus:ring-2 focus:ring-[#263F92]/30;
+}
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;

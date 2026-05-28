@@ -55,33 +55,25 @@
         </div>
       </div>
 
-      <section
-        class="w-full max-w-257 rounded-[28px] border border-[#DCDCDC] bg-white px-18.75 pb-11.75 pt-16.75 shadow-sm">
+      <section class="w-full rounded-2xl border border-[#DCDCDC] bg-white p-12 shadow-sm">
 
         <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data" id="multiStepForm">
           @csrf
-
-          @php
-            $labelClass = 'mb-[13px] block text-[18px] font-extrabold text-[#06005D]';
-            $inputClass = 'h-[48px] w-full rounded-[8px] bg-[#E7E7E7] px-[30px] text-[17px] font-medium text-[#555] outline-none placeholder:text-[#666] focus:ring-2 focus:ring-[#263F92]/30';
-            $selectClass = 'h-[48px] w-full appearance-none rounded-[8px] bg-[#E7E7E7] px-[30px] text-[17px] font-medium text-[#555] outline-none focus:ring-2 focus:ring-[#263F92]/30';
-            $textareaClass = 'w-full resize-none rounded-[8px] bg-[#E7E7E7] px-[30px] py-[23px] text-[17px] font-medium text-[#555] outline-none placeholder:text-[#666] focus:ring-2 focus:ring-[#263F92]/30';
-          @endphp
 
           @include('partials.form-upload.step-1')
           @include('partials.form-upload.step-2')
           @include('partials.form-upload.step-3')
 
-          <div class="mt-15 flex justify-between gap-5 max-w-143.25 mx-auto">
-            <button type="button" id="prevBtn" class="hidden h-12 flex-1 rounded-full border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
+          <div class="flex justify-between gap-5 w-[50%] mx-auto mt-20">
+            <button type="button" id="prevBtn" class="hidden h-12 flex-1 rounded-2xl border-2 border-[#050064] text-[17px] font-extrabold text-[#050064] transition hover:bg-gray-100">
               Kembali
             </button>
 
-            <button type="button" id="nextBtn" class="h-12 flex-1 rounded-full bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
+            <button type="button" id="nextBtn" class="h-12 flex-1 rounded-2xl bg-[#050064] text-[17px] font-extrabold text-white transition hover:bg-[#09008a]">
               Selanjutnya
             </button>
 
-            <button type="submit" id="submitBtn" class="hidden h-12 flex-1 rounded-full bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
+            <button type="submit" id="submitBtn" class="hidden h-12 flex-1 rounded-2xl bg-[#FF5F2A] text-[17px] font-extrabold text-white transition hover:bg-[#e04f1a] shadow-[0_4px_10px_rgba(255,95,42,0.3)]">
               Simpan Event
             </button>
           </div>

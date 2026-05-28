@@ -2,9 +2,9 @@
 <div class="form-step hidden" id="step-2">
   <div class="grid grid-cols-2 gap-x-[60px] gap-y-[26px]">
     <div>
-      <label class="{{ $labelClass }}">Status Event:</label>
+      <label class="admin-label">Status Event:</label>
       <div class="relative">
-        <select name="event_status" class="{{ $selectClass }}">
+        <select name="event_status" class="admin-select">
           <option value="berlangsung">Sedang Berlangsung</option>
           <option value="akan_datang">Akan Datang</option>
           <option value="selesai">Selesai</option>
@@ -15,9 +15,9 @@
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Status Pendaftaran:</label>
+      <label class="admin-label">Status Pendaftaran:</label>
       <div class="relative">
-        <select name="registration_status" class="{{ $selectClass }}">
+        <select name="registration_status" class="admin-select">
           <option value="terdaftar">Terdaftar</option>
           <option value="lunas">Lunas</option>
           <option value="batal">Batal</option>
@@ -27,9 +27,9 @@
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Status Pembayaran Event:</label>
+      <label class="admin-label">Status Pembayaran Event:</label>
       <div class="relative">
-        <select name="is_paid" class="{{ $selectClass }}">
+        <select name="is_paid" class="admin-select">
           <option value="1">Berbayar</option>
           <option value="0">Gratis</option>
         </select>
@@ -38,14 +38,14 @@
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Biaya Pendaftaran:</label>
-      <input type="number" name="price" placeholder="Berapa biaya pendaftaran?" class="{{ $inputClass }}">
+      <label class="admin-label">Biaya Pendaftaran:</label>
+      <input type="number" name="price" placeholder="Berapa biaya pendaftaran?" class="admin-input">
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Kategori:</label>
+      <label class="admin-label">Kategori:</label>
       <div class="relative">
-        <select name="category_id" class="{{ $selectClass }}">
+        <select name="category_id" class="admin-select">
           @forelse($categories ?? [] as $category)
             <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
           @empty
@@ -61,13 +61,13 @@
 
     {{-- CONTAINER PEMBICARA DENGAN ID CONTAINER AGAR BISA DIKONTROL JS --}}
     <div class="col-span-2 transition-all duration-300" id="speakerContainer">
-      <label class="{{ $labelClass }}">Pembicara:</label>
+      <label class="admin-label">Pembicara:</label>
       <div id="speakerWrapper" class="space-y-3">
         <div class="relative">
           <div class="grid grid-cols-3 gap-3 pr-[60px]">
-            <input type="text" name="speaker_names[]" id="firstSpeakerInput" placeholder="Nama" class="{{ $inputClass }}">
-            <input type="text" name="speaker_titles[]" placeholder="Jabatan" class="{{ $inputClass }}">
-            <input type="text" name="speaker_organizations[]" placeholder="Organisasi" class="{{ $inputClass }}">
+            <input type="text" name="speaker_names[]" id="firstSpeakerInput" placeholder="Nama" class="admin-input">
+            <input type="text" name="speaker_titles[]" placeholder="Jabatan" class="admin-input">
+            <input type="text" name="speaker_organizations[]" placeholder="Organisasi" class="admin-input">
           </div>
           <button type="button" id="addSpeaker" class="absolute right-[21px] top-1/2 -translate-y-1/2 text-[28px] font-extrabold leading-none text-[#FF5F2A]">+</button>
         </div>
@@ -75,18 +75,18 @@
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Penyelenggara:</label>
-      <input type="text" name="organizer" placeholder="Nama penyelenggara" class="{{ $inputClass }}">
+      <label class="admin-label">Penyelenggara:</label>
+      <input type="text" name="organizer" placeholder="Nama penyelenggara" class="admin-input">
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Email Penyelenggara:</label>
-      <input type="email" name="contact_email" placeholder="Email penyelenggara" class="{{ $inputClass }}">
+      <label class="admin-label">Email Penyelenggara:</label>
+      <input type="email" name="contact_email" placeholder="Email penyelenggara" class="admin-input">
     </div>
 
     <div>
-      <label class="{{ $labelClass }}">Narahubung:</label>
-      <input type="text" name="contact_phone" placeholder="Kontak penyelenggara" class="{{ $inputClass }}">
+      <label class="admin-label">Narahubung:</label>
+      <input type="text" name="contact_phone" placeholder="Kontak penyelenggara" class="admin-input">
     </div>
   </div>
 </div>
