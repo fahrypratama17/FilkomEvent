@@ -65,7 +65,11 @@ export function initWizard() {
     });
 
     if (!valid) {
-      alert('Lengkapi semua field wajib pada langkah ini sebelum lanjut.');
+      if (typeof window.showToast === 'function') {
+        window.showToast('Lengkapi Data', 'Lengkapi semua field wajib pada langkah ini sebelum lanjut.', 'error', 4000);
+      } else {
+        alert('Lengkapi semua field wajib pada langkah ini sebelum lanjut.');
+      }
     }
 
     return valid;

@@ -9,6 +9,7 @@
   <title>Form Upload Event Admin (Multi-step)</title>
 </head>
 <body>
+  @include('components.toast')
   <div class="relative mx-auto flex min-h-screen w-full overflow-hidden bg-[#EAEAEA]">
     <div
       class="absolute h-full w-full opacity-4"

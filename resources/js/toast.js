@@ -36,6 +36,8 @@ function showToast(title, message, type = "error", duration = 4000) {
   }, duration);
 }
 
+window.showToast = showToast;
+
 window.addEventListener("DOMContentLoaded", () => {
   if (window.toastError) {
     window.toastError.forEach((err) =>
