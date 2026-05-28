@@ -9,6 +9,72 @@ export function initWizard() {
   const indicators = document.querySelectorAll('.step-indicator');
   const lines = document.querySelectorAll('.step-line');
 
+  function clearValidation(step) {
+    step.querySelectorAll('.ring-2.ring-red-500').forEach((el) => {
+      el.classList.remove('ring-2', 'ring-red-500');
+    });
+  }
+
+  function markInvalid(input) {
+    input.classList.add('ring-2', 'ring-red-500');
+  }
+
+  function shouldRequireByRule(input) {
+    const rule = input.getAttribute('data-require-if');
+    if (!rule) {
+      return false;
+    }
+
+    const [field, expected] = rule.split(':');
+    if (!field) {
+      return false;
+    }
+
+    const controller = document.querySelector(`[name="${field}"]`);
+    if (!controller) {
+      return false;
+    }
+
+    return String(controller.value) === String(expected);
+  }
+
+  function isEmptyInput(input) {
+    if (input.type === 'file') {
+      return !input.files || input.files.length === 0;
+    }
+
+    return !String(input.value || '').trim();
+  }
+
+  function validateStep(step) {
+    let valid = true;
+    clearValidation(step);
+
+    step.querySelectorAll('[data-step-required="true"]').forEach((input) => {
+      if (isEmptyInput(input)) {
+        markInvalid(input);
+        valid = false;
+      }
+    });
+
+    step.querySelectorAll('[data-require-if]').forEach((input) => {
+      if (shouldRequireByRule(input) && isEmptyInput(input)) {
+        markInvalid(input);
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      if (typeof window.showToast === 'function') {
+        window.showToast('Lengkapi Data', 'Lengkapi semua field wajib pada langkah ini sebelum lanjut.', 'error', 4000);
+      } else {
+        alert('Lengkapi semua field wajib pada langkah ini sebelum lanjut.');
+      }
+    }
+
+    return valid;
+  }
+
   function updateFormStep() {
     steps.forEach((step, idx) => {
       if (idx === currentStep - 1) {
@@ -59,6 +125,11 @@ export function initWizard() {
   }
 
   nextBtn?.addEventListener('click', () => {
+    const step = steps[currentStep - 1];
+    if (step && !validateStep(step)) {
+      return;
+    }
+
     if (currentStep < totalSteps) {
       currentStep++;
       updateFormStep();
@@ -74,4 +145,3 @@ export function initWizard() {
     }
   });
 }
-
