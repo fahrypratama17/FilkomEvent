@@ -44,13 +44,52 @@
         </button>
       </div>
 
-      <section class="mb-12 grid grid-cols-3 gap-12">
+      <section id="dashboardEventSkeleton" class="mb-12 hidden grid grid-cols-3 gap-12">
+        @for ($i = 0; $i < 3; $i++)
+          <div class="w-full h-full flex flex-col gap-4 bg-white/70 backdrop-blur-lg p-4 border-2 border-white rounded-3xl shadow-xl">
+            <div class="w-full h-70 rounded-2xl bg-gray-200 animate-pulse"></div>
+            <div class="flex flex-col gap-2 px-2">
+              <div class="h-4 w-24 rounded bg-gray-200 animate-pulse"></div>
+              <div class="h-5 w-3/4 rounded bg-gray-200 animate-pulse"></div>
+              <div class="h-4 w-full rounded bg-gray-200 animate-pulse"></div>
+            </div>
+            <div class="mt-auto flex gap-4 px-2">
+              <div class="h-9 w-full rounded-2xl bg-gray-200 animate-pulse"></div>
+              <div class="h-9 w-12 rounded-2xl bg-gray-200 animate-pulse"></div>
+            </div>
+          </div>
+        @endfor
+      </section>
+
+      <section id="dashboardEventList" class="mb-12 grid grid-cols-3 gap-12">
         @foreach ($events as $card)
           <x-event-card :event="$card" />
         @endforeach
       </section>
 
-      <section class="grid grid-cols-[0.5fr_1fr] gap-12 pb-6">
+      <section id="dashboardStatsSkeleton" class="hidden pb-6">
+        <div class="grid grid-cols-[0.5fr_1fr] gap-12">
+          <div class="rounded-3xl bg-white/70 px-7 py-7 shadow-[0_25px_60px_rgba(0,0,0,0.2)]">
+            <div class="h-7 w-2/3 rounded bg-gray-200 animate-pulse"></div>
+            <div class="mt-6 space-y-4">
+              @for ($i = 0; $i < 3; $i++)
+                <div class="h-20 rounded-2xl bg-gray-200 animate-pulse"></div>
+              @endfor
+            </div>
+          </div>
+
+          <div class="rounded-3xl bg-white/70 px-9 py-9 shadow-[0_25px_60px_rgba(0,0,0,0.2)]">
+            <div class="grid grid-cols-3 gap-9">
+              @for ($i = 0; $i < 3; $i++)
+                <div class="h-42.5 rounded-3xl bg-gray-200 animate-pulse"></div>
+              @endfor
+            </div>
+            <div class="mt-8 h-60 rounded-3xl bg-gray-200 animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboardStatsContent" class="grid grid-cols-[0.5fr_1fr] gap-12 pb-6">
         <div class="rounded-3xl bg-linear-to-br from-secondary-lighter to-primary-dark px-7 py-7 text-white shadow-[0_25px_60px_rgba(0,0,0,0.4)] border border-white/80 overflow-hidden">
           <h2 class="mb-6 text-[28px] font-extrabold leading-tight">
             Kategori Acara Populer
