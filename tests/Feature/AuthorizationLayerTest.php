@@ -13,7 +13,7 @@ class AuthorizationLayerTest extends TestCase
     public function test_guest_is_redirected_from_protected_routes(): void
     {
         $this->get('/dashboard')->assertRedirect('/login');
-        $this->get('/profile-design')->assertRedirect('/login');
+        $this->get('/profile')->assertRedirect('/login');
         $this->get('/admin/dashboard')->assertRedirect('/login');
     }
 
@@ -45,11 +45,11 @@ class AuthorizationLayerTest extends TestCase
         $secondUser = User::factory()->create();
 
         $this->actingAs($firstUser)
-            ->get('/profile-design/'.$firstUser->user_id)
+            ->get('/profile/'.$firstUser->user_id)
             ->assertOk();
 
         $this->actingAs($firstUser)
-            ->get('/profile-design/'.$secondUser->user_id)
+            ->get('/profile/'.$secondUser->user_id)
             ->assertForbidden();
     }
 }

@@ -44,6 +44,10 @@
           </button>
         </div>
         <a href="{{ route("forgotPassword") }}"><p class="text-white hover:underline text-end">Lupa Password</p></a>
+        <label class="flex items-center gap-2 text-white text-sm">
+          <input type="checkbox" name="remember" class="h-4 w-4 rounded border-white/60 bg-white/80 cursor-pointer">
+          Ingat saya
+        </label>
         <button class="w-full bg-orange-550 p-2 rounded-[40px] cursor-pointer text-white hover:scale-105 transition-transform duration-300 shadow-[0px_4px_0px_rgba(0,0,0,0.3)]">Masuk</button>
       </form>
       <div class="mx-auto w-[80%] flex flex-col gap-4">

@@ -33,9 +33,16 @@ class HistoryController extends Controller
       });
     }
 
-    $registrations = $query->paginate(6);
+    $registrations = $query->paginate(6)
+      ->appends($request->only(['search', 'category']));
 
     $categories = Category::all();
+
+    if ($request->ajax()) {
+      return view('partials.history-list', [
+        'registrations' => $registrations,
+      ])->render();
+    }
 
     return view('Mahasiswa.history', [
       'registrations' => $registrations,

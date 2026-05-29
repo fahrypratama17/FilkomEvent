@@ -8,12 +8,19 @@ export function initSearch(eventList) {
 
   const handleSearch = debounce(() => {
     const query = searchInput.value;
+    const params = new URLSearchParams(window.location.search);
 
-    const isBookmarkPage = window.location.pathname.includes("bookmark");
+    params.set("search", query);
 
-    const url = isBookmarkPage
-      ? `/bookmark?search=${query}`
-      : `/events?search=${query}`;
+    const url = `${window.location.pathname}?${params.toString()}`;
+
+    const skeleton = document.getElementById("eventListSkeleton");
+    if (skeleton) {
+      skeleton.classList.remove("hidden");
+      eventList.classList.add("hidden");
+    } else {
+      eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
+    }
 
     fetch(url, {
       headers: {
@@ -24,6 +31,11 @@ export function initSearch(eventList) {
       .then((html) => {
         eventList.innerHTML = html;
         createIcons({ icons });
+
+        if (skeleton) {
+          skeleton.classList.add("hidden");
+          eventList.classList.remove("hidden");
+        }
       });
   }, 500);
 

@@ -36,6 +36,7 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
   Route::get('/profile', [UserController::class, 'index'])->name('profile');
+  Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show');
   Route::post('/profile', [UserController::class, 'changePassword'])->name('profile.change-password');
 
   Route::get('/events', [EventController::class, 'index'])->name('events.index');
