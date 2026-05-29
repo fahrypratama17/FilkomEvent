@@ -8,12 +8,13 @@ export function initSearch(eventList) {
 
   const handleSearch = debounce(() => {
     const query = searchInput.value;
+    const params = new URLSearchParams(window.location.search);
 
-    const isBookmarkPage = window.location.pathname.includes("bookmark");
+    params.set("search", query);
 
-    const url = isBookmarkPage
-      ? `/bookmark?search=${query}`
-      : `/events?search=${query}`;
+    const url = `${window.location.pathname}?${params.toString()}`;
+
+    eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
 
     fetch(url, {
       headers: {
