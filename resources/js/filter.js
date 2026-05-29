@@ -6,6 +6,13 @@ export function initFilters(eventList) {
   const searchInput = document.getElementById("searchInput");
 
   function setLoading() {
+    const skeleton = document.getElementById("eventListSkeleton");
+    if (skeleton) {
+      skeleton.classList.remove("hidden");
+      eventList.classList.add("hidden");
+      return;
+    }
+
     eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
   }
 
@@ -33,6 +40,12 @@ export function initFilters(eventList) {
       .then((html) => {
         eventList.innerHTML = html;
         createIcons({ icons });
+
+        const skeleton = document.getElementById("eventListSkeleton");
+        if (skeleton) {
+          skeleton.classList.add("hidden");
+          eventList.classList.remove("hidden");
+        }
       })
       .catch(() => {
         eventList.innerHTML = `
