@@ -38,10 +38,14 @@
 
       <x-search-bar />
 
-      <section id="eventList" class="mb-12 grid grid-cols-3 gap-12">
+      <section id="eventList" data-page="bookmark" class="mb-12 grid grid-cols-3 gap-12">
         @foreach ($bookmarks as $bookmark)
           <x-event-card :event="$bookmark" />
         @endforeach
+
+        <p id="bookmark-empty" class="col-span-3 text-center text-gray-400 {{ $bookmarks->isEmpty() ? '' : 'hidden' }}">
+          Tidak ada event ditemukan...
+        </p>
       </section>
     </main>
   </div>
