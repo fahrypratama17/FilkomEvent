@@ -5,7 +5,11 @@ export function initFilters(eventList) {
   const statusFilter = document.getElementById("statusFilter");
   const searchInput = document.getElementById("searchInput");
 
-  function fetchEvents() {
+  function setLoading() {
+    eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
+  }
+
+  function fetchEvents(urlOverride = null) {
     const search = searchInput ? searchInput.value : "";
     const category = categoryFilter ? categoryFilter.value : "";
     const status = statusFilter ? statusFilter.value : "";
@@ -16,9 +20,11 @@ export function initFilters(eventList) {
       status,
     });
 
-    eventList.innerHTML = `<p class="text-center col-span-3">Loading...</p>`;
+    const url = urlOverride ?? `?${params.toString()}`;
 
-    fetch(`?${params.toString()}`, {
+    setLoading();
+
+    fetch(url, {
       headers: {
         "X-Requested-With": "XMLHttpRequest",
       },
@@ -44,4 +50,15 @@ export function initFilters(eventList) {
   if (statusFilter) {
     statusFilter.addEventListener("change", fetchEvents);
   }
+
+  eventList.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (!link) return;
+
+    const pagination = link.closest("nav");
+    if (!pagination) return;
+
+    event.preventDefault();
+    fetchEvents(link.href);
+  });
 }
