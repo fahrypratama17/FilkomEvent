@@ -65,9 +65,8 @@
                           <div class="flex items-center gap-3 mb-1">
                               <h3 class="text-2xl font-bold text-white">{{ $reg->event->title }}</h3>
 
-                              <!-- Badge status event -->
                               @php
-                                  $eventStatus = $reg->event->status ?? 'Selesai'; // Logika status event dari DB
+                                  $eventStatus = $reg->event->status ?? 'Selesai';
                                   $statusClass = $eventStatus == 'Selesai' ? 'bg-[#03045E]' : 'bg-[#023E8A]';
                               @endphp
                               <span class="px-4 py-1 rounded-full text-[12px] font-medium text-white {{ $statusClass }}">
@@ -88,7 +87,7 @@
                   <div class="flex flex-col items-end min-w-50">
                       @if($eventStatus == 'Selesai' && $reg->certificate)
                           <a href="{{ route('certificates.download', $reg->certificate->certificate_id) }}" class="flex items-center gap-3 rounded-xl bg-[#03045E] px-6 py-3 text-white font-bold hover:bg-[#023E8A] transition shadow-lg w-full justify-center">
-                              <i data-lucide="download" class="w-5 h-5"></i>
+                              <i data-lucide="Download" class="w-5 h-5"></i>
                               Download Sertifikat
                           </a>
                           <a href="{{ route('certificates.view', $reg->certificate->certificate_id) }}" class="mt-3 flex items-center gap-3 rounded-xl bg-[#023E8A] px-6 py-3 text-white font-bold hover:bg-[#03045E] transition shadow-lg w-full justify-center">
@@ -114,7 +113,6 @@
 
 
             @empty
-                <!-- Tampilan Ketika Pengguna Belum Memiliki Riwayat -->
                 <div class="flex flex-col items-center justify-center py-20 bg-white rounded-[30px] shadow-sm border border-dashed border-gray-300">
                     <div class="p-4 bg-gray-50 rounded-full mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">

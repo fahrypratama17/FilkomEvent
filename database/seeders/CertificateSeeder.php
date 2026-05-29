@@ -10,7 +10,7 @@ class CertificateSeeder extends Seeder
 {
   public function run(): void
   {
-    $filePath = 'events/Intrivia.pdf';
+    $filePath = 'icon/boy.svg';
 
     Registration::query()->orderBy('registration_id')->get()->each(function (Registration $registration) use ($filePath) {
       Certificate::firstOrCreate(
