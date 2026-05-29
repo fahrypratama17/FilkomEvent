@@ -55,7 +55,9 @@
               <option value="">Semua Kategori</option>
               @if(isset($categories))
                 @foreach ($categories as $category)
-                  <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                  <option value="{{ $category->category_id }}" {{ request('category') == $category->category_id ? 'selected' : '' }}>
+                    {{ $category->category_name }}
+                  </option>
                 @endforeach
               @endif
             </select>
@@ -136,23 +138,22 @@
                   {{-- BUTTON ACTIONS CONTROLLER --}}
                   <div class="space-y-2 pt-2 border-t border-gray-100">
                     
-                    {{-- TASK 2: SHOW CERTIFICATE BUTTON LOGIC --}}
-                    @if($eventStatus === 'selesai' && !empty($event->certificate_path))
+                    @if($eventStatus === 'selesai' && $event->certificate)
                       <button class="flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF5F2A] py-2.5 text-center text-sm font-extrabold text-white transition hover:bg-[#e04f1a] shadow-sm active:scale-[0.98]">
                         <i data-lucide="award" class="h-4 w-4"></i>
-                        <span>Download Certificate</span>
+                        <span>Download Sertifikat</span>
                       </button>
                     @else
                       <div class="w-full rounded-xl bg-gray-50 py-2 text-center text-[12px] font-bold text-gray-400 border border-dashed border-gray-200 uppercase tracking-wider">
-                        Certificate Not Available
+                        Sertifikat Belum Tersedia
                       </div>
                     @endif
 
-                    {{-- TASK 3: ADD EVENT DETAIL BUTTON --}}
+                    {{-- ADD EVENT DETAIL BUTTON --}}
                     <a href="{{ route('events.show', $event->event_id) }}" 
                        class="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#263F92] py-2 text-center text-sm font-extrabold text-[#263F92] transition hover:bg-[#263F92]/5 active:scale-[0.98]">
                       <i data-lucide="eye" class="h-4 w-4"></i>
-                      <span>View Details</span>
+                      <span>Lihat Detail</span>
                     </a>
 
                   </div>
@@ -160,7 +161,7 @@
               </article>
             @endif
           @empty
-            {{-- TASK 1: EMPTY STATE IF HISTORY IS EMPTY --}}
+            {{-- EMPTY STATE IF HISTORY IS EMPTY --}}
             <div class="col-span-full flex flex-col items-center justify-center py-20 bg-white rounded-[28px] shadow-sm border border-dashed border-gray-300">
               <div class="p-4 bg-orange-50 rounded-full mb-4 text-[#FF5F2A]">
                 <i data-lucide="calendar-x" class="h-12 w-12"></i>
@@ -175,7 +176,7 @@
           @endforelse
         </div>
 
-        {{-- TASK 4: RESPONSIVE TAILWIND PAGINATION NAVIGATION --}}
+        {{-- RESPONSIVE TAILWIND PAGINATION NAVIGATION --}}
         @if(!$registrations->isEmpty())
           <div class="mt-12 flex justify-center">
             <div class="bg-white px-4 py-2 rounded-2xl shadow-sm border border-gray-200">
@@ -189,7 +190,6 @@
 
   @include('components.certificate-processing-modal')
 
-  {{-- INJECT LUCIDE ICONS --}}
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
