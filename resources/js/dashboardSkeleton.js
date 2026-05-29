@@ -16,6 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
     eventList.classList.remove("hidden");
     statsSkeleton.classList.add("hidden");
     statsContent.classList.remove("hidden");
-  }, 2500);
+  }, 1500);
 });
-
