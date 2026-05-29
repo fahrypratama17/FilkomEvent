@@ -16,3 +16,4 @@ import "./buttonTerm.js";
 import "./accordion.js";
 import "./modal.js";
 import "./formUploadAdmin.js";
+import "./payment.js";

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
       EventSpeakerSeeder::class,
       EventGoalSeeder::class,
       RegistrationSeeder::class,
+      CertificateSeeder::class,
       ActivityLogSeeder::class,
     ]);
   }
