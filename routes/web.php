@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use \App\Http\Controllers\HistoryController;
 use App\Http\Controllers\AdminEventController;
 use \App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\CertificateController;
 
 // Routing For Auth Page
 Route::get('/login', fn() => view('Auth.login'))->name('login');
@@ -43,6 +44,9 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
 
   Route::get('/events/{id}/payment', [EventController::class, 'payment'])->name('events.id.payment');
   Route::get('/events/{id}/payment/success', fn($id) => view('Mahasiswa.payment-success', ['eventId' => $id]))->name('events.id.payment.success');
+
+  Route::get('/certificates/{certificate:certificate_id}/view', [CertificateController::class, 'view'])->name('certificates.view');
+  Route::get('/certificates/{certificate:certificate_id}/download', [CertificateController::class, 'download'])->name('certificates.download');
 
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');

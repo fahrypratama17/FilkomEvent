@@ -146,7 +146,7 @@
                     </div>
                   </div>
 
-                  <div onclick="togglePayment('qris')" id="qris-card" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
+                  <div onclick="togglePayment('qris')" id="qris-card" data-redirect="{{ route('events.id.payment.success', $event->event_id) }}" class="cursor-pointer rounded-2xl border border-[#D8D8D8] bg-[#FBFBFB] px-4 py-4">
 
                     <div class="flex items-center justify-between">
                       <span class="text-[16px] text-[#333333]">QRIS</span>
@@ -208,21 +208,5 @@
     </main>
   </div>
 
-  <script>
-    (function() {
-      const qrisCard = document.getElementById('qris-card');
-      if (!qrisCard) return;
-
-      let qrisTimerStarted = false;
-      qrisCard.addEventListener('click', function() {
-        if (qrisTimerStarted) return;
-        qrisTimerStarted = true;
-
-        setTimeout(function() {
-          window.location.href = "{{ route('events.id.payment.success', $event->event_id) }}";
-        }, 5000);
-      });
-    })();
-  </script>
 </body>
 </html>
