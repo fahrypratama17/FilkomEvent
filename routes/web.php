@@ -47,7 +47,8 @@ Route::middleware(['auth', 'role:Mahasiswa'])->group(callback: function() {
   Route::get('/bookmark', [BookmarkController::class, 'index'])->name('bookmark');
   Route::post('/bookmark/{id}', [EventController::class, 'toggleBookmark'])->name('bookmark.toggle');
 
-  Route::get('/history', [HistoryController::class, 'index'])->name('history');
+  // Route::get('/history', [HistoryController::class, 'index'])->name('history');
+  Route::get('/history', [EventController::class, 'history'])->name('history');
 });
 
 // Routing For Admin Page

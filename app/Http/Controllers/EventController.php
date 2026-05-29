@@ -160,4 +160,23 @@ class EventController extends Controller
       return redirect()->back()->with('error', 'Event Gagal Disimpan ke Database');
     }
   }
+
+  public function history()
+  {
+    $user = Auth::user();
+
+    $registrations = \App\Models\Registration::where('user_id', $user->user_id)
+      ->with(['event.category'])
+      ->latest('registration_id')
+      ->paginate(6);
+
+    $categories = \App\Models\Category::all();
+
+    return view('Mahasiswa.history-event', [
+      'registrations' => $registrations,
+      'categories'    => $categories, 
+      'menuItems'     => MenuService::getMenu($user->role),
+      'settingItems'  => MenuService::getSetting(),
+    ]);
+  }
 }
