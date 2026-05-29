@@ -55,6 +55,21 @@
         </div>
       </section>
 
+      <section id="eventListSkeleton" class="pb-6 hidden">
+        <div class="grid grid-cols-1 gap-6">
+          @for ($i = 0; $i < 6; $i++)
+            <div class="flex items-center justify-between rounded-[30px] bg-white/70 p-8 shadow-md border border-white/10">
+              <div class="flex-1">
+                <div class="h-5 w-2/5 rounded bg-gray-200 animate-pulse"></div>
+                <div class="mt-4 h-4 w-1/5 rounded bg-gray-200 animate-pulse"></div>
+                <div class="mt-4 h-4 w-4/5 rounded bg-gray-200 animate-pulse"></div>
+              </div>
+              <div class="ml-6 h-10 w-40 rounded-xl bg-gray-200 animate-pulse"></div>
+            </div>
+          @endfor
+        </div>
+      </section>
+
       <section class="pb-6">
         <div id="eventList" class="grid grid-cols-1 gap-6">
           @include('partials.history-list', ['registrations' => $registrations])

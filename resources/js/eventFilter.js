@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       skeleton.classList.add("hidden");
       eventList.classList.remove("hidden");
-    }, 1500);
+    }, 2500);
   }
 
   initSearch(eventList);

@@ -38,6 +38,23 @@
 
       <x-search-bar />
 
+      <section id="eventListSkeleton" class="mb-12 hidden grid grid-cols-3 gap-12">
+        @for ($i = 0; $i < 6; $i++)
+          <div class="w-full h-full flex flex-col gap-4 bg-white/70 backdrop-blur-lg p-4 border-2 border-white rounded-3xl shadow-xl">
+            <div class="w-full h-70 rounded-2xl bg-gray-200 animate-pulse"></div>
+            <div class="flex flex-col gap-2 px-2">
+              <div class="h-4 w-24 rounded bg-gray-200 animate-pulse"></div>
+              <div class="h-5 w-3/4 rounded bg-gray-200 animate-pulse"></div>
+              <div class="h-4 w-full rounded bg-gray-200 animate-pulse"></div>
+            </div>
+            <div class="mt-auto flex gap-4 px-2">
+              <div class="h-9 w-full rounded-2xl bg-gray-200 animate-pulse"></div>
+              <div class="h-9 w-12 rounded-2xl bg-gray-200 animate-pulse"></div>
+            </div>
+          </div>
+        @endfor
+      </section>
+
       <section id="eventList" data-page="bookmark" class="mb-12 grid grid-cols-3 gap-12">
         @foreach ($bookmarks as $bookmark)
           <x-event-card :event="$bookmark" />
