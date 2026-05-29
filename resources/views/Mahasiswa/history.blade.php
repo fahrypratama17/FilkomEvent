@@ -86,11 +86,15 @@
                   </div>
 
                   <div class="flex flex-col items-end min-w-50">
-                      @if($eventStatus == 'Selesai' && $reg->event->certificate_path)
-                          <button class="flex items-center gap-3 rounded-xl bg-[#03045E] px-6 py-3 text-white font-bold hover:bg-[#023E8A] transition shadow-lg w-full justify-center">
+                      @if($eventStatus == 'Selesai' && $reg->certificate)
+                          <a href="{{ route('certificates.download', $reg->certificate->certificate_id) }}" class="flex items-center gap-3 rounded-xl bg-[#03045E] px-6 py-3 text-white font-bold hover:bg-[#023E8A] transition shadow-lg w-full justify-center">
                               <i data-lucide="download" class="w-5 h-5"></i>
-                              Download Certificate
-                          </button>
+                              Download Sertifikat
+                          </a>
+                          <a href="{{ route('certificates.view', $reg->certificate->certificate_id) }}" class="mt-3 flex items-center gap-3 rounded-xl bg-[#023E8A] px-6 py-3 text-white font-bold hover:bg-[#03045E] transition shadow-lg w-full justify-center">
+                              <i data-lucide="eye" class="w-5 h-5"></i>
+                              Lihat Sertifikat
+                          </a>
                       @elseif($eventStatus == 'Sedang Berlangsung')
                           <a href="{{ route('events.show', $reg->event->event_id) }}" class="flex items-center gap-3 rounded-xl bg-[#023E8A] px-6 py-3 text-white font-bold hover:bg-[#03045E] transition shadow-lg w-full justify-center">
                               <i data-lucide="eye" class="w-5 h-5"></i>

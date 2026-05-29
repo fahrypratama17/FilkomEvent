@@ -16,6 +16,7 @@ class HistoryController extends Controller
 
     $query = Registration::with([
       'event.category',
+      'certificate',
     ])
       ->where('user_id', $user->user_id)
       ->orderBy('registration_date', 'desc');
