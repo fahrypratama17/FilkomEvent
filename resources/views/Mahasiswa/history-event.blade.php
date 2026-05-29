@@ -17,7 +17,7 @@
     </div>
 
     {{-- SIDEBAR COMPONENT --}}
-    @include('components.sidebar-mahasiswa', [
+    @include('components.sidebar', [
       'menuItems' => $menuItems,
       'settingItems' => $settingItems
     ])
