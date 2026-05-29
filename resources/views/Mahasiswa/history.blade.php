@@ -85,22 +85,25 @@
                       </div>
                   </div>
 
-                  <!-- Kolom tombol dinamis sesuai dengan status event yang diikuti -->
-                  <div class="flex flex-col items-end min-w-[200px]">
+                  <div class="flex flex-col items-end min-w-50">
                       @if($eventStatus == 'Selesai' && $reg->event->certificate_path)
                           <button class="flex items-center gap-3 rounded-xl bg-[#03045E] px-6 py-3 text-white font-bold hover:bg-[#023E8A] transition shadow-lg w-full justify-center">
                               <i data-lucide="download" class="w-5 h-5"></i>
                               Download Certificate
                           </button>
                       @elseif($eventStatus == 'Sedang Berlangsung')
-                          <button class="flex items-center gap-3 rounded-xl bg-[#023E8A] px-6 py-3 text-white font-bold hover:bg-[#03045E] transition shadow-lg w-full justify-center">
+                          <a href="{{ route('events.show', $reg->event->event_id) }}" class="flex items-center gap-3 rounded-xl bg-[#023E8A] px-6 py-3 text-white font-bold hover:bg-[#03045E] transition shadow-lg w-full justify-center">
                               <i data-lucide="eye" class="w-5 h-5"></i>
-                              See Details
-                          </button>
+                            Lihat Detail Event
+                          </a>
                       @else
                           <button disabled class="rounded-xl bg-[#023E8A]/50 px-6 py-3 text-white/50 font-bold cursor-not-allowed w-full text-center">
-                              Not Available
+                              Tidak Tersedia
                           </button>
+                          <a href="{{ route('events.show', $reg->event->event_id) }}" class="mt-3 flex items-center justify-center rounded-xl bg-[#03045E] px-6 py-3 text-white font-bold hover:bg-[#023E8A] transition shadow-lg w-full">
+                            <i data-lucide="eye" class="mr-2 h-5 w-5"></i>
+                            Lihat Detail Event
+                          </a>
                       @endif
                   </div>
               </article>
