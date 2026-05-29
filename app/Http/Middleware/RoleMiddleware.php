@@ -14,7 +14,7 @@ class RoleMiddleware
           return redirect('/login');
         }
 
-        if (Auth::user()->role !== $role) {
+        if (strtolower(Auth::user()->role) !== strtolower($role)) {
           abort(403, 'Hanya Admin yang bisa masuk');
         }
 

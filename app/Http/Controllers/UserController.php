@@ -38,4 +38,18 @@ class UserController extends Controller
 
     return back()->with('Success', 'Password berhasil diubah');
   }
+
+  public function show($id) {
+    $user = Auth::user();
+
+    if ((int) $id !== (int) $user->user_id) {
+      abort(403);
+    }
+
+    return view('Mahasiswa.profile', [
+      'user' => $user,
+      'menuItems' => MenuService::getMenu($user->role),
+      'settingItems' => MenuService::getSetting(),
+    ]);
+  }
 }

@@ -17,3 +17,4 @@ import "./accordion.js";
 import "./modal.js";
 import "./formUploadAdmin.js";
 import "./payment.js";
+import "./dashboardSkeleton.js";

@@ -1,4 +1,9 @@
 window.toggleBookmark = function (eventId, el) {
+  const wasBookmarked = el.classList.contains("bg-orange-550");
+  const bookmarkPage = document
+    .getElementById("eventList")
+    ?.getAttribute("data-page") === "bookmark";
+
   fetch(`/bookmark/${eventId}`, {
     method: "POST",
     headers: {
@@ -9,7 +14,7 @@ window.toggleBookmark = function (eventId, el) {
     },
   })
     .then((res) => res.json())
-    .then((data) => {
+    .then(() => {
       el.classList.remove("bookmark-animate");
       void el.offsetWidth;
       el.classList.add("bookmark-animate");
@@ -24,6 +29,20 @@ window.toggleBookmark = function (eventId, el) {
         el.classList.remove("bg-orange-550", "text-white");
         el.classList.add("bg-white");
         icon.classList.remove("fill-white");
+      }
+
+      if (bookmarkPage && wasBookmarked) {
+        el.closest("article")?.remove();
+
+        if (typeof window.showToast === "function") {
+          window.showToast("Berhasil", "Bookmark dihapus", "success", 3000);
+        }
+
+        const list = document.getElementById("eventList");
+        const emptyMessage = document.getElementById("bookmark-empty");
+        if (list && emptyMessage && list.querySelectorAll("article").length === 0) {
+          emptyMessage.classList.remove("hidden");
+        }
       }
     });
 };

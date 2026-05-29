@@ -58,10 +58,12 @@ class AuthController extends Controller
       'password.min' => 'Password minimal 8 karakter',
     ]);
 
+    $remember = $request->boolean('remember');
+
     if (Auth::attempt([
       'email' => $request->email,
       'password' => $request->password,
-    ])) {
+    ], $remember)) {
     $request->session()->regenerate();
 
       if (strtolower(Auth::user()->role) === 'admin') {
