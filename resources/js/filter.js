@@ -27,7 +27,7 @@ export function initFilters(eventList) {
       status,
     });
 
-    const url = urlOverride ?? `?${params.toString()}`;
+    const url = typeof urlOverride === "string" ? urlOverride : `?${params.toString()}`;
 
     setLoading();
 
@@ -57,11 +57,11 @@ export function initFilters(eventList) {
   }
 
   if (categoryFilter) {
-    categoryFilter.addEventListener("change", fetchEvents);
+    categoryFilter.addEventListener("change", () => fetchEvents());
   }
 
   if (statusFilter) {
-    statusFilter.addEventListener("change", fetchEvents);
+    statusFilter.addEventListener("change", () => fetchEvents());
   }
 
   eventList.addEventListener("click", (event) => {
