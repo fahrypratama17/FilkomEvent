@@ -62,7 +62,7 @@ class AdminEventController extends Controller
         }
 
         if ($request->ajax()) {
-            return response()->view('Admin.partials.events-management-results', [
+            return response()->view('partials.events-management-results', [
                 'events' => $events,
             ]);
         }
